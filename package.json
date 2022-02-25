@@ -1,7 +1,7 @@
 {
 	"name": "font-selector-rcl",
 	"description": "A React Component Library for Selecting Fonts in a Web Browser.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": false,
 	"homepage": "https://github.com/klappy/font-selector-rcl",
 	"repository": {
@@ -13,13 +13,13 @@
 		"node": ">=4"
 	},
 	"dependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
+		"@babel/cli": "^7.12.10",
+		"@babel/core": "^7.12.10",
+		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
+		"@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+		"@babel/plugin-proposal-optional-chaining": "^7.12.7",
+		"@babel/preset-env": "^7.12.11",
+		"@babel/preset-react": "^7.12.10",
 		"babel-loader": "^8.2.2",
 		"css-loader": "^2.1.1",
 		"prop-types": "^15.6.1",
