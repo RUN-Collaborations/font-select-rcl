@@ -1,7 +1,7 @@
 {
 	"name": "font-selector-rcl",
 	"description": "A React Component Library for Selecting Fonts in a Web Browser.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"private": false,
 	"homepage": "https://github.com/klappy/font-selector-rcl",
 	"repository": {
@@ -33,6 +33,12 @@
 	"scripts": {
 		"start": "styleguidist server",
 		"styleguide": "styleguidist server",
-		"styleguide:build": "styleguidist build"
-	}
+		"styleguide:build": "styleguidist build",
+		"build": "./node_modules/.bin/babel src --out-dir build && cp ./src/components/*.css ./build/components",
+		"prepublishOnly": "rm -fr ./build && yarn build"
+	},
+	"main": "build/index.js",
+	"files": [
+		"build"
+	]
 }
