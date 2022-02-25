@@ -1,32 +1,22 @@
+const path = require('path');
+const upperFirst = require('lodash/upperFirst');
+const camelCase = require('lodash/camelCase');
+
+const {
+  name, version, repository,
+} = require('./package.json');
+
 module.exports = {
-	title: 'React Style Guide Example',
-	defaultExample: true,
-	webpackConfig: {
-		devServer: {
-			// Docs: https://codesandbox.io/docs/environment#how-can-i-tell-if-i-am-in-a-container-sandbox
-			disableHostCheck: !!process.env.CODESANDBOX_SSE,
-		},
-		module: {
-			rules: [
-				{
-					test: /\.jsx?$/,
-					exclude: /node_modules/,
-					loader: 'babel-loader',
-				},
-				{
-					test: /\.css$/,
-					use: [
-						'style-loader',
-						{
-							loader: 'css-loader',
-							options: {
-								importLoaders: 1,
-								modules: true
-							}
-						},
-					],
-				},
-			],
-		},
-	},
+  usageMode: 'expand',
+  exampleMode: 'expand',
+  moduleAliases: { name: path.resolve(__dirname, 'src') },
+  getComponentPathLine: componentPath => {
+    const name = path.basename(componentPath, '.js');
+    return `import { ${name} } from ${name};`;
+  },
+  title: `${upperFirst(camelCase(name))} v${version}`,
+  ribbon: {
+    url: repository.url,
+    text: 'View on GitHub',
+  },
 };
