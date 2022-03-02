@@ -9,10 +9,20 @@
 		"url": "https://github.com/RUN-Collaborations/font-selector-rcl.git"
 	},
 	"license": "MIT",
-	"engines": {
-		"node": ">=4"
-	},
 	"dependencies": {
+		"css-loader": "^2.1.1",
+		"prop-types": "^15.6.1",
+		"style-loader": "^0.23.1"
+	},
+	"scripts": {
+		"start": "yarn && styleguidist server",
+		"styleguide": "styleguidist server",
+		"styleguide:build": "styleguidist build",
+		"build": "./node_modules/.bin/babel src --out-dir build && cp ./src/components/*.css ./build/components",
+		"prepublishOnly": "rm -fr ./build && yarn build"
+	},
+
+	"devDependencies": {
 		"@babel/cli": "^7.12.10",
 		"@babel/core": "^7.12.10",
 		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
@@ -21,22 +31,18 @@
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-react": "^7.12.10",
 		"babel-loader": "^8.2.2",
-		"css-loader": "^2.1.1",
-		"prop-types": "^15.6.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-scripts": "4.0.3",
 		"react-styleguidist": "^11.2.0",
-		"style-loader": "^0.23.1",
 		"webpack": "4.44.0"
 	},
-	"scripts": {
-		"start": "styleguidist server",
-		"styleguide": "styleguidist server",
-		"styleguide:build": "styleguidist build",
-		"build": "./node_modules/.bin/babel src --out-dir build && cp ./src/components/*.css ./build/components",
-		"prepublishOnly": "rm -fr ./build && yarn build"
-	},
+
+	"peerDependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	  },	
+
 	"main": "build/index.js",
 	"files": [
 		"build"
