@@ -33,8 +33,6 @@ export default function FontCheck({ name }) {
 FontCheck.propTypes = {
   /** name of font to display */
   name: PropTypes.string.isRequired,
-  /** callback for selection */
-  //doesFontExist: PropTypes.func.isRequired,
 };
 
 FontCheck.propDefaults = {
