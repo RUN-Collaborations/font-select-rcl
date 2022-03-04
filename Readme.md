@@ -3,12 +3,20 @@ THIS IS A WORK IN PROGRESS. Components and props are subject to change.
 
 For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
 
+# To Do
+ * Add graphite-enabled fonts to dropdown when GraphiteCheck returns true
+ * Make FontDropDown headless (not dependent on MUI)
+ * Only include fonts in FontDropDown when FontCheck returns true
+ * Add woff/woff versions of some graphite-enabled fonts with version listed when GraphiteCheck return true
+ * Further develop FontSize
+ * Add line height settings when Graphite-check returns true
+
 ## Project Goals
 Deliver a React Component Library (RCL) that:
  * Returns a selectable dropdown list for styling by the RCL consumer (in process).
  * Offers a font size setting. (in process)
  * Test around 500 font families to indentify whether or not they are installed in the local environment. Only deteted fonts are presented in the dropdown.
-    * Font tested are listed in the fonts.json array, including:
+    * Font tested are listed in the [fonts.json array(https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/fonts.json)], including:
       * Windows 11 system and supplemental font families
       * MacOS system and downloadable font families thru Monterey (v12)
       * However, this list currently excludes the following (which can be passed back in by apps consuming the rcl where they are needed):
@@ -19,7 +27,7 @@ Deliver a React Component Library (RCL) that:
          * Google fonts. (TBD. Need them?)
       * In Firefox[1] (or when explicity specified by an app) [graphite-enabled](https://software.sil.org/fonts/) fonts are also detected.
          * [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
-         * See grapite-enabled-fonts.json
+         * See [grapite-enabled-fonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/graphite-enabled-fonts.json)
          * In Firefox[1] (or when explicitly specified by an app), line-height setting are available for graphite-enabled fonts to mitigate collisions or near collisions across rows. (in process)
 
 ## Font Detection Approach
