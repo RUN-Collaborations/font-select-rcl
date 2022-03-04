@@ -9,7 +9,7 @@ export default function FontCheck({ name }, testString) {
     let canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     /** The text whose final pixel size will be measured */
-    const text = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const text = testString;
     /** Baseline font; A default monospace font must be available for the test to work. */
     context.font = '72px monospace';
     /** Get the size of text with the baseline font. */
