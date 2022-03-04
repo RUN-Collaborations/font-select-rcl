@@ -1,4 +1,4 @@
-# FontOption
+<!--- # FontOption -->
 
 ```jsx
 const onSelect = (id) => { alert(id); }

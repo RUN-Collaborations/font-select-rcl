@@ -1,4 +1,4 @@
-# GraphiteCheck
+<!--- # GraphiteCheck --->
 
 ```jsx
 /** Should Graphite-enabled fonts be displayed? */
