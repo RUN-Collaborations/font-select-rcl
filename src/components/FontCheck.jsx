@@ -25,13 +25,13 @@ export default function FontCheck({ name, testString }) {
   }, []);
 
   /** Is font locally installed? */
-  const fontCheckComponent = useMemo(() => doesFontExist(name, testString), [doesFontExist]);
+  const isFontDetected = useMemo(() => doesFontExist(name, testString), [doesFontExist]);
 
-  return (<div>{name}: {fontCheckComponent ? "detected as locally installed" : "not detected as locally installed"}</div>);
+  return (isFontDetected);
 };
 
 FontCheck.propTypes = {
-  /** name of font to display */
+  /** Name of font to test */
   name: PropTypes.string.isRequired,
   /** String for use in font detection */
   testString: PropTypes.string,
