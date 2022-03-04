@@ -1,15 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-export default function FontCheck({ name }, testString) {
+export default function FontCheck({ name, testString }) {
 
   /** Test font availability. */
-  const doesFontExist = useCallback((fontName) => {
+  const doesFontExist = useCallback((fontName, useThisString) => {
     /** Create an in-memory Canvas element. */
     let canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     /** The text whose final pixel size will be measured */
-    const text = testString;
+    const text = useThisString;
     /** Baseline font; A default monospace font must be available for the test to work. */
     context.font = '72px monospace';
     /** Get the size of text with the baseline font. */
@@ -25,7 +25,7 @@ export default function FontCheck({ name }, testString) {
   }, []);
 
   /** Is font locally installed? */
-  const fontCheckComponent = useMemo(() => doesFontExist(name), [doesFontExist]);
+  const fontCheckComponent = useMemo(() => doesFontExist(name, testString), [doesFontExist]);
 
   return (<div>{name}: {fontCheckComponent ? "detected as locally installed" : "not detected as locally installed"}</div>);
 };
@@ -34,7 +34,7 @@ FontCheck.propTypes = {
   /** name of font to display */
   name: PropTypes.string.isRequired,
   /** String for use in font detection */
-  testString: PropTypes.string.isRequired,
+  testString: PropTypes.string,
 };
 
 FontCheck.propDefaults = {

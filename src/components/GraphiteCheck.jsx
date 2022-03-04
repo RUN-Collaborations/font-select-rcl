@@ -10,10 +10,10 @@ export default function GraphiteCheck({ testClient }){
 
 GraphiteCheck.propTypes = {
   /** name of browser to test */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 GraphiteCheck.propDefaults = {
-    testClient: { testClient: 'firefox' },
+  testClient: 'firefox',
 };
 
