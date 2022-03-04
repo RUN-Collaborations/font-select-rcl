@@ -11,22 +11,23 @@ import { Grid } from '@mui/material';
 
 
 export default function FontDropDown() {
-
-
     return (
-        <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={4}>
+        // <Grid container spacing={2} justifyContent="center">
+            // <Grid item xs={4}>
+            <div>
                 <SelectFont />
-            </Grid>
-            <Grid item xs={4}>
-            </Grid>
-            <Grid item xs={10} >
-                <PaperField />
 
-            </Grid>
-            <Grid item xs={8}>
-            </Grid>
-        </Grid>
+            </div>
+            // </Grid>
+        
+            // <Grid item xs={6}>
+            // </Grid>
+            // <Grid item xs={10} >
+            //     <PaperField />
+
+            // </Grid>
+            // <Grid item xs={8}>
+            // </Grid>
     );
 };
 

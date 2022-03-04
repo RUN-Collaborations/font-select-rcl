@@ -6,30 +6,55 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import data from '../../fonts/fonts.json'
 
+import Paper from '@mui/material/Paper';
+import WebFont from 'webfontloader';
+import { Grid } from '@mui/material';
+
+
+
 export default function SelectFont() {
-  const [age, setAge] = React.useState('');
+  const [selectedFont, setSelectedFont] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    // console.log(event.target.value)
+    setSelectedFont(event.target.value);
   };
   var fontData = data.data
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Font</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          {fontData.map((i, k) =>(
-            <MenuItem key={k} value={k}>{i.name}</MenuItem>
-          ))}
-          
-        </Select>
-      </FormControl>
-    </Box>
+    <div >
+      <Grid container spacing={2}   >
+        <Grid item xs={4} style={{ padding: '20px' }}>
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Font</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={selectedFont}
+                label="Font"
+                onChange={handleChange}
+              >
+                {fontData.map((i, k) => (
+                  <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+        </Grid>
+
+
+        <Grid item xs={10} >
+          <Paper variant="outlined" square style={{ padding: '15px' }}>
+            <p style={{ fontFamily: selectedFont }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </Paper>
+
+        </Grid>
+
+
+
+      </Grid>
+
+
+    </div >
   );
 }
