@@ -1,4 +1,4 @@
-<!--- # FontOptions --->
+<!-- # FontOptions -->
 
 ```jsx
 const fontOptions = [

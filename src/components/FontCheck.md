@@ -1,7 +1,9 @@
-<!--- # FontCheck --->
+<!-- # FontCheck -->
 
 ```jsx
 const fontCheck = { name: 'Arial', id: 'arial' };
 
-<FontCheck {...fontCheck} ></FontCheck>;
+const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+<FontCheck {...fontCheck} tesString={testString} ></FontCheck>;
 ```

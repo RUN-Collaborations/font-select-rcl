@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-export default function FontCheck({ name }) {
+export default function FontCheck({ name }, testString) {
 
   /** Test font availability. */
   const doesFontExist = useCallback((fontName) => {
@@ -33,7 +33,10 @@ export default function FontCheck({ name }) {
 FontCheck.propTypes = {
   /** name of font to display */
   name: PropTypes.string.isRequired,
+  /** String for use in font detection */
+  testString: PropTypes.string.isRequired,
 };
 
 FontCheck.propDefaults = {
+  testString: 'abcdefghijklmnopqrstuvwxyz0123456789',
 };
