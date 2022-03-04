@@ -1,7 +1,7 @@
 {
 	"name": "font-select-rcl",
 	"description": "A React Component Library for Selecting Fonts",
-	"version": "0.1.13",
+	"version": "0.1.14",
 	"private": false,
 	"homepage": "https://github.com/RUN-Collaborations/font-selector-rcl",
 	"repository": {
