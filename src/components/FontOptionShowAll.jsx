@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import FontCheck from './FontCheck';
 
-export default function FontOption({ name, id, onSelect }) {
+export default function FontOptionShowAll({ name, id, onSelect }) {
 
   const isFontDetected = useMemo(() => FontCheck({ name }), [FontCheck]);
 
@@ -14,10 +14,10 @@ export default function FontOption({ name, id, onSelect }) {
     onClick: handleClick,
   };
 
-  return (<div {...props}>{isFontDetected && name}</div>);
+  return (<div {...props}>{name}: {isFontDetected ? "detected (clickable)" : "not detected (not clickable)"}</div>);
 };
 
-FontOption.propTypes = {
+FontOptionShowAll.propTypes = {
   /** name of font to display */
   name: PropTypes.string.isRequired,
   /** id of font */
@@ -26,5 +26,5 @@ FontOption.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 
-FontOption.propDefaults = {
+FontOptionShowAll.propDefaults = {
 };
