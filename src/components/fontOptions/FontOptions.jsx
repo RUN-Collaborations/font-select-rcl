@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import FontOption from './FontOption';
+import FontOption from '../fontOption/FontOption';
 
 export default function FontOptions({fontOptions, onSelect}) {
 

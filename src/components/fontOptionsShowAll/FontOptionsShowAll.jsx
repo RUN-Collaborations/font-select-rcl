@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import FontOptionShowAll from './FontOptionShowAll';
+import FontOptionShowAll from '../fontOptionShowAll/FontOptionShowAll';
 
 export default function FontOptionsShowAll({fontOptionsShowAll, onSelect}) {
 

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import GraphiteCheck from './GraphiteCheck';
+import GraphiteCheck from '../graphiteCheck/GraphiteCheck';
 
 export default function GraphiteCheckShow({ testClient, alwaysUse }){
 

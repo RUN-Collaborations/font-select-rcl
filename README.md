@@ -70,7 +70,7 @@ If [gfx.font_rendering.graphite.enabled](https://silnrsi.github.io/FDBP/en-US/Br
 * Double-click on the preference name line to toggle the value between false and true. [A bold line indicates a setting that is set to true.](https://support.mozilla.org/en-US/kb/about-config-editor-firefox)
 
 [2]  
-* Closely followed logic in [Detect Whether a Font is Installed](https://www.kirupa.com/html5/detect_whether_font_is_installed.htm), then after implement found [fontexist.js](https://gist.github.com/alloyking/4154494). Uncertain of the original source.
+* Closely followed logic in [Detect Whether a Font is Installed](https://www.kirupa.com/html5/detect_whether_font_is_installed.htm), then after implementation found [fontexist.js](https://gist.github.com/alloyking/4154494). Uncertain of the original source.
 
 [3]  
 * [JavaScript/CSS Font Detector by Lalit Patel](https://gist.github.com/szepeviktor/d28dfcfc889fe61763f3)

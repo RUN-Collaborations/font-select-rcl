@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
-import FontCheck from './FontCheck';
+import FontCheck from '../fontCheck/FontCheck';
 
 export default function FontOptionShowAll({ name, id, onSelect }) {
 
