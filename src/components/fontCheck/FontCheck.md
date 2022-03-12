@@ -5,5 +5,7 @@ const fontCheck = { name: 'Arial', id: 'arial' };
 
 const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-<FontCheck {...fontCheck} testString={testString} ></FontCheck>;
+const baselineFont = 'monospace';
+
+<FontCheck {...fontCheck} testString={testString} baselineFont={baselineFont}></FontCheck>;
 ```

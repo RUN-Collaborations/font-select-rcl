@@ -6,5 +6,9 @@ const style = { border: 'solid 1px red'};
 
 const fontOption = { name: 'Arial', id: 'arial' };
 
-<FontOption {...fontOption} onSelect={onSelect} style={style}></FontOption>;
+const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+const baselineFont = 'monospace';
+
+<FontOption {...fontOption} onSelect={onSelect} style={style} testString={testString} baselineFont={baselineFont}></FontOption>;
 ```

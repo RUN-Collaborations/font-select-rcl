@@ -2,9 +2,9 @@ import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import FontCheck from '../fontCheck/FontCheck';
 
-export default function FontOption({ name, id, onSelect }) {
+export default function FontOption({ name, id, onSelect, testString, baselineFont }) {
 
-  const isFontDetected = useMemo(() => FontCheck({ name }), [FontCheck]);
+  const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
 
   const handleClick = () => {
       isFontDetected && onSelect(id);
@@ -24,7 +24,13 @@ FontOption.propTypes = {
   id: PropTypes.string.isRequired,
   /** callback for selection */
   onSelect: PropTypes.func.isRequired,
+  /** String for use in font detection (default is 'abcdefghijklmnopqrstuvwxyz0123456789') */
+  testString: PropTypes.string,
+  /** Baseline font (default is 'monospace') */
+  baselineFont: PropTypes.string,
 };
 
 FontOption.propDefaults = {
+  testString: 'abcdefghijklmnopqrstuvwxyz0123456789',
+  baselineFont: 'monospace',
 };

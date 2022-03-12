@@ -8,6 +8,9 @@ const fontOptions = [
 ];
 const onSelect = (id) => { alert(id); };
 
+const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-<FontOptions fontOptions={fontOptions} onSelect={onSelect}></FontOptions>
+const baselineFont = 'monospace';
+
+<FontOptions fontOptions={fontOptions} onSelect={onSelect} testString={testString} baselineFont={baselineFont}></FontOptions>
 ```

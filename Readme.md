@@ -31,7 +31,7 @@ Deliver a React Component Library (RCL) that:
          * In Firefox[1] (or when explicitly specified by an app), line-height setting are available for graphite-enabled fonts to mitigate collisions or near collisions across rows. (in process)
 
 ## Font Detection Approach
-The current approach compares the width of a test string in each font to that of a baseline font, presently the default monospace font.[2] Some other font detect approaches use multiple fallback tests, such as 'serif', 'sans-serif', 'monospace' (though not always in that order). Is this needed on a system that does not have a default monospace font defined?
+The current approach compares the width of a test string in each font to that of a baseline font, presently the default monospace font.[2] Some other font detect approaches use multiple fallback tests, such as 'serif', 'sans-serif', 'monospace' (though not always in that order). Is this needed on a system that does not have a default monospace font defined? Apps can define their own baseline font if needed.
 
 ### Font Test String
 The default test string is currently 'abcdefghijklmnopqrstuvwxyz0123456789'. If a font exists that does not support any of these characters, then that font will not be detected. Is that a real-word possibility? If so, apps can pass their own custom test string.
