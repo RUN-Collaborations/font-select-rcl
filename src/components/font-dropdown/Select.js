@@ -1,45 +1,60 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import data from '../../fonts/fonts.json';
+import gdata from '../../fonts/graphite-enabled-fonts.json';
 import FontCheck from '../fontCheck/FontCheck';
+import GraphiteCheck from '../graphiteCheck/GraphiteCheck';
 
 import Paper from '@mui/material/Paper';
 import { Grid } from '@mui/material';
 
-
-
 export default function SelectFont() {
   const [selectedFont, setSelectedFont] = React.useState('');
   const [selectedFontSize, setSelectedFontSize] = React.useState('');
-
 
   const handleChange = (event) => {
     // console.log(event.target.value)
     setSelectedFont(event.target.value);
   };
 
-
   const handleChangeSize = (event) => {
     console.log(event.target.value)
     setSelectedFontSize(event.target.value);
   };
-
-  /**
-  const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
-  const baselineFont = 'monospace';
-  const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
-  */
   
-  var fontData = data.data
+  // const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  // const baselineFont = 'monospace';
+  // const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
+  
+  const testClient = 'firefox';
+  const alwaysUse = false;
+  const graphiteEnabledFonts = useMemo(() => GraphiteCheck({ testClient, alwaysUse }), [GraphiteCheck]);
+
+  const gfontData = graphiteEnabledFonts && gdata.gdata
+
+  const gfontList = graphiteEnabledFonts && gfontData.filter(name => FontCheck(name)).map((i, k) => (
+    <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
+  ));
+
+  const [isgfontList, setIsgfontList] = useState(true);
+  useEffect(() => {
+    if (gfontList.length === 0) setIsgfontList(false);
+  }, [gfontList]);
+   
+  const fontData = data.data
 
   const fontList = fontData.filter(name => FontCheck(name)).map((i, k) => (
     <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
   ));
 
+  const [isfontList, setIsfontList] = useState(true);
+  useEffect(() => {
+    if (fontList.length === 0) setIsfontList(false);
+  }, [fontList]);
 
   return (
     <div >
@@ -55,6 +70,11 @@ export default function SelectFont() {
                 label="Font"
                 onChange={handleChange}
               >
+              {graphiteEnabledFonts && <hr /> }
+                <b>{graphiteEnabledFonts && "Graphite-Enabled (local):" }{!isgfontList && graphiteEnabledFonts && "none detected"}</b>
+                {gfontList}
+                <hr />
+                <b>Detected Fonts: {!isfontList && "none detected"}</b>
                 {fontList}
               </Select>
             </FormControl>
