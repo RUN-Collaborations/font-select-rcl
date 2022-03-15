@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React, {useMemo} from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import data from '../../fonts/fonts.json'
+import data from '../../fonts/fonts.json';
+import FontCheck from '../fontCheck/FontCheck';
 
 import Paper from '@mui/material/Paper';
-import WebFont from 'webfontloader';
 import { Grid } from '@mui/material';
 
 
@@ -28,8 +28,19 @@ export default function SelectFont() {
     setSelectedFontSize(event.target.value);
   };
 
-
+  /**
+  const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const baselineFont = 'monospace';
+  const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
+  */
+  
   var fontData = data.data
+
+  const fontList = fontData.filter(name => FontCheck(name)).map((i, k) => (
+    <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
+  ));
+
+
   return (
     <div >
       <Grid container spacing={2}   >
@@ -44,9 +55,7 @@ export default function SelectFont() {
                 label="Font"
                 onChange={handleChange}
               >
-                {fontData.map((i, k) => (
-                  <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
-                ))}
+                {fontList}
               </Select>
             </FormControl>
           </Box>
