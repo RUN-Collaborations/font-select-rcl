@@ -15,6 +15,7 @@ import { Grid } from '@mui/material';
 export default function SelectFont() {
   const [selectedFont, setSelectedFont] = React.useState('');
   const [selectedFontSize, setSelectedFontSize] = React.useState('');
+  const [selectedLineHeight, setSelectedLineHeight ] = React.useState('');
 
   const handleChange = (event) => {
     // console.log(event.target.value)
@@ -22,10 +23,15 @@ export default function SelectFont() {
   };
 
   const handleChangeSize = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setSelectedFontSize(event.target.value);
   };
   
+  const handleChangeLineHeight = (event) => {
+    // console.log(event.target.value)
+    setSelectedLineHeight(event.target.value);
+  };
+
   // const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
   // const baselineFont = 'monospace';
   // const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
@@ -81,7 +87,7 @@ export default function SelectFont() {
           </Box>
         </Grid>
 
-        <Grid item xs={2} style={{ padding: '20px' }}>
+        <Grid item xs={3} style={{ padding: '20px' }}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">FontSize</InputLabel>
@@ -100,12 +106,30 @@ export default function SelectFont() {
             </FormControl>
           </Box>
         </Grid>
-        
 
+        <Grid item xs={2} style={{ padding: '20px' }}>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">LineHeight</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedLineHeight}
+              label="LineHeight"
+              onChange={handleChangeLineHeight}
+            >            
+              <MenuItem key={1} value={1.7}>1.7</MenuItem>
+              <MenuItem key={2} value={2.14}>2.14</MenuItem>
+              <MenuItem key={3} value={2.7}>2.7</MenuItem>
+              <MenuItem key={4} value={1}>default</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+      </Grid>
 
         <Grid item xs={10} >
           <Paper variant="outlined" square style={{ padding: '15px' }}>
-            <p style={{ fontFamily: selectedFont, fontSize: selectedFontSize }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p style={{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
           </Paper>
 
         </Grid>
