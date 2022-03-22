@@ -1,128 +1,126 @@
-{
-    "gdata": [
-        {
-            "name": "Abyssinica SIL",
-            "id": "abyssinica-sil"
-        },
-        {
-            "name": "Akatab",
-            "id": "akatab"
-        },
-        {
-            "name": "Alkalami",
-            "id": "alkalami"
-        },
-        {
-            "name": "Alkalami Light",
-            "id": "alkalami-light"
-        },
-        {
-            "name": "Andika",
-            "id": "andika"
-        },
-        { 
-            "name": "Annapurna SIL",
-            "id": "annapurna-sil"
-        },
-        {
-            "name": "Apparatus SIL",
-            "id": "apparatus-sil"
-        },
-        {
-            "name": "Awami Nastaliq",
-            "id": "awami-nastaliq"
-        },
-        {
-            "name": "Charis SIL",
-            "id": "charis-sil"
-        },
-        {
-            "name": "Dai Banna SIL Book",
-            "id": "dai-banna-sil-book"
-        },
-        {
-            "name": "Dai Banna SIL Light",
-            "id": "dai-banna-sil-light"
-        },
-        {
-            "name": "Doulos SIL",
-            "id": "doulos-sil"
-        },
-        {
-            "name": "Doulos SIL Cipher",
-            "id": "doulos-sil-cipher"
-        },
-        {
-            "name": "Ezra SIL",
-            "id": "ezra-sil"
-        },
-        {
-            "name": "Ezra SIL SR",
-            "id": "ezra-sil-sr"
-        },
-        {
-            "name": "Galatia SIL",
-            "id": "galatia-sil"
-        },
-        {
-            "name": "Gentium Plus",
-            "id": "gentium-plus"
-        },
-        {
-            "name": "Harmattan",
-            "id": "harmattan"
-        },
-        {
-            "name": "Khmer Busra",
-            "id": "khmer-busra"
-        },
-        {
-            "name": "Khmer Mondulkiri",
-            "id": "khmer-mondulkiri"
-        },
-        {
-            "name": "LateefGR",
-            "id": "lateefgr"
-        },
-        {
-            "name": "Mingzat",
-            "id": "mingzat"
-        },
-        {
-            "name": "Namdhinggo SIL",
-            "id": "namdhinggo-sil"
-        },
-        {
-            "name": "Narnoor",
-            "id": "narnoor"
-        },
-        {
-            "name": "Nuosu SIL",
-            "id": "nuosu-sil"
-        },
-        {
-            "name": "Padauk",
-            "id": "padauk"
-        },
-        {
-            "name": "Scheherazade New",
-            "id": "scheherazade-new"
-        },
-        {
-            "name": "Shimenkan",
-            "id": "shimenkan"
-        },
-        {
-            "name": "Sophia Nubian",
-            "id": "sophia-nubian"
-        },
-        {
-            "name": "Tagmukay",
-            "id": "tagmukay"
-        },
-        {
-            "name": "Tai Heritage Pro",
-            "id": "tai-heritage-pro"
-        }
-    ]
-}
+[
+    {
+        "name": "Abyssinica SIL",
+        "id": "abyssinica-sil"
+    },
+    {
+        "name": "Akatab",
+        "id": "akatab"
+    },
+    {
+        "name": "Alkalami",
+        "id": "alkalami"
+    },
+    {
+        "name": "Alkalami Light",
+        "id": "alkalami-light"
+    },
+    {
+        "name": "Andika",
+        "id": "andika"
+    },
+    { 
+        "name": "Annapurna SIL",
+        "id": "annapurna-sil"
+    },
+    {
+        "name": "Apparatus SIL",
+        "id": "apparatus-sil"
+    },
+    {
+        "name": "Awami Nastaliq",
+        "id": "awami-nastaliq"
+    },
+    {
+        "name": "Charis SIL",
+        "id": "charis-sil"
+    },
+    {
+        "name": "Dai Banna SIL Book",
+        "id": "dai-banna-sil-book"
+    },
+    {
+        "name": "Dai Banna SIL Light",
+        "id": "dai-banna-sil-light"
+    },
+    {
+        "name": "Doulos SIL",
+        "id": "doulos-sil"
+    },
+    {
+        "name": "Doulos SIL Cipher",
+        "id": "doulos-sil-cipher"
+    },
+    {
+        "name": "Ezra SIL",
+        "id": "ezra-sil"
+    },
+    {
+        "name": "Ezra SIL SR",
+        "id": "ezra-sil-sr"
+    },
+    {
+        "name": "Galatia SIL",
+        "id": "galatia-sil"
+    },
+    {
+        "name": "Gentium Plus",
+        "id": "gentium-plus"
+    },
+    {
+        "name": "Harmattan",
+        "id": "harmattan"
+    },
+    {
+        "name": "Khmer Busra",
+        "id": "khmer-busra"
+    },
+    {
+        "name": "Khmer Mondulkiri",
+        "id": "khmer-mondulkiri"
+    },
+    {
+        "name": "LateefGR",
+        "id": "lateefgr"
+    },
+    {
+        "name": "Mingzat",
+        "id": "mingzat"
+    },
+    {
+        "name": "Namdhinggo SIL",
+        "id": "namdhinggo-sil"
+    },
+    {
+        "name": "Narnoor",
+        "id": "narnoor"
+    },
+    {
+        "name": "Nuosu SIL",
+        "id": "nuosu-sil"
+    },
+    {
+        "name": "Padauk",
+        "id": "padauk"
+    },
+    {
+        "name": "Scheherazade New",
+        "id": "scheherazade-new"
+    },
+    {
+        "name": "Shimenkan",
+        "id": "shimenkan"
+    },
+    {
+        "name": "Sophia Nubian",
+        "id": "sophia-nubian"
+    },
+    {
+        "name": "Tagmukay",
+        "id": "tagmukay"
+    },
+    {
+        "name": "Tai Heritage Pro",
+        "id": "tai-heritage-pro"
+    }
+]

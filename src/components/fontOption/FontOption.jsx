@@ -1,36 +1,40 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import FontCheck from '../fontCheck/FontCheck';
 
-export default function FontOption({ name, id, onSelect, testString, baselineFont }) {
+export default function FontOption({
+  font: {
+    name,
+    id,
+    detected,
+  },
+  onSelect,
+  ...props
+}) {
 
-  const isFontDetected = useMemo(() => FontCheck({ name, testString, baselineFont }), [FontCheck]);
+  const enabled = (detected === undefined || detected);
 
   const handleClick = () => {
-      isFontDetected && onSelect(id);
+      enabled && onSelect(id);
   }
 
-  const props = {
-    onClick: handleClick,
-  };
+  const style = enabled ? {} : {color: 'red'};
 
-  return (<div {...props}>{isFontDetected && name}</div>);
+  return (<div style={style} {...props} onClick={handleClick}>{name}</div>);
 };
 
 FontOption.propTypes = {
-  /** name of font to display */
-  name: PropTypes.string.isRequired,
-  /** id of font */
-  id: PropTypes.string.isRequired,
+  /** Font object passed in */
+  font: PropTypes.shape({
+    /** name of font to display */
+    name: PropTypes.string.isRequired,
+    /** id of font */
+    id: PropTypes.string.isRequired,
+    /** detected, not required but if provided ennables/disables option */
+    detected: PropTypes.bool,
+  }),
   /** callback for selection */
   onSelect: PropTypes.func.isRequired,
-  /** String for use in font detection (default is 'abcdefghijklmnopqrstuvwxyz0123456789') */
-  testString: PropTypes.string,
-  /** Baseline font (default is 'monospace') */
-  baselineFont: PropTypes.string,
 };
 
 FontOption.propDefaults = {
-  testString: 'abcdefghijklmnopqrstuvwxyz0123456789',
-  baselineFont: 'monospace',
 };

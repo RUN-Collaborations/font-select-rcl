@@ -4,10 +4,9 @@ THIS IS A WORK IN PROGRESS. Components and props are subject to change.
 For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
 
 # To Do
- * Make FontDropDown headless (not dependent on MUI)
  * Add woff/woff versions of some graphite-enabled fonts with version listed when GraphiteCheck return true
  * Further develop FontSize
- * Add line height settings when Graphite-check returns true
+ * Further develop LineHeight settings
  * Apply ESLint
 
 ## Project Goals
@@ -30,7 +29,7 @@ Deliver a React Component Library (RCL) that:
          * In Firefox[1] (or when explicitly specified by an app), line-height setting are available for graphite-enabled fonts to mitigate collisions or near collisions across rows. (in process)
 
 ## Font Detection Approach
-The current approach compares the width of a test string in each font to that of a baseline font, presently the default monospace font.[2] Some other font detect approaches use multiple fallback tests, such as 'serif', 'sans-serif', 'monospace' (though not always in that order). Is this needed on a system that does not have a default monospace font defined? Apps can define their own baseline font if needed.
+The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace.[2] Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order. Is there a need for this on a system that does not have monospace defined? Apps can define their own baseline generic-family if preferred.
 
 ### Font Test String
 The default test string is currently 'abcdefghijklmnopqrstuvwxyz0123456789'. If a font exists that does not support any of these characters, then that font will not be detected. Is that a real-word possibility? If so, apps can pass their own custom test string.

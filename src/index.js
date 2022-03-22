@@ -1,14 +1,14 @@
-import FontCheck from './components/fontCheck/FontCheck';
+import FontDropDown from './components/font-dropdown/FontDropDown';
 import FontOption from './components/fontOption/FontOption';
 import FontOptions from './components/fontOptions/FontOptions';
-import GraphiteCheck from './components/graphiteCheck/GraphiteCheck';
-import FontDropDown from './components/font-dropdown/FontDropDown';
+import useDetectFonts from './hooks/useDetectFonts/useDetectFonts';
+import useGraphite from './hooks/useGraphite/useGraphite';
 
 
 export {
-  FontCheck,
+  FontDropDown,
   FontOption,
   FontOptions,
-  GraphiteCheck,
-  FontDropDown,
+  useDetectFonts,
+  useGraphite,
 };

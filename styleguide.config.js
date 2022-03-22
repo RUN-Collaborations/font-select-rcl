@@ -9,10 +9,11 @@ const {
 module.exports = {
   usageMode: 'expand',
   exampleMode: 'expand',
-  moduleAliases: { name: path.resolve(__dirname, 'src') },
+  moduleAliases: { 'font-select-rcl': path.resolve(__dirname, 'src') },
+  components: 'src/**/*.{jsx,ts,tsx}',
   getComponentPathLine: componentPath => {
-    const name = path.basename(componentPath, '.js');
-    return `import { ${name} } from ${name};`;
+    const _name = path.basename(componentPath, '.js');
+    return `import { ${_name.split('.')[0]} } from '${name}';`;
   },
   title: `${upperFirst(camelCase(name))} v${version}`,
   ribbon: {

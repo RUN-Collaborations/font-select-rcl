@@ -1,14 +1,17 @@
 <!-- # FontOption -->
 
+This component always display the font (without detecting whether or not it is locally installed), with a style injected:
 ```jsx
-const onSelect = (id) => { alert(id); }
-const style = { border: 'solid 1px red'};
+import { FontOption } from 'font-select-rcl';
 
-const fontOption = { name: 'Arial', id: 'arial' };
+function Component(){
+    const onSelect = (id) => { alert(id); };
+    const style = { border: 'solid 1px red'};
 
-const testString = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const font = { name: 'Arial', id: 'arial' };
 
-const baselineFont = 'monospace';
+    return (<FontOption font={font} onSelect={onSelect} style={style}></FontOption>);
+};
 
-<FontOption {...fontOption} onSelect={onSelect} style={style} testString={testString} baselineFont={baselineFont}></FontOption>;
+<Component />
 ```
