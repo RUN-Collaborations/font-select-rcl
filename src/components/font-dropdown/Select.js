@@ -7,11 +7,16 @@ import Select from '@mui/material/Select';
 
 import gfonts from '../../fonts/graphite-enabled-fonts.json';
 import rfonts from '../../fonts/fonts.json';
+import rwfonts from '../../fonts/web-fonts.json';
+import gwfonts from '../../fonts/graphite-enabled-web-fonts.json';
 import useDetectFonts from '../../hooks/useDetectFonts/useDetectFonts';
 import useGraphite from '../../hooks/useGraphite/useGraphite';
 
 import Paper from '@mui/material/Paper';
 import { Grid } from '@mui/material';
+
+import './WebFonts.css';
+import './GraphiteEnabledWebFonts.css';
 
 export default function SelectFont() {
   const [selectedFont, setSelectedFont] = React.useState('');
@@ -35,6 +40,11 @@ export default function SelectFont() {
 
   const isGraphiteAssumed = useGraphite( useGraphiteProps );
 
+  // Utilizing Graphite-enabled web fonts
+  const gWebFonts = isGraphiteAssumed && gwfonts.map((i, k) => (
+    <MenuItem key={k} value={i.id}>{i.name} {i.version}</MenuItem>
+  ));
+
   // Detecting Graphite-enabled fonts
   let fonts = gfonts;
   const gdetectedFonts = isGraphiteAssumed && useDetectFonts({ fonts }).map((i, k) => (
@@ -48,6 +58,10 @@ export default function SelectFont() {
       if (gdetectedFonts.length === 0) setAreGFontsDetected(false);
   }, [gdetectedFonts]);
 
+  // Utilizing web fonts
+  const rWebFonts = rwfonts.map((i, k) => (
+    <MenuItem key={k} value={i.name + ' ' + i.version}>{i.name} {i.version}</MenuItem>
+  ));
 
   //Detecting fonts:
   fonts = rfonts;
@@ -76,9 +90,15 @@ export default function SelectFont() {
                 label="Font"
                 onChange={handleChange}
               >
-              {isGraphiteAssumed && <hr /> }
+              {isGraphiteAssumed && <hr />}
+                <b>{isGraphiteAssumed && "Graphite-Enabled Web Fonts:"}</b>
+                {gWebFonts}
+                {isGraphiteAssumed && <hr />}
                 <b>{isGraphiteAssumed && "Graphite-Enabled (local):" }{!areGFontsDetected && isGraphiteAssumed && noneDetectedGMsg}</b>
                 {gdetectedFonts}
+                <hr />
+                <b>Web Fonts:</b>
+                {rWebFonts}
                 <hr />
                 <b>Detected Fonts: {!areFontsDetected && noneDetectedMsg}</b>
                 {detectedFonts}

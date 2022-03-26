@@ -1,0 +1,100 @@
+[
+    {
+        "name": "Akatab",
+        "id": "akatab-2dot000",
+        "version": "2.000",
+        "src": "Akatab-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Alkalami",
+        "id": "alkalami-1dot200",
+        "version": "1.200",
+        "src": "Alkalami-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Alkalami Light",
+        "id": "alkalami-light-1dot200",
+        "version": "1.200",
+        "src": "Alkalami-Light.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Andika",
+        "id": "andika-6dot101",
+        "version": "6.101",
+        "src": "Andika-Regular.woff2",
+        "format": "woff2"
+    },
+    {
+        "name": "Awami Nastaliq",
+        "id": "awami-nastaliq-2dot200",
+        "version": "2.200",
+        "src": "AwamiNastaliq-Regular.woff2",
+        "format": "woff2"
+    },
+    {
+        "name": "Gentium Plus",
+        "id": "gentium-plus-6dot101",
+        "version": "6.101",
+        "src": "GentiumPlus-Regular.woff2",
+        "format": "woff2"
+    },
+    {
+        "name": "Harmattan",
+        "id": "harmattan-2dot000",
+        "version": "2.000",
+        "src": "Harmattan-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Lateef",
+        "id": "lateef-1dot200",
+        "version": "1.200",
+        "src": "LateefGR-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Mingzat",
+        "id": "mingzat-1dot000",
+        "version": "1.000",
+        "src": "Mingzat-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Narnoor",
+        "id": "narnoor-1dot000",
+        "version": "1.000",
+        "src": "Narnoor-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Padauk",
+        "id": "padauk-5dot000",
+        "version": "5.000",
+        "src": "Padauk-Regular.woff2",
+        "format": "woff2"
+    },
+    {
+        "name": "Scheherazade",
+        "id": "scheherazade-3dot300",
+        "version": "3.300",
+        "src": "ScheherazadeNew-Regular.woff2",
+        "format": "woff2"
+    },
+    {
+        "name": "Tagmukay",
+        "id": "tagmukay-2dot000",
+        "version": "2.000",
+        "src": "Tagmukay-Regular.woff",
+        "format": "woff"
+    },
+    {
+        "name": "Tai Heritage Pro",
+        "id": "tai-heritage-pro-2dot600",
+        "version": "2.600",
+        "src": "TaiHeritagePro-Regular.woff",
+        "format": "woff"
+    }
+]

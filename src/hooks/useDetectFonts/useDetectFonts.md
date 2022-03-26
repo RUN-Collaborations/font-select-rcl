@@ -26,7 +26,7 @@ function Component(){
 
   return (
       <React.Fragment>
-        {areFontsDetected && detectedFonts}{!areFontsDetected && noneDetectedMsg}
+        {areFontsDetected ? detectedFonts : noneDetectedMsg}
       </React.Fragment>
   );
 };

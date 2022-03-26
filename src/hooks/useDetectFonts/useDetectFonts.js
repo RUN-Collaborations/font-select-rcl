@@ -9,7 +9,7 @@ export default function useDetectFonts({
   showAll,
 }) {
 
-  /** Is font locally installed? */
+  /** Are fonts locally installed? */
   const detectedFonts = useDeepCompareMemo(() => (
     detectFonts({ fonts, testString, baselineFont, showAll } )
   ),[fonts, baselineFont, testString, showAll]);

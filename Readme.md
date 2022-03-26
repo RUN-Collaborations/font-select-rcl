@@ -4,9 +4,7 @@ THIS IS A WORK IN PROGRESS. Components and props are subject to change.
 For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
 
 # To Do
- * Add woff/woff versions of some graphite-enabled fonts with version listed when GraphiteCheck return true
- * Further develop FontSize
- * Further develop LineHeight settings
+ * Consider moving FontDropDown to an MUI reference example.
  * Apply ESLint
 
 ## Project Goals
