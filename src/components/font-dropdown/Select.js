@@ -15,8 +15,8 @@ import useGraphite from '../../hooks/useGraphite/useGraphite';
 import Paper from '@mui/material/Paper';
 import { Grid } from '@mui/material';
 
-import './WebFonts.css';
-import './GraphiteEnabledWebFonts.css';
+import '../../WebFonts.css';
+import '../../GraphiteEnabledWebFonts.css';
 
 export default function SelectFont() {
   const [selectedFont, setSelectedFont] = React.useState('');
