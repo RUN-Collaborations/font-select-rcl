@@ -1,7 +1,7 @@
 {
 	"name": "font-detect-rhl",
 	"description": "A React Component Library for Selecting Fonts",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"private": false,
 	"homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
 	"repository": {

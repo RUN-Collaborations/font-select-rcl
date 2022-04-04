@@ -11,8 +11,8 @@ import { isRtl } from './detectRTL';
 
 // import GlobalFonts from '../../fonts/fonts';
 
-import '../../WebFonts.css';
-import '../../GraphiteEnabledWebFonts.css';
+import '../../fonts/WebFonts.css';
+import '../../fonts/GraphiteEnabledWebFonts.css';
 
 export default function SelectFont() {
   const [selectedFont, setSelectedFont] = React.useState('');

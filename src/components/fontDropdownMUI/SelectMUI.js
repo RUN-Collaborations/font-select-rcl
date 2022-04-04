@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -18,8 +18,8 @@ import { isRtl } from './detectRTL';
 
 // import GlobalFonts from '../../fonts/fonts';
 
-import '../../WebFonts.css';
-import '../../GraphiteEnabledWebFonts.css';
+import '../../fonts/WebFonts.css';
+import '../../fonts/GraphiteEnabledWebFonts.css';
 
 export default function SelectFontMUI() {
   const [selectedFont, setSelectedFont] = React.useState('');
