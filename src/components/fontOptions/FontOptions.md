@@ -1,6 +1,5 @@
 <!-- # FontOptions -->
-
-This renders a single fonts even if not detected (unless showAll is set to false).
+This example renders a single font whether or not it is detected (unless showAll is changed from true to false).
 ```jsx
 import { useDetectFont } from 'font-select-rcl';
 
@@ -15,14 +14,14 @@ function Component(){
 
   const baselineFont = 'monospace';
 
-  const showAll = false;
+  const showAll = true;
 
   return (<FontOptions fonts={fontOptions} onSelect={onSelect} testString={testString} baselineFont={baselineFont} showAll={showAll}></FontOptions>);
 };
 
 <Component />
 ```
-This only renders fonts that are detected (unless showAll is set to true).
+This example renders only fonts that are detected (unless showAll is changed from false to true).
 ```jsx
 import { useDetectFont } from 'font-select-rcl';
 
@@ -45,7 +44,7 @@ function Component(){
 
 <Component />
 ```
-This renders all fonts even if not detected (unless showAll is set to false).
+This example renders all fonts whether or not they are detected (unless showAll is changed from true to false).
 ```jsx
 import { useDetectFont } from 'font-select-rcl';
 

@@ -2,7 +2,6 @@
 
 This returns an array of detected fonts with a detected boolean attribute.
 ```jsx
-import { useState, useEffect } from 'react';
 import { useDetectFonts } from 'font-select-rcl';
 
 function Component(){
@@ -13,20 +12,17 @@ function Component(){
     { name: 'Not A Font', id: 'not-a-font' },
   ];
 
-  const detectedFonts = useDetectFonts({ fonts }).map((i, k) => (
+  const detectedFontsToMap = useDetectFonts({ fonts });
+
+  const detectedFonts = detectedFontsToMap.map((i, k) => (
     <div key={k}>{i.name} detected: {i.detected.toString()}</div>
   ));
 
   const noneDetectedMsg = 'none detected';
 
-  const [areFontsDetected, setAreFontsDetected] = useState(true);
-    useEffect(() => {
-      if (detectedFonts.length === 0) setAreFontsDetected(false);
-  }, [detectedFonts]);
-
   return (
       <React.Fragment>
-        {areFontsDetected ? detectedFonts : noneDetectedMsg}
+        {detectedFonts.length !== 0 ? detectedFonts : noneDetectedMsg}
       </React.Fragment>
   );
 };
@@ -35,27 +31,23 @@ function Component(){
 ```
 This returns an array of detected fonts from a json file with a detected boolean attribute.
 ```jsx
-import { useState, useEffect } from 'react';
 import { useDetectFonts } from 'font-select-rcl';
 
 import fonts from '../../fonts/fonts.json';
 
 function Component(){
 
-  const detectedFonts = useDetectFonts({ fonts }).map((i, k) => (
+  const detectedFontsToMap = useDetectFonts({ fonts });
+
+  const detectedFonts = detectedFontsToMap.map((i, k) => (
     <div key={k}>{i.name} detected: {i.detected.toString()}</div>
   ));
 
   const noneDetectedMsg = 'none detected';
 
-  const [areFontsDetected, setAreFontsDetected] = useState(true);
-    useEffect(() => {
-      if (detectedFonts.length === 0) setAreFontsDetected(false);
-  }, [detectedFonts]);
-
   return (
       <React.Fragment>
-        {areFontsDetected && detectedFonts}{!areFontsDetected && noneDetectedMsg}
+        {detectedFonts.length !== 0 ? detectedFonts : noneDetectedMsg}
       </React.Fragment>
   );
 };
@@ -64,7 +56,6 @@ function Component(){
 ```
 When useGraphite is true, this returns an array of detected Graphite-enabled fonts from a json file with a detected boolean attribute.
 ```jsx
-import { useState, useEffect } from 'react';
 import useGraphite from '../../hooks/useGraphite/useGraphite';
 import { useDetectFonts } from 'font-select-rcl';
 
@@ -76,20 +67,17 @@ function Component(){
 
   const isGraphiteAssumed = useGraphite( useGraphiteProps );
 
-  const detectedFonts = isGraphiteAssumed && useDetectFonts({ fonts }).map((i, k) => (
+  const detectedFontsToMap = isGraphiteAssumed && useDetectFonts({ fonts });
+
+  const detectedFonts = isGraphiteAssumed && detectedFontsToMap.map((i, k) => (
     <div key={k}>{i.name} detected: {i.detected.toString()}</div>
   ));
 
   const noneDetectedMsg = 'none detected';
 
-  const [areFontsDetected, setAreFontsDetected] = useState(true);
-    useEffect(() => {
-      if (detectedFonts.length === 0) setAreFontsDetected(false);
-  }, [detectedFonts]);
-
   return (
       <React.Fragment>
-        {!isGraphiteAssumed && `useGraphite: ${isGraphiteAssumed.toString()}`}{areFontsDetected && detectedFonts}{!areFontsDetected && noneDetectedMsg}
+        {!isGraphiteAssumed && `useGraphite is ${isGraphiteAssumed.toString()}.`}{detectedFonts.length !== 0 ? detectedFonts :  noneDetectedMsg}
       </React.Fragment>
   );
 };

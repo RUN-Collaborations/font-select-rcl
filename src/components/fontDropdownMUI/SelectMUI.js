@@ -12,16 +12,20 @@ import gwfonts from '../../fonts/graphite-enabled-web-fonts.json';
 import useDetectFonts from '../../hooks/useDetectFonts/useDetectFonts';
 import useGraphite from '../../hooks/useGraphite/useGraphite';
 
-import Paper from '@mui/material/Paper';
-import { Grid } from '@mui/material';
+import { Grid, TextareaAutosize } from '@mui/material';
+
+import { isRtl } from './detectRTL';
+
+// import GlobalFonts from '../../fonts/fonts';
 
 import '../../WebFonts.css';
 import '../../GraphiteEnabledWebFonts.css';
 
-export default function SelectFont() {
+export default function SelectFontMUI() {
   const [selectedFont, setSelectedFont] = React.useState('');
-  const [selectedFontSize, setSelectedFontSize] = React.useState('');
-  const [selectedLineHeight, setSelectedLineHeight ] = React.useState('');
+  const [selectedFontSize, setSelectedFontSize] = React.useState('1em');
+  const [selectedLineHeight, setSelectedLineHeight ] = React.useState('normal');
+  const [dir, setDir ] = React.useState('');
 
   const handleChange = (event) => {
     setSelectedFont(event.target.value);
@@ -53,11 +57,6 @@ export default function SelectFont() {
 
   const noneDetectedGMsg = 'none detected';
 
-  const [areGFontsDetected, setAreGFontsDetected] = useState(true);
-    useEffect(() => {
-      if (gdetectedFonts.length === 0) setAreGFontsDetected(false);
-  }, [gdetectedFonts]);
-
   // Utilizing web fonts
   const rWebFonts = rwfonts.map((i, k) => (
     <MenuItem key={k} value={i.name + ' ' + i.version}>{i.name} {i.version}</MenuItem>
@@ -71,15 +70,12 @@ export default function SelectFont() {
 
   const noneDetectedMsg = 'none detected';
 
-  const [areFontsDetected, setAreFontsDetected] = useState(true);
-    useEffect(() => {
-      if (detectedFonts.length === 0) setAreFontsDetected(false);
-  }, [detectedFonts]);
+  let example = '';
 
   return (
     <div >
       <Grid container spacing={2}   >
-        <Grid item xs={4} style={{ padding: '20px' }}>
+        <Grid item xs={4} style={{ padding: '1.25em' }}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Font</InputLabel>
@@ -90,24 +86,24 @@ export default function SelectFont() {
                 label="Font"
                 onChange={handleChange}
               >
-              {isGraphiteAssumed && <hr />}
+                {isGraphiteAssumed && <hr />}
                 <b>{isGraphiteAssumed && "Graphite-Enabled Web Fonts:"}</b>
                 {gWebFonts}
                 {isGraphiteAssumed && <hr />}
-                <b>{isGraphiteAssumed && "Graphite-Enabled (local):" }{!areGFontsDetected && isGraphiteAssumed && noneDetectedGMsg}</b>
+                <b>{isGraphiteAssumed && "Graphite-Enabled (local):" }{gdetectedFonts.length === 0 && isGraphiteAssumed && noneDetectedGMsg}</b>
                 {gdetectedFonts}
                 <hr />
                 <b>Web Fonts:</b>
                 {rWebFonts}
                 <hr />
-                <b>Detected Fonts: {!areFontsDetected && noneDetectedMsg}</b>
+                <b>Detected Fonts: {detectedFonts.length === 0 && noneDetectedMsg}</b>
                 {detectedFonts}
               </Select>
             </FormControl>
           </Box>
         </Grid>
 
-        <Grid item xs={3} style={{ padding: '20px' }}>
+        <Grid item xs={3} style={{ padding: '1.25em' }}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">FontSize</InputLabel>
@@ -118,16 +114,16 @@ export default function SelectFont() {
                 label="FontSize"
                 onChange={handleChangeSize}
               >            
-                <MenuItem key={1} value={10}>20</MenuItem>
-                <MenuItem key={2} value={30}>50</MenuItem>
-                <MenuItem key={3} value={50}>100</MenuItem>
-                <MenuItem key={4} value={16}>default</MenuItem>
+                <MenuItem key={1} value={'0.75em'}>75%</MenuItem>
+                <MenuItem key={2} value={'1.25em'}>125%</MenuItem>
+                <MenuItem key={3} value={'1.5em'}>150%</MenuItem>
+                <MenuItem key={4} value={'1em'}>default</MenuItem>
               </Select>
             </FormControl>
           </Box>
         </Grid>
 
-        <Grid item xs={2} style={{ padding: '20px' }}>
+        <Grid item xs={2} style={{ padding: '1.25em' }}>
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">LineHeight</InputLabel>
@@ -138,19 +134,26 @@ export default function SelectFont() {
               label="LineHeight"
               onChange={handleChangeLineHeight}
             >            
-              <MenuItem key={1} value={1.7}>1.7</MenuItem>
-              <MenuItem key={2} value={2.14}>2.14</MenuItem>
-              <MenuItem key={3} value={2.7}>2.7</MenuItem>
-              <MenuItem key={4} value={1}>default</MenuItem>
+              <MenuItem key={1} value={'150%'}>150%</MenuItem>
+              <MenuItem key={2} value={'200%'}>200%</MenuItem>
+              <MenuItem key={3} value={'250%'}>250%</MenuItem>
+              <MenuItem key={4} value={'normal'}>default</MenuItem>
             </Select>
           </FormControl>
         </Box>
       </Grid>
 
-        <Grid item xs={10} >
-          <Paper variant="outlined" square style={{ padding: '15px' }}>
-            <p style={{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </Paper>
+        <Grid item xs={10}>
+          <TextareaAutosize
+            id="example"
+            onChange={(event) => {
+              example = event.target.value
+              if (isRtl(example)) setDir('rtl');
+              if (!isRtl(example)) setDir('ltr');
+            }}
+            style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', direction: dir, }}
+            defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            />
 
         </Grid>
 

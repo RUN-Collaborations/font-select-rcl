@@ -9,9 +9,11 @@ For an example of where this is headed, see the "Set Font" dropdowns at [simple-
 
 ## Project Goals
 Deliver a React Component Library (RCL) that:
- * Returns a selectable dropdown list for styling by the RCL consumer (in process).
- * Offers a font size setting. (in process)
- * Test around 500 font families to indentify whether or not they are installed in the local environment. Only detected fonts are presented in the dropdown.
+ * Detect a healthy set of locally installed fonts
+ * Return a selectable dropdown list for styling by the RCL consumer.
+
+Do this by:
+ * Test around 500 font families to indentify whether or not they are installed in the local environment, and return detection status of each fonts.
     * Font tested are listed in the [fonts.json array(https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/fonts.json)], including:
       * Windows 11 system and supplemental font families
       * MacOS system and downloadable font families thru Monterey (v12)
@@ -24,7 +26,7 @@ Deliver a React Component Library (RCL) that:
       * In Firefox[1] (or when explicity specified by an app) [graphite-enabled](https://software.sil.org/fonts/) fonts are also detected.
          * [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
          * See [grapite-enabled-fonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/graphite-enabled-fonts.json)
-         * In Firefox[1] (or when explicitly specified by an app), line-height setting are available for graphite-enabled fonts to mitigate collisions or near collisions across rows. (in process)
+         * The addition of user-controlled line-height settings and font-size settings are recommended for graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for customized presentation optimization.
 
 ## Font Detection Approach
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace.[2] Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order. Is there a need for this on a system that does not have monospace defined? Apps can define their own baseline generic-family if preferred.
@@ -43,6 +45,9 @@ Some other test font string observed in other font detect approaches include:
 ### Use Cases Anybody?
  * Is anybody running into needed use-cases where the implemented test is not working?
  * There are also other existing approaches. See endnote[3] for some some compiled links.
+
+### Web Fonts
+ * There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, make allowances for the possiblity that there could be font version differences. Allow the user to select between either one rather than overriding one with the other.
 
 ## Built With
 

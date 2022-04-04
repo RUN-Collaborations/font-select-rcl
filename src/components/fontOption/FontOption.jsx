@@ -29,7 +29,7 @@ FontOption.propTypes = {
     name: PropTypes.string.isRequired,
     /** id of font */
     id: PropTypes.string.isRequired,
-    /** detected, not required but if provided ennables/disables option */
+    /** font detected (not required) */
     detected: PropTypes.bool,
   }),
   /** callback for selection */

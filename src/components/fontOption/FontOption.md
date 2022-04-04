@@ -1,5 +1,4 @@
 <!-- # FontOption -->
-
 This component always display the font (without detecting whether or not it is locally installed), with a style injected:
 ```jsx
 import { FontOption } from 'font-select-rcl';

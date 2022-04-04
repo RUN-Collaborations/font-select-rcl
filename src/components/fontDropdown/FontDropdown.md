@@ -2,5 +2,5 @@
 
 ```jsx
 
-<FontDropDown />
+<FontDropdown />
 ```

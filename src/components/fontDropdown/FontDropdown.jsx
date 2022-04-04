@@ -1,9 +1,8 @@
 import React from 'react';
 import SelectFont from './Select'
-// import PaperField from './Paper'
 
 
-export default function FontDropDown() {
+export default function FontDropdown() {
     return (
             <div>
                 <SelectFont />
