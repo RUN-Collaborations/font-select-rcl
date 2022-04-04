@@ -8,9 +8,10 @@ For an example of where this is headed, see the "Set Font" dropdowns at [simple-
  * Apply ESLint
 
 ## Project Goals
-Deliver a React Component Library (RCL) that:
- * Detect a healthy set of locally installed fonts
- * Return a selectable dropdown list for styling by the RCL consumer.
+Deliver a React Hook Library (RHL) that:
+ * Detects whether or not fonts are locally installed
+   * Caters to styling of a selectable font dropdown list by the RCL consumer.
+ * When specified, also detect whether or not [graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed
 
 Do this by:
  * Test around 500 font families to indentify whether or not they are installed in the local environment, and return detection status of each fonts.
