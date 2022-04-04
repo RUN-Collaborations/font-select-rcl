@@ -1,56 +1,69 @@
 {
-	"name": "font-detect-rhl",
-	"description": "A React Component Library for Selecting Fonts",
-	"version": "0.2.3",
-	"private": false,
-	"homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/RUN-Collaborations/font-detect-rhl.git"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=4"
-	},
-	"dependencies": {
-		"@emotion/react": "^11.8.1",
-		"@emotion/styled": "^11.8.1",
-		"@mui/material": "^5.4.4",
-		"css-loader": "^2.1.1",
-		"prop-types": "^15.6.1",
-		"style-loader": "^0.23.1",
-		"use-deep-compare": "^1.1.0",
-		"webfontloader": "^1.6.28"
-	},
-	"scripts": {
-		"start": "styleguidist server",
-		"styleguide": "styleguidist server",
-		"styleguide:build": "styleguidist build",
-		"build": "./node_modules/.bin/babel src --out-dir build && shx cp ./src/components/*.css ./build/components",
-		"prepublishOnly": "rimraf ./build && yarn build"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.12.10",
-		"@babel/core": "^7.12.10",
-		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
-		"@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-		"@babel/plugin-proposal-optional-chaining": "^7.12.7",
-		"@babel/preset-env": "^7.12.11",
-		"@babel/preset-react": "^7.12.10",
-		"babel-loader": "^8.2.2",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
-		"react-scripts": "4.0.3",
-		"react-styleguidist": "^11.2.0",
-		"shx": "^0.3.4",
-		"webpack": "4.44.0"
-	},
-	"peerDependencies": {
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
-	},
-	"main": "build/index.js",
-	"files": [
-		"build"
-	]
+  "name": "font-detect-rhl",
+  "description": "A React Component Library for Selecting Fonts",
+  "version": "0.2.4",
+  "private": false,
+  "homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RUN-Collaborations/font-detect-rhl.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.4.4",
+    "css-loader": "^2.1.1",
+    "prop-types": "^15.6.1",
+    "style-loader": "^0.23.1",
+    "use-deep-compare": "^1.1.0",
+    "webfontloader": "^1.6.28"
+  },
+  "scripts": {
+    "start": "styleguidist server",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "build": "babel src --out-dir build",
+    "prepublishOnly": "rimraf ./build && yarn build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-styleguidist": "^11.2.0",
+    "shx": "^0.3.4",
+    "webpack": "4.44.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "bugs": {
+    "url": "https://github.com/RUN-Collaborations/font-detect-rhl/issues"
+  },
+  "keywords": [
+    "font",
+    "detect",
+    "detector",
+    "check",
+    "checker",
+    "graphite",
+    "graphite-enabled"
+  ],
+  "author": "run-projects"
 }

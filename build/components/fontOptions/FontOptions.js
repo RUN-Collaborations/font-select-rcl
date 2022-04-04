@@ -9,7 +9,9 @@ exports["default"] = FontOptions;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _FontOption = _interopRequireDefault(require("./FontOption"));
+var _useDetectFonts = _interopRequireDefault(require("../../hooks/useDetectFonts/useDetectFonts"));
+
+var _FontOption = _interopRequireDefault(require("../fontOption/FontOption"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -17,15 +19,24 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function FontOptions(_ref) {
-  var fontOptions = _ref.fontOptions,
-      onSelect = _ref.onSelect;
-  var fontOptionsComponents = fontOptions.map(function (font) {
-    return /*#__PURE__*/_react["default"].createElement(_FontOption["default"], _extends({}, font, {
+  var fonts = _ref.fonts,
+      onSelect = _ref.onSelect,
+      testString = _ref.testString,
+      baselineFont = _ref.baselineFont,
+      showAll = _ref.showAll;
+  var detectedFonts = (0, _useDetectFonts["default"])({
+    fonts: fonts,
+    testString: testString,
+    baselineFont: baselineFont,
+    showAll: showAll
+  });
+  var fontOptionsComponents = detectedFonts.map(function (font, k) {
+    return /*#__PURE__*/_react["default"].createElement(_FontOption["default"], {
+      key: k,
+      font: font,
       onSelect: onSelect
-    }));
+    });
   });
   return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, fontOptionsComponents);
 }

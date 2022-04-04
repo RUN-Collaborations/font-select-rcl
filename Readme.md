@@ -83,5 +83,5 @@ If [gfx.font_rendering.graphite.enabled](https://silnrsi.github.io/FDBP/en-US/Br
    * Font Detector
    * Font Check
    * Font Checker
-   * Availabe Fonts
+   * Available Fonts
    * Is Font Available
