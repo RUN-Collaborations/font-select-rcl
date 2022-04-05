@@ -1,7 +1,7 @@
 <!-- # FontOption -->
 This component always display the font (without detecting whether or not it is locally installed), with a style injected:
 ```jsx
-import { FontOption } from 'font-select-rcl';
+import { FontOption } from 'font-detect-rhl';
 
 function Component(){
     const onSelect = (id) => { alert(id); };

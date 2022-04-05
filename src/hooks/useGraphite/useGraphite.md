@@ -1,7 +1,7 @@
 <!-- # useDetectGraphite -->
 A single boolean is returned by useGraphite.
 ```jsx
-import { useGraphite } from 'font-select-rcl';
+import { useGraphite } from 'font-detect-rhl';
 
 function Component(){
 

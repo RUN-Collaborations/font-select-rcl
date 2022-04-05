@@ -51,7 +51,9 @@ export default function SelectFontMUI() {
 
   // Detecting Graphite-enabled fonts
   let fonts = gfonts;
-  const gdetectedFonts = isGraphiteAssumed && useDetectFonts({ fonts }).map((i, k) => (
+  const detectedGFontsToMap = isGraphiteAssumed && useDetectFonts({ fonts });
+
+  const gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map((i, k) => (
     <MenuItem key={k} value={i.name}>{i.name}</MenuItem>
   ));
 
@@ -64,7 +66,9 @@ export default function SelectFontMUI() {
 
   //Detecting fonts:
   fonts = rfonts;
-  const detectedFonts = useDetectFonts({ fonts }).map((i, k) => (
+  const detectedFontsToMap = useDetectFonts({ fonts });
+
+  const detectedFonts = detectedFontsToMap.map((i, k) => (
     <MenuItem key={k} value={i.id}>{i.name}</MenuItem>
   ));
 

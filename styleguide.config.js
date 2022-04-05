@@ -9,7 +9,7 @@ const {
 module.exports = {
   usageMode: 'expand',
   exampleMode: 'expand',
-  moduleAliases: { 'font-select-rcl': path.resolve(__dirname, 'src') },
+  moduleAliases: { 'font-detect-rhl': path.resolve(__dirname, 'src') },
   components: 'src/**/*.{jsx,ts,tsx}',
   getComponentPathLine: componentPath => {
     const _name = path.basename(componentPath, '.js');

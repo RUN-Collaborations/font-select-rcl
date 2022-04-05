@@ -44,7 +44,9 @@ export default function SelectFont() {
 
   // Detecting Graphite-enabled fonts
   let fonts = gfonts;
-  const gdetectedFonts = isGraphiteAssumed && useDetectFonts({ fonts }).map((i, k) => (
+  const detectedGFontsToMap = useDetectFonts({ fonts });
+
+  const gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>
   ));
 
@@ -57,7 +59,9 @@ export default function SelectFont() {
 
   //Detecting fonts:
   fonts = rfonts;
-  const detectedFonts = useDetectFonts({ fonts }).map((i, k) => (
+  const detectedFontsToMap = useDetectFonts({ fonts });
+
+  const detectedFonts = detectedFontsToMap.map((i, k) => (
     <option key={k} value={i.id}>{i.name}</option>
   ));
 
@@ -91,7 +95,7 @@ export default function SelectFont() {
                 </optgroup>
               </select>
 
-              <label htmlFor="font-size"><b>Set Font Size:</b></label>
+              &nbsp;| <label htmlFor="font-size"><b>Set Font Size:</b></label>
               <select
                 name="font-size"
                 id="font-size"
@@ -105,7 +109,7 @@ export default function SelectFont() {
                 <option key={4} value={'1em'}>default</option>
               </select>
 
-            <label htmlFor="line-height"><b>Set Line Height:</b></label>
+            &nbsp;| <label htmlFor="line-height"><b>Set Line Height:</b></label>
             <select
               name="line-height"
               id="line-height"
@@ -118,6 +122,8 @@ export default function SelectFont() {
               <option key={3} value={'250%'}>250%</option>
               <option key={4} value={'normal'}>default</option>
             </select>
+
+            <p></p>
 
           <textarea
             rows="6"
