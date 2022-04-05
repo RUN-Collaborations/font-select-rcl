@@ -100,9 +100,10 @@ function SelectFontMUI() {
 
 
   var fonts = _graphiteEnabledFonts["default"];
-  var gdetectedFonts = isGraphiteAssumed && (0, _useDetectFonts["default"])({
+  var detectedGFontsToMap = isGraphiteAssumed && (0, _useDetectFonts["default"])({
     fonts: fonts
-  }).map(function (i, k) {
+  });
+  var gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map(function (i, k) {
     return /*#__PURE__*/_react["default"].createElement(_MenuItem["default"], {
       key: k,
       value: i.name
@@ -119,9 +120,10 @@ function SelectFontMUI() {
 
 
   fonts = _fonts["default"];
-  var detectedFonts = (0, _useDetectFonts["default"])({
+  var detectedFontsToMap = (0, _useDetectFonts["default"])({
     fonts: fonts
-  }).map(function (i, k) {
+  });
+  var detectedFonts = detectedFontsToMap.map(function (i, k) {
     return /*#__PURE__*/_react["default"].createElement(_MenuItem["default"], {
       key: k,
       value: i.id

@@ -88,9 +88,10 @@ function SelectFont() {
 
 
   var fonts = _graphiteEnabledFonts["default"];
-  var gdetectedFonts = isGraphiteAssumed && (0, _useDetectFonts["default"])({
+  var detectedGFontsToMap = (0, _useDetectFonts["default"])({
     fonts: fonts
-  }).map(function (i, k) {
+  });
+  var gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map(function (i, k) {
     return /*#__PURE__*/_react["default"].createElement("option", {
       key: k,
       value: i.name
@@ -107,9 +108,10 @@ function SelectFont() {
 
 
   fonts = _fonts["default"];
-  var detectedFonts = (0, _useDetectFonts["default"])({
+  var detectedFontsToMap = (0, _useDetectFonts["default"])({
     fonts: fonts
-  }).map(function (i, k) {
+  });
+  var detectedFonts = detectedFontsToMap.map(function (i, k) {
     return /*#__PURE__*/_react["default"].createElement("option", {
       key: k,
       value: i.id
@@ -142,7 +144,7 @@ function SelectFont() {
   }, detectedFonts.length === 0 && /*#__PURE__*/_react["default"].createElement("option", {
     value: "none",
     disabled: true
-  }, noneDetectedMsg), detectedFonts)), /*#__PURE__*/_react["default"].createElement("label", {
+  }, noneDetectedMsg), detectedFonts)), "\xA0| ", /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "font-size"
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Set Font Size:")), /*#__PURE__*/_react["default"].createElement("select", {
     name: "font-size",
@@ -165,7 +167,7 @@ function SelectFont() {
   }, "150%"), /*#__PURE__*/_react["default"].createElement("option", {
     key: 4,
     value: '1em'
-  }, "default")), /*#__PURE__*/_react["default"].createElement("label", {
+  }, "default")), "\xA0| ", /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "line-height"
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Set Line Height:")), /*#__PURE__*/_react["default"].createElement("select", {
     name: "line-height",
@@ -188,7 +190,7 @@ function SelectFont() {
   }, "250%"), /*#__PURE__*/_react["default"].createElement("option", {
     key: 4,
     value: 'normal'
-  }, "default")), /*#__PURE__*/_react["default"].createElement("textarea", {
+  }, "default")), /*#__PURE__*/_react["default"].createElement("p", null), /*#__PURE__*/_react["default"].createElement("textarea", {
     rows: "6",
     name: "example",
     onChange: function onChange(event) {
