@@ -15,7 +15,7 @@ import '../../fonts/WebFonts.css';
 import '../../fonts/GraphiteEnabledWebFonts.css';
 
 export default function SelectFont() {
-  const [selectedFont, setSelectedFont] = React.useState('');
+  const [selectedFont, setSelectedFont] = React.useState('monospace');
   const [selectedFontSize, setSelectedFontSize] = React.useState('1em');
   const [selectedLineHeight, setSelectedLineHeight ] = React.useState('normal');
   const [dir, setDir ] = React.useState('');
@@ -75,10 +75,11 @@ export default function SelectFont() {
               <select
                 name="font"
                 id="font"
-                defaultValue=""
+                defaultValue={selectedFont}
                 onChange={handleChange}
               >
                 <option value="" disabled hidden>Select Font</option>
+                <option value="monospace">default</option>
                 {isGraphiteAssumed && <optgroup label="Graphite-Enabled Web Fonts:">
                   {gWebFonts}
                 </optgroup>}
@@ -99,7 +100,7 @@ export default function SelectFont() {
               <select
                 name="font-size"
                 id="font-size"
-                value=""
+                value={selectedFontSize}
                 onChange={handleChangeSize}
               >            
                 <option value="" disabled hidden>Set Font Size</option>
@@ -113,7 +114,7 @@ export default function SelectFont() {
             <select
               name="line-height"
               id="line-height"
-              value=""
+              value={selectedLineHeight}
               onChange={handleChangeLineHeight}
             >
               <option value="" disabled hidden>Set Line Height</option>

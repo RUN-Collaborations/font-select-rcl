@@ -22,7 +22,7 @@ import '../../fonts/WebFonts.css';
 import '../../fonts/GraphiteEnabledWebFonts.css';
 
 export default function SelectFontMUI() {
-  const [selectedFont, setSelectedFont] = React.useState('');
+  const [selectedFont, setSelectedFont] = React.useState('monospace');
   const [selectedFontSize, setSelectedFontSize] = React.useState('1em');
   const [selectedLineHeight, setSelectedLineHeight ] = React.useState('normal');
   const [dir, setDir ] = React.useState('');
@@ -90,6 +90,7 @@ export default function SelectFontMUI() {
                 label="Font"
                 onChange={handleChange}
               >
+                <MenuItem key={1} value="monospace">default</MenuItem>
                 {isGraphiteAssumed && <hr />}
                 <b>{isGraphiteAssumed && "Graphite-Enabled Web Fonts:"}</b>
                 {gWebFonts}

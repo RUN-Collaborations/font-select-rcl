@@ -40,7 +40,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SelectFont() {
-  var _React$useState = _react["default"].useState(''),
+  var _React$useState = _react["default"].useState('monospace'),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedFont = _React$useState2[0],
       setSelectedFont = _React$useState2[1];
@@ -124,13 +124,15 @@ function SelectFont() {
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Select Font:")), /*#__PURE__*/_react["default"].createElement("select", {
     name: "font",
     id: "font",
-    defaultValue: "",
+    defaultValue: selectedFont,
     onChange: handleChange
   }, /*#__PURE__*/_react["default"].createElement("option", {
     value: "",
     disabled: true,
     hidden: true
-  }, "Select Font"), isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("optgroup", {
+  }, "Select Font"), /*#__PURE__*/_react["default"].createElement("option", {
+    value: "monospace"
+  }, "default"), isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("optgroup", {
     label: "Graphite-Enabled Web Fonts:"
   }, gWebFonts), isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("optgroup", {
     label: "Graphite-Enabled (local):"
@@ -149,7 +151,7 @@ function SelectFont() {
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Set Font Size:")), /*#__PURE__*/_react["default"].createElement("select", {
     name: "font-size",
     id: "font-size",
-    value: "",
+    value: selectedFontSize,
     onChange: handleChangeSize
   }, /*#__PURE__*/_react["default"].createElement("option", {
     value: "",
@@ -172,7 +174,7 @@ function SelectFont() {
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Set Line Height:")), /*#__PURE__*/_react["default"].createElement("select", {
     name: "line-height",
     id: "line-height",
-    value: "",
+    value: selectedLineHeight,
     onChange: handleChangeLineHeight
   }, /*#__PURE__*/_react["default"].createElement("option", {
     value: "",

@@ -52,7 +52,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SelectFontMUI() {
-  var _React$useState = _react["default"].useState(''),
+  var _React$useState = _react["default"].useState('monospace'),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedFont = _React$useState2[0],
       setSelectedFont = _React$useState2[1];
@@ -154,7 +154,10 @@ function SelectFontMUI() {
     value: selectedFont,
     label: "Font",
     onChange: handleChange
-  }, isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, isGraphiteAssumed && "Graphite-Enabled Web Fonts:"), gWebFonts, isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, isGraphiteAssumed && "Graphite-Enabled (local):", gdetectedFonts.length === 0 && isGraphiteAssumed && noneDetectedGMsg), gdetectedFonts, /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, "Web Fonts:"), rWebFonts, /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, "Detected Fonts: ", detectedFonts.length === 0 && noneDetectedMsg), detectedFonts)))), /*#__PURE__*/_react["default"].createElement(_material.Grid, {
+  }, /*#__PURE__*/_react["default"].createElement(_MenuItem["default"], {
+    key: 1,
+    value: "monospace"
+  }, "default"), isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, isGraphiteAssumed && "Graphite-Enabled Web Fonts:"), gWebFonts, isGraphiteAssumed && /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, isGraphiteAssumed && "Graphite-Enabled (local):", gdetectedFonts.length === 0 && isGraphiteAssumed && noneDetectedGMsg), gdetectedFonts, /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, "Web Fonts:"), rWebFonts, /*#__PURE__*/_react["default"].createElement("hr", null), /*#__PURE__*/_react["default"].createElement("b", null, "Detected Fonts: ", detectedFonts.length === 0 && noneDetectedMsg), detectedFonts)))), /*#__PURE__*/_react["default"].createElement(_material.Grid, {
     item: true,
     xs: 3,
     style: {
