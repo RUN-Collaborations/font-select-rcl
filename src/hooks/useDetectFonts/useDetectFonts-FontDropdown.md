@@ -129,7 +129,7 @@ function Component(){
             <p></p>
 
           <textarea
-            rows="6"
+            rows="5"
             name="example"
             onChange={(event) => {
               example = event.target.value

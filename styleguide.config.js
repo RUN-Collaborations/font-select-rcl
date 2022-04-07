@@ -49,13 +49,11 @@ const sections = [
   },
   {
     name: 'FontOptions',
-    // description: 'Three examples are shown below:  1) A Single Font, 2) Detected Fonts, and 3) All Requested Fonts',
-    content: path.join(pathComponents, 'fontOptions', 'FontOptions.md'),
-    components: path.join(pathComponents, 'fontOptions', '*.jsx'),
-    /**
+    description: 'Three examples are shown below:',
+    content: path.join(pathComponents, 'fontOptions', '_readme.md'),
     sections: [
       {
-        name: 'Single Font',
+        name: 'A Single Font',
         content: path.join(pathComponents, 'fontOptions', 'FontOptions-SingleFont.md'),
       },
       {
@@ -63,11 +61,10 @@ const sections = [
         content: path.join(pathComponents, 'fontOptions', 'FontOptions-DetectedFonts.md'),
       },
       {
-        name: 'All Listed Fonts',
+        name: 'All Requested Fonts',
         content: path.join(pathComponents, 'fontOptions', 'FontOptions-AllListedFonts.md'),
       },
     ],
-    */
   },
 ];
 

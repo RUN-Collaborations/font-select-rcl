@@ -80,7 +80,7 @@ function Component(){
 
   return (
     <div >
-      <Grid container spacing={2}   >
+      <Grid container spacing={2} >
         <Grid item xs={4} style={{ padding: '1.25em' }}>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -150,7 +150,7 @@ function Component(){
         </Box>
       </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs="12">
           <TextareaAutosize
             id="example"
             onChange={(event) => {
