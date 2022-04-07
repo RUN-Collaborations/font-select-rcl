@@ -14,11 +14,13 @@ export default function FontOption({
   const enabled = (detected === undefined || detected);
 
   const handleClick = () => {
-      enabled && onSelect(id);
+    // eslint-disable-next-line no-unused-expressions
+    enabled && onSelect(id);
   }
 
   const style = enabled ? {} : {color: 'red'};
 
+  // eslint-disable-next-line test-selectors/onClick
   return (<div style={style} {...props} onClick={handleClick}>{name}</div>);
 };
 

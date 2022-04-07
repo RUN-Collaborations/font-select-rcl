@@ -1,7 +1,7 @@
 {
   "name": "font-detect-rhl",
   "description": "A React Hook Library for Detecting Fonts",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "private": false,
   "homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
   "repository": {
@@ -43,7 +43,17 @@
     "react-scripts": "4.0.3",
     "react-styleguidist": "^11.2.0",
     "shx": "^0.3.4",
-    "webpack": "4.44.0"
+    "webpack": "4.44.0",
+    "@unfoldingword/eslint-config": "^1.3.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-test-selectors": "^2.0.3",
+    "prettier": "^2.5.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",

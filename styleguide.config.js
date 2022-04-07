@@ -15,6 +15,7 @@ const sections = [
   },
   {
     name: 'useDetectFonts',
+    description: 'Five examples are shown below:',
     content: path.join(pathHooks, 'useDetectFonts', '_readme.md'),
     sections: [
       {

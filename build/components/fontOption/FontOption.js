@@ -30,12 +30,14 @@ function FontOption(_ref) {
   var enabled = detected === undefined || detected;
 
   var handleClick = function handleClick() {
+    // eslint-disable-next-line no-unused-expressions
     enabled && onSelect(id);
   };
 
   var style = enabled ? {} : {
     color: 'red'
-  };
+  }; // eslint-disable-next-line test-selectors/onClick
+
   return /*#__PURE__*/_react["default"].createElement("div", _extends({
     style: style
   }, props, {

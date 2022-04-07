@@ -4,8 +4,11 @@ THIS IS A WORK IN PROGRESS. Components and props are subject to change.
 For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
 
 # To Do
- * Consider moving FontDropDown to an MUI reference example.
- * Apply ESLint
+ * Work out kinks through application in external references.
+ * Review ESLint
+ * Show clearly how to consume the rhl
+ * Simplify styleguide
+
 
 ## Project Goals
 Deliver a React Hook Library (RHL) that:
@@ -56,9 +59,9 @@ Some other test font string observed in other font detect approaches include:
 
 ## Getting Started
 
- * [font-select-rcl.netlify.app](https://font-select-rcl.netlify.app/).
+ * [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
 
- * To Add: How to consume the rcl.
+ * To Add: How to consume the rhl.
 
  * To Add: Links to reference implementations.
 ___
