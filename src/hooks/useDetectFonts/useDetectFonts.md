@@ -1,5 +1,4 @@
 <!-- # useDetectFonts -->
-
 This returns an array of detected fonts with a detected boolean attribute.
 ```jsx
 import { useDetectFonts } from 'font-detect-rhl';
@@ -29,6 +28,7 @@ function Component(){
 
 <Component />
 ```
+<!-- # useDetectFonts -->
 This returns an array of detected fonts from a json file with a detected boolean attribute.
 ```jsx
 import { useDetectFonts } from 'font-detect-rhl';
@@ -54,6 +54,7 @@ function Component(){
 
 <Component />
 ```
+<!-- # useDetectFonts -->
 When useGraphite is true, this returns an array of detected Graphite-enabled fonts from a json file with a detected boolean attribute.
 ```jsx
 import useGraphite from '../../hooks/useGraphite/useGraphite';

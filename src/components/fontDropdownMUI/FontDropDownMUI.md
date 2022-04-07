@@ -1,6 +1,0 @@
-<!--  FontDropdownMUI -->
-
-```jsx
-
-<FontDropdownMUI />
-```

@@ -3,18 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "FontDropdown", {
-  enumerable: true,
-  get: function get() {
-    return _FontDropdown["default"];
-  }
-});
-Object.defineProperty(exports, "FontDropdownMUI", {
-  enumerable: true,
-  get: function get() {
-    return _FontDropDownMUI["default"];
-  }
-});
 Object.defineProperty(exports, "FontOption", {
   enumerable: true,
   get: function get() {
@@ -39,10 +27,6 @@ Object.defineProperty(exports, "useGraphite", {
     return _useGraphite["default"];
   }
 });
-
-var _FontDropdown = _interopRequireDefault(require("./components/fontDropdown/FontDropdown"));
-
-var _FontDropDownMUI = _interopRequireDefault(require("./components/fontDropdownMUI/FontDropDownMUI"));
 
 var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOption"));
 

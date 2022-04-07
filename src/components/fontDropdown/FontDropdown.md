@@ -1,6 +1,0 @@
-<!--  FontDropDown -->
-
-```jsx
-
-<FontDropdown />
-```

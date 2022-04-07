@@ -1,4 +1,10 @@
+<!-- # useDetectFonts -->
+This utilizes arrays of detected fonts from json files that are returned with a detected boolean attribute. Font size and line height are also shown as additional examples. Text can be typed or pasted into the text area, with RTL and LTR text autodetected.This exmple also utilizes MUI.
+```jsx
 import React from 'react';
+
+import { useDetectFonts, useGraphite } from 'font-detect-rhl';
+
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,19 +15,15 @@ import gfonts from '../../fonts/graphite-enabled-fonts.json';
 import rfonts from '../../fonts/fonts.json';
 import rwfonts from '../../fonts/web-fonts.json';
 import gwfonts from '../../fonts/graphite-enabled-web-fonts.json';
-import useDetectFonts from '../../hooks/useDetectFonts/useDetectFonts';
-import useGraphite from '../../hooks/useGraphite/useGraphite';
 
 import { Grid, TextareaAutosize } from '@mui/material';
 
 import { isRtl } from './detectRTL';
 
-// import GlobalFonts from '../../fonts/fonts';
-
 import '../../fonts/WebFonts.css';
 import '../../fonts/GraphiteEnabledWebFonts.css';
 
-export default function SelectFontMUI() {
+function Component(){
   const [selectedFont, setSelectedFont] = React.useState('monospace');
   const [selectedFontSize, setSelectedFontSize] = React.useState('1em');
   const [selectedLineHeight, setSelectedLineHeight ] = React.useState('normal');
@@ -168,5 +170,9 @@ export default function SelectFontMUI() {
 
 
     </div >
-  )
-}
+    );
+  };
+  
+  <Component />
+  ```
+  
