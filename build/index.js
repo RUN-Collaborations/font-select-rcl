@@ -38,10 +38,10 @@ var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOp
 
 var _FontOptions = _interopRequireDefault(require("./components/fontOptions/FontOptions"));
 
-var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts"));
+var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
 
-var _useGraphite = _interopRequireDefault(require("./hooks/useGraphite/useGraphite"));
+var _useGraphite = _interopRequireDefault(require("./hooks/useGraphite/useGraphite.js"));
 
-var _useDetectRTL = _interopRequireDefault(require("./hooks/useDetectRTL/useDetectRTL"));
+var _useDetectRTL = _interopRequireDefault(require("./hooks/useDetectRTL/useDetectRTL.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
