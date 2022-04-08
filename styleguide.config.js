@@ -45,6 +45,10 @@ const sections = [
     content: path.join(pathHooks, 'useGraphite', 'useGraphite.md'),
   },
   {
+    name: 'useDetectRTL',
+    content: path.join(pathHooks, 'useDetectRTL', 'useDetectRTL.md'),
+  },
+  {
     name: 'FontOption',
     content: path.join(pathComponents, 'fontOption', 'FontOption.md'),
   },

@@ -50,6 +50,10 @@ Some other test font string observed in other font detect approaches include:
  * Is anybody running into needed use-cases where the implemented test is not working?
  * There are also other existing approaches. See endnote[3] for some some compiled links.
 
+### useDetectRTL
+Code utilized in autodetection of RTL/LTR text originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js).
+
+
 ### Web Fonts
  * There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, make allowances for the possiblity that there could be font version differences. Allow the user to select between either one rather than overriding one with the other.
 

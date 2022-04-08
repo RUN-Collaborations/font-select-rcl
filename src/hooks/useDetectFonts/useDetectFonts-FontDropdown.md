@@ -3,14 +3,12 @@ This utilizes arrays of detected fonts from json files that are returned with a 
 ```jsx
 import React from 'react';
 
-import { useDetectFonts, useGraphite } from 'font-detect-rhl';
+import { useDetectFonts, useGraphite, useDetectRTL } from 'font-detect-rhl';
 
 import gfonts from '../../fonts/graphite-enabled-fonts.json';
 import rfonts from '../../fonts/fonts.json';
 import rwfonts from '../../fonts/web-fonts.json';
 import gwfonts from '../../fonts/graphite-enabled-web-fonts.json';
-
-import { isRtl } from './detectRTL';
 
 import '../../fonts/WebFonts.css';
 import '../../fonts/GraphiteEnabledWebFonts.css';
@@ -133,8 +131,8 @@ function Component(){
             name="example"
             onChange={(event) => {
               example = event.target.value
-              if (isRtl(example)) setDir('rtl');
-              if (!isRtl(example)) setDir('ltr');
+              if (useDetectRTL({ text: example })) setDir('rtl');
+              if (!useDetectRTL({ text: example })) setDir('ltr');
             }}
             style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', direction: dir, }}
             defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."

@@ -21,6 +21,12 @@ Object.defineProperty(exports, "useDetectFonts", {
     return _useDetectFonts["default"];
   }
 });
+Object.defineProperty(exports, "useDetectRTL", {
+  enumerable: true,
+  get: function get() {
+    return _useDetectRTL["default"];
+  }
+});
 Object.defineProperty(exports, "useGraphite", {
   enumerable: true,
   get: function get() {
@@ -35,5 +41,7 @@ var _FontOptions = _interopRequireDefault(require("./components/fontOptions/Font
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts"));
 
 var _useGraphite = _interopRequireDefault(require("./hooks/useGraphite/useGraphite"));
+
+var _useDetectRTL = _interopRequireDefault(require("./hooks/useDetectRTL/useDetectRTL"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
