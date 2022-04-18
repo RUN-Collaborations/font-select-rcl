@@ -9,7 +9,7 @@ function Component(){
 
     isRTL = useDetectRTL( useDetectRTLProps );
 
-    return (<div>Detect for RTL: {isRTL.toString()}</div>);
+    return (<div>RTL detected: {isRTL.toString()}</div>);
 };
 
 <Component />

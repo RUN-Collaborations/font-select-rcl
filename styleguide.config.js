@@ -23,10 +23,6 @@ const sections = [
         content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-FontDropdown.md'),
       },
       {
-        name: 'Font Dropdown MUI',
-        content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-FontDropdownMUI.md'),
-      },
-      {
         name: 'Inline Array',
         content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-InlineArray.md'),
       },
@@ -68,6 +64,21 @@ const sections = [
       {
         name: 'All Requested Fonts',
         content: path.join(pathComponents, 'fontOptions', 'FontOptions-AllListedFonts.md'),
+      },
+    ],
+  },
+  {
+    name: 'Codesanbox Examples',
+    sections: [
+      {
+        name: 'Font Dropdown MUI',
+        external: true,
+        href: 'https://codesandbox.io/s/fontdropdownmui-font-detect-rhl-xui47y'
+      },
+      {
+        name: 'Simple Font Dropdown',
+        external: true,
+        href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee'
       },
     ],
   },

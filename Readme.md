@@ -4,11 +4,10 @@ THIS IS A WORK IN PROGRESS. Components and props are subject to change.
 For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
 
 # To Do
- * Work out kinks through application in external references.
- * Review ESLint
  * Show clearly how to consume the rhl
- * Simplify styleguide
-
+ * Further simplify styleguide
+ * Consider json font data distribution method
+   * Consider webfont field(s)?
 
 ## Project Goals
 Deliver a React Hook Library (RHL) that:
