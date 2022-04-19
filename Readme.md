@@ -6,6 +6,7 @@ For an example of where this is headed, see the "Set Font" dropdowns at [simple-
 # To Do
  * Show clearly how to consume the rhl
  * Further simplify styleguide
+ * Add more reference implementations
  * Consider json font data distribution method
    * Consider webfont field(s)?
 
@@ -64,9 +65,11 @@ Code utilized in autodetection of RTL/LTR text originated from [Christopher Klap
 
  * [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
 
- * To Add: How to consume the rhl.
-
- * To Add: Links to reference implementations.
+ * How to Consume font-detect-rhl:
+   * [useDetectFonts](https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx)
+   * [useGraphite](https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
+   * [useDetectRTL](https://codesandbox.io/s/usedetectrtl-font-detect-rhl-280fws?file=/src/components/DetectRTL.jsx)
+ * To Add: Links to additional reference implementations.
 ___
 
 ## Endnotes

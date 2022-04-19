@@ -45,6 +45,10 @@ const sections = [
     content: path.join(pathHooks, 'useDetectRTL', 'useDetectRTL.md'),
   },
   {
+    name: 'ProvidedFontList',
+    content: path.join(pathComponents, 'providedFontList', 'ProvidedFontList.md'),
+  },
+  {
     name: 'FontOption',
     content: path.join(pathComponents, 'fontOption', 'FontOption.md'),
   },

@@ -1,7 +1,7 @@
 <!-- # FontOptions -->
 This example renders all fonts whether or not they are detected (unless showAll is changed from true to false).
 ```jsx
-import { FontOptions, useDetectFont } from 'font-detect-rhl';
+import { FontOptions, useDetectFonts } from 'font-detect-rhl';
 
 function Component(){
   const fonts = [

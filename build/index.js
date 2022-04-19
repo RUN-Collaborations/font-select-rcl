@@ -15,6 +15,12 @@ Object.defineProperty(exports, "FontOptions", {
     return _FontOptions["default"];
   }
 });
+Object.defineProperty(exports, "ProvidedFontList", {
+  enumerable: true,
+  get: function get() {
+    return _ProvidedFontList["default"];
+  }
+});
 Object.defineProperty(exports, "useDetectFonts", {
   enumerable: true,
   get: function get() {
@@ -37,6 +43,8 @@ Object.defineProperty(exports, "useGraphite", {
 var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOption"));
 
 var _FontOptions = _interopRequireDefault(require("./components/fontOptions/FontOptions"));
+
+var _ProvidedFontList = _interopRequireDefault(require("./components/ProvidedFontList/ProvidedFontList"));
 
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
 
