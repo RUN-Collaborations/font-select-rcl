@@ -44,7 +44,7 @@ var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOp
 
 var _FontOptions = _interopRequireDefault(require("./components/fontOptions/FontOptions"));
 
-var _ProvidedFontList = _interopRequireDefault(require("./components/ProvidedFontList/ProvidedFontList"));
+var _ProvidedFontList = _interopRequireDefault(require("./components/providedFontList/ProvidedFontList"));
 
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
 

@@ -18,7 +18,7 @@ Deliver a React Hook Library (RHL) that:
 
 Do this by:
  * Test around 500 font families to indentify whether or not they are installed in the local environment, and return detection status of each fonts.
-    * Font tested are listed in the [fonts.json array(https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/fonts.json)], including:
+    * Font tested are listed in the [fonts.json array](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/fonts.json), including:
       * Windows 11 system and supplemental font families
       * MacOS system and downloadable font families thru Monterey (v12)
       * However, this list currently excludes the following (which can be passed back in by apps consuming the rcl where they are needed):
@@ -53,7 +53,6 @@ Some other test font string observed in other font detect approaches include:
 ### useDetectRTL
 Code utilized in autodetection of RTL/LTR text originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js).
 
-
 ### Web Fonts
  * There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, make allowances for the possiblity that there could be font version differences. Allow the user to select between either one rather than overriding one with the other.
 
@@ -73,15 +72,13 @@ Code utilized in autodetection of RTL/LTR text originated from [Christopher Klap
 ___
 
 ## Endnotes
-[1]  
-If [gfx.font_rendering.graphite.enabled](https://silnrsi.github.io/FDBP/en-US/Browsers%20as%20a%20font%20test%20platform.html) is ever set to false in about:config in Firefox, then Graphite will not be enabled and graphite-enabled fonts will not render properly. To access this setting in [Firefox Configuration Editor(https://support.mozilla.org/en-US/kb/about-config-editor-firefox)]:
-* Type [about:config](about:config) in your address bar and press Enter.
+[1] If [gfx.font_rendering.graphite.enabled](https://silnrsi.github.io/FDBP/en-US/Browsers%20as%20a%20font%20test%20platform.html) is ever set to false in about:config in Firefox, then Graphite will not be enabled and graphite-enabled fonts will not render properly. To access this setting in [Firefox Configuration Editor](https://support.mozilla.org/en-US/kb/about-config-editor-firefox):
+* Type about:config in your address bar and press Enter.
 * Click on the "I'll be careful, I promise" button.
 * Type graphite in your search bar to look for gfx.font_rendering.graphite.enabled.
 * Double-click on the preference name line to toggle the value between false and true. [A bold line indicates a setting that is set to true.](https://support.mozilla.org/en-US/kb/about-config-editor-firefox)
 
-[2]  
-* Closely followed logic in [Detect Whether a Font is Installed](https://www.kirupa.com/html5/detect_whether_font_is_installed.htm), then after implementation found [fontexist.js](https://gist.github.com/alloyking/4154494). Uncertain of the original source.
+[2] Closely followed logic in [Detect Whether a Font is Installed](https://www.kirupa.com/html5/detect_whether_font_is_installed.htm), then after implementation found [fontexist.js](https://gist.github.com/alloyking/4154494). Uncertain of the original source.
 
 [3]  
 * [JavaScript/CSS Font Detector by Lalit Patel](https://gist.github.com/szepeviktor/d28dfcfc889fe61763f3)

@@ -72,7 +72,8 @@ const sections = [
     ],
   },
   {
-    name: 'Codesanbox Examples',
+    name: 'Codesandbox Examples',
+    description: 'These are links to examples in Codesandbox:',
     sections: [
       {
         name: 'Font Dropdown MUI',
@@ -80,9 +81,19 @@ const sections = [
         href: 'https://codesandbox.io/s/fontdropdownmui-font-detect-rhl-xui47y'
       },
       {
-        name: 'Simple Font Dropdown',
+        name: 'Simple Font Dropdown with useDetectFonts and useDetectRTL',
         external: true,
-        href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee'
+        href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx'
+      },
+      {
+        name: 'useGraphite example',
+        external: true,
+        href: 'https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx'
+      },
+      {
+        name: 'useDetectRTL example',
+        external: true,
+        href: 'https://codesandbox.io/s/usedetectrtl-font-detect-rhl-280fws?file=/src/components/DetectRTL.jsx'
       },
     ],
   },
