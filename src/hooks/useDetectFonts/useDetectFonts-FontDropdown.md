@@ -1,7 +1,7 @@
 <!-- # useDetectFonts -->
 This utilizes arrays of detected fonts from json files that are returned with a detected boolean attribute. Font size and line height are also shown as additional examples. Text can be typed or pasted into the text area, with RTL and LTR text autodetected.
 ```jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useDetectFonts, useGraphite, useDetectRTL } from 'font-detect-rhl';
 
@@ -13,12 +13,26 @@ import gwfonts from '../../fonts/graphite-enabled-web-fonts.json';
 import '../../fonts/WebFonts.css';
 import '../../fonts/GraphiteEnabledWebFonts.css';
 
+const EXAMPLE =
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
 function Component(){
 
   const [selectedFont, setSelectedFont] = React.useState('monospace');
   const [selectedFontSize, setSelectedFontSize] = React.useState('1em');
   const [selectedLineHeight, setSelectedLineHeight ] = React.useState('normal');
   const [dir, setDir ] = React.useState('');
+  const [notdir, setNotDir] = useState('');
+  const [example, setExample] = useState(EXAMPLE);
+
+  const isRTL = useDetectRTL({ text: example });
+
+  useEffect(() => {
+    const _dir = isRTL ? "rtl" : "ltr";
+    setDir(_dir);
+    const _notdir = isRTL ? "ltr" : "rtl";
+    setNotDir(_notdir);
+  }, [isRTL]);
 
   const handleChange = (event) => {
     setSelectedFont(event.target.value);
@@ -62,12 +76,10 @@ function Component(){
   const detectedFontsToMap = useDetectFonts({ fonts });
 
   const detectedFonts = detectedFontsToMap.map((i, k) => (
-    <option key={k} value={i.id}>{i.name}</option>
+    <option key={k} value={i.name}>{i.name}</option>
   ));
 
   const noneDetectedMsg = 'none detected';
-
-  let example = '';
 
   return (
     <div >
@@ -124,18 +136,19 @@ function Component(){
               <option key={4} value={'normal'}>default</option>
             </select>
 
-            <p></p>
+            <p>Direction: <b>{dir}</b>
+            <br />
+            <em>(Enter <b>{notdir}</b> text, then click out of the editable text area to see a direction change applied.</em>)</p>
 
           <textarea
             rows="5"
             name="example"
-            onChange={(event) => {
-              example = event.target.value
-              if (useDetectRTL({ text: example })) setDir('rtl');
-              if (!useDetectRTL({ text: example })) setDir('ltr');
+            onBlur={(event) => {
+              const _example = event.target.value;
+              setExample(_example);
             }}
             style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', direction: dir, }}
-            defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            defaultValue={example}
             >
           </textarea>
 

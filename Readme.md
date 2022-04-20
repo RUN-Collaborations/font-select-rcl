@@ -39,12 +39,12 @@ The current approach compares the width of a test string in each font to that of
 The default test string is currently 'abcdefghijklmnopqrstuvwxyz0123456789'. If a font exists that does not support any of these characters, then that font will not be detected. Is that a real-word possibility? If so, apps can pass their own custom test string.
 
 Some other test font string observed in other font detect approaches include:
- * 'abcdefghijklmnopqrstuvwxyz& #0123456789'
- * "random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS"
+ * `'abcdefghijklmnopqrstuvwxyz& #0123456789'`
+ * `random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS`
  * And the following suggestion, which seem to have originated with Lalit Patel[3]:  
-    // Use m or w because these two characters take up the maximum width.  
-    // Use LLi so the same matching fonts can get separated. *(Not applicable to the test approach currently applied.)*  
-    var testString = "mmmmmmmmmmlli";  
+   * "Use m or w because these two characters take up the maximum width."  
+   * "Use LLi so the same matching fonts can get separated." _(Not applicable to the test approach currently applied.)_
+      * Example: `var testString = "mmmmmmmmmmlli";`_(LLi is not needed in the test approach currently applied.)_
 
 ### Use Cases Anybody?
  * Is anybody running into needed use-cases where the implemented test is not working?
@@ -63,7 +63,6 @@ Code utilized in autodetection of RTL/LTR text originated from [Christopher Klap
 ## Getting Started
 
  * [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
-
  * How to Consume font-detect-rhl:
    * [useDetectFonts](https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx)
    * [useGraphite](https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)

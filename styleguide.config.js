@@ -78,10 +78,10 @@ const sections = [
       {
         name: 'Font Dropdown MUI',
         external: true,
-        href: 'https://codesandbox.io/s/fontdropdownmui-font-detect-rhl-xui47y'
+        href: 'https://codesandbox.io/s/fontdropdownmui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js'
       },
       {
-        name: 'Simple Font Dropdown with useDetectFonts and useDetectRTL',
+        name: 'Simple Font Dropdown',
         external: true,
         href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx'
       },
