@@ -1,7 +1,7 @@
 {
   "name": "font-detect-rhl",
   "description": "A React Hook Library for Detecting Fonts",
-  "version": "0.2.25",
+  "version": "0.2.26",
   "private": false,
   "homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
   "repository": {
@@ -13,6 +13,7 @@
     "node": ">=4"
   },
   "dependencies": {
+    "prop-types": "^15.6.1",
     "use-deep-compare": "^1.1.0"
   },
   "scripts": {
@@ -38,7 +39,6 @@
     "@babel/preset-react": "^7.12.10",
     "@testing-library/jest-dom": "^5.11.4",
     "babel-loader": "^8.2.2",
-    "prop-types": "^15.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
