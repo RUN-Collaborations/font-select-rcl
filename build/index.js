@@ -15,10 +15,10 @@ Object.defineProperty(exports, "FontOptions", {
     return _FontOptions["default"];
   }
 });
-Object.defineProperty(exports, "ProvidedFontList", {
+Object.defineProperty(exports, "useDetectDir", {
   enumerable: true,
   get: function get() {
-    return _ProvidedFontList["default"];
+    return _useDetectDir["default"];
   }
 });
 Object.defineProperty(exports, "useDetectFonts", {
@@ -27,10 +27,10 @@ Object.defineProperty(exports, "useDetectFonts", {
     return _useDetectFonts["default"];
   }
 });
-Object.defineProperty(exports, "useDetectRTL", {
+Object.defineProperty(exports, "useFonts", {
   enumerable: true,
   get: function get() {
-    return _useDetectRTL["default"];
+    return _useFonts["default"];
   }
 });
 Object.defineProperty(exports, "useGraphite", {
@@ -39,17 +39,25 @@ Object.defineProperty(exports, "useGraphite", {
     return _useGraphite["default"];
   }
 });
+Object.defineProperty(exports, "useGraphiteEnabledFonts", {
+  enumerable: true,
+  get: function get() {
+    return _useGraphiteEnabledFonts["default"];
+  }
+});
 
 var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOption"));
 
 var _FontOptions = _interopRequireDefault(require("./components/fontOptions/FontOptions"));
 
-var _ProvidedFontList = _interopRequireDefault(require("./components/providedFontList/ProvidedFontList"));
-
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
 
 var _useGraphite = _interopRequireDefault(require("./hooks/useGraphite/useGraphite.js"));
 
-var _useDetectRTL = _interopRequireDefault(require("./hooks/useDetectRTL/useDetectRTL.js"));
+var _useDetectDir = _interopRequireDefault(require("./hooks/useDetectDir/useDetectDir.js"));
+
+var _useFonts = _interopRequireDefault(require("./fonts/useFonts.json"));
+
+var _useGraphiteEnabledFonts = _interopRequireDefault(require("./fonts/useGraphiteEnabledFonts.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

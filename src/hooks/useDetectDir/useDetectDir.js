@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const rtlDirCheckRegex = /[\u0591-\u07FF\uFB1D-\uFDFF\uFE70-\uFEFC]/gm;
 
-export default function useDetectRTL({ text, ratioThreshold=0.3 }) {
+export default function useDetectDir({ text, ratioThreshold=0.3 }) {
   let mostlyRtl = false;
 
   if (text && text.length) {
@@ -16,16 +16,16 @@ export default function useDetectRTL({ text, ratioThreshold=0.3 }) {
     if (rtlRatio > ratioThreshold) { mostlyRtl = true; }
   };
 
-  return mostlyRtl;
+  return (mostlyRtl ? 'rtl' : 'ltr');
 };
 
-useDetectRTL.propTypes = {
+useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
   /** RTL:LTR Ratio Threshold  */
   ratioThreshold: PropTypes.number.isRequired,
 };
 
-useDetectRTL.propDefaults = {
+useDetectDir.propDefaults = {
   ratioThreshold: 0.3,
 };

@@ -1,9 +1,9 @@
 <!-- # useDetectFonts -->
 This returns an array of detected fonts from a json file with a detected boolean attribute.
 ```jsx
-import { useDetectFonts } from 'font-detect-rhl';
+import { useDetectFonts, useFonts } from 'font-detect-rhl';
 
-import fonts from '../../fonts/fonts.json';
+const fonts = useFonts;
 
 function Component(){
 

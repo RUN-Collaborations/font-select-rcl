@@ -41,12 +41,8 @@ const sections = [
     content: path.join(pathHooks, 'useGraphite', 'useGraphite.md'),
   },
   {
-    name: 'useDetectRTL',
-    content: path.join(pathHooks, 'useDetectRTL', 'useDetectRTL.md'),
-  },
-  {
-    name: 'ProvidedFontList',
-    content: path.join(pathComponents, 'providedFontList', 'ProvidedFontList.md'),
+    name: 'useDetectDir',
+    content: path.join(pathHooks, 'useDetectDir', 'useDetectDir.md'),
   },
   {
     name: 'FontOption',
@@ -91,9 +87,9 @@ const sections = [
         href: 'https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx'
       },
       {
-        name: 'useDetectRTL example',
+        name: 'useDetectDir example',
         external: true,
-        href: 'https://codesandbox.io/s/usedetectrtl-font-detect-rhl-280fws?file=/src/components/DetectRTL.jsx'
+        href: 'https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx'
       },
     ],
   },

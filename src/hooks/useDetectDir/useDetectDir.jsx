@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function useDetectRTL(){
+export default function useDetectDir(){
   return (<React.Fragment></React.Fragment>);
 };
 
-useDetectRTL.propTypes = {
+useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
   /** RTL:LTR Ratio Threshold  */
   ratioThreshold: PropTypes.number.isRequired,
 };
 
-useDetectRTL.propDefaults = {
+useDetectDir.propDefaults = {
   ratioThreshold: 0.3,
 };
 
