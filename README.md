@@ -1,12 +1,9 @@
 # Project Status
 Under review.
 
-For an example of where this is headed, see the "Set Font" dropdowns at [simple-usfm-alignment-prototype.netlify.app](https://simple-usfm-alignment-prototype.netlify.app/).
-
 # To Do
- * Further simplify styleguide
- * Add more reference implementations
- * Separate web fonts as an app concern
+ * Show props with hooks in styleguide
+ * Add a TW3 reference implementations
 
 ## Built With
 
@@ -45,15 +42,16 @@ The default test string is currently 'abcdefghijklmnopqrstuvwxyz0123456789'. If 
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js).
 
 ## Getting Started
+1. Explore the [all-in-one Example](https://font-detect-rhl.netlify.app/#/All-in-one%20Example) and documentation of [useDetectFonts](https://font-detect-rhl.netlify.app/#/➤useDetectFonts), [useFonts](https://font-detect-rhl.netlify.app/#/➤useFonts), [useAssumeGraphite](https://font-detect-rhl.netlify.app/#/➤useAssumeGraphite), [useGraphiteEnabledFonts](https://font-detect-rhl.netlify.app/#/➤useGraphiteEnabledFonts), and [useDetectDir](https://font-detect-rhl.netlify.app/#/➤useDetectDir).
 
-* [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
-* How to Consume font-detect-rhl:
-   * [useDetectFonts](https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx)
-   * [useGraphite](https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
+1. Then take advantage of these codesandbox examples applying font-detect-rhl:
+   * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js)
    * [useDetectRTL](https://codesandbox.io/s/usedetectrtl-font-detect-rhl-280fws?file=/src/components/DetectRTL.jsx)
+   * [useAssumeGraphite](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
-### Web Fonts
-Web fonts are not provided by this rhl, though are certainly another app consideration. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences could exist. One solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font rather than overriding one with the other.
+### Embedded Web Fonts and Web Fonts
+Embedded web fonts and web fonts are not provided by this rhl, though are additional app concerns to contemplate. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
+* If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. A solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font, taking care not to override one with the other. One approach is shown in this [codesandbox example utilizing MUI](https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.js).
 ___
 
 ## Endnotes

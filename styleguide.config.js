@@ -43,24 +43,30 @@ const sections = [
     description: 'These are links to examples in Codesandbox:',
     sections: [
       {
-        name: 'Font Dropdown MUI',
+        name: 'MUI',
         external: true,
-        href: 'https://codesandbox.io/s/fontdropdownmui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js'
+        href: 'https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js'
       },
       {
-        name: 'Simple Font Dropdown',
+        name: 'useDetectDir',
         external: true,
-        href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx'
+        href: 'https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx'
       },
       {
-        name: 'useAssumeGraphite example',
+        name: 'useAssumeGraphite',
         external: true,
         href: 'https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx'
       },
+    ],
+  },
+  {
+    name: 'Embedded Web Fonts',
+    description: 'These are links to examples in Codesandbox:',
+    sections: [
       {
-        name: 'useDetectDir example',
+        name: 'MUI with Embedded Web Font',
         external: true,
-        href: 'https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx'
+        href: 'https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.js'
       },
     ],
   },

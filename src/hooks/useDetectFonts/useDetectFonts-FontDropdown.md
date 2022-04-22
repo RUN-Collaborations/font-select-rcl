@@ -1,8 +1,8 @@
 <!-- # useDetectFonts -->
-* This applies **useDetectFonts** to **useFonts** and returns detected fonts in a dropdown list.
-* It also utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **useGraphiteEnabledFonts**.
-* Font size and line height controls are also included in this example.
-* And text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
+* Applies **useDetectFonts** to **useFonts** and returns detected fonts in a dropdown list.
+* Utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **useGraphiteEnabledFonts**.
+* Shows font size and line height controls.
+* Text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 
@@ -47,13 +47,13 @@ function Component(){
 
   // Detecting Graphite-enabled fonts
   let fonts = graphiteEnabledFontsArray;
-  const detectedGFontsToMap = useDetectFonts({ fonts });
+  const detectedGEFontsToMap = useDetectFonts({ fonts });
 
-  const gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map((i, k) => (
+  const detectedGEFonts = isGraphiteAssumed && detectedGEFontsToMap.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>
   ));
 
-  const noneDetectedGMsg = 'none detected';
+  const noneDetectedGEMsg = 'none detected';
 
   //Detecting fonts:
   fonts = fontsArray;
@@ -67,70 +67,83 @@ function Component(){
 
   return (
     <div >
-              <label htmlFor="font"><b>Select Font:</b></label>
-              <select
-                name="font"
-                id="font"
-                defaultValue={selectedFont}
-                onChange={handleChange}
-              >
-                <option value="" disabled hidden>Select Font</option>
-                <option value="monospace">default</option>
-                {isGraphiteAssumed && <optgroup label="Graphite-Enabled Fonts:">
-                  {gdetectedFonts.length === 0 && <option value="none" disabled>{noneDetectedGMsg}</option>}
-                  {gdetectedFonts}
-                </optgroup>}
-                <optgroup label="Detected Fonts:">
-                  {detectedFonts.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
-                  {detectedFonts}
-                </optgroup>
-              </select>
+      <p align="left" style={{ marginTop: "0px" }}>
+        <em>Change dropdowns to see selected settings applied to the editable
+        text area.</em>
+      </p>
+      <div style={{ display: "table-cell" }}>
+        <label htmlFor="font"><b>Select Font:</b></label>
+        <select
+          name="font"
+          id="font"
+          defaultValue={selectedFont}
+          onChange={handleChange}
+        >
+          <option value="" disabled hidden>Select Font</option>
+          <option value="monospace">default</option>
+          {isGraphiteAssumed && <optgroup label="Graphite-Enabled Fonts:">
+            {detectedGEFonts.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>}
+            {detectedGEFonts}
+          </optgroup>}
+          <optgroup label="Detected Fonts:">
+            {detectedFonts.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
+            {detectedFonts}
+          </optgroup>
+        </select>
+      </div>
+      <div style={{ display: "table-cell" }}>
+        &nbsp;<label htmlFor="font-size"><b>Set Font Size:</b></label>
+        <select
+          name="font-size"
+          id="font-size"
+          value={selectedFontSize}
+          onChange={handleChangeSize}
+        >            
+          <option value="" disabled hidden>Set Font Size</option>
+          <option key={1} value={'0.75em'}>75%</option>
+          <option key={2} value={'1.25em'}>125%</option>
+          <option key={3} value={'1.5em'}>150%</option>
+          <option key={4} value={'1em'}>default</option>
+        </select>
+      </div>
+      <div style={{ display: "table-cell" }}>
+        &nbsp;<label htmlFor="line-height"><b>Set Line Height:</b></label>
+        <select
+          name="line-height"
+          id="line-height"
+          value={selectedLineHeight}
+          onChange={handleChangeLineHeight}
+        >
+          <option value="" disabled hidden>Set Line Height</option>
+          <option key={1} value={'150%'}>150%</option>
+          <option key={2} value={'200%'}>200%</option>
+          <option key={3} value={'250%'}>250%</option>
+          <option key={4} value={'normal'}>default</option>
+        </select>
+      </div>
+      <p
+        align="left"
+        style={{ marginBottom: "0px" }}
+      >
+        Direction: <b>{dir}</b>
+        <br />
+        <em>
+          &nbsp;Enter <b>{notdir}</b> text, then click out of the editable text
+          area to see a direction change applied:
+        </em>
+      </p>
 
-              &nbsp;| <label htmlFor="font-size"><b>Set Font Size:</b></label>
-              <select
-                name="font-size"
-                id="font-size"
-                value={selectedFontSize}
-                onChange={handleChangeSize}
-              >            
-                <option value="" disabled hidden>Set Font Size</option>
-                <option key={1} value={'0.75em'}>75%</option>
-                <option key={2} value={'1.25em'}>125%</option>
-                <option key={3} value={'1.5em'}>150%</option>
-                <option key={4} value={'1em'}>default</option>
-              </select>
-
-            &nbsp;| <label htmlFor="line-height"><b>Set Line Height:</b></label>
-            <select
-              name="line-height"
-              id="line-height"
-              value={selectedLineHeight}
-              onChange={handleChangeLineHeight}
-            >
-              <option value="" disabled hidden>Set Line Height</option>
-              <option key={1} value={'150%'}>150%</option>
-              <option key={2} value={'200%'}>200%</option>
-              <option key={3} value={'250%'}>250%</option>
-              <option key={4} value={'normal'}>default</option>
-            </select>
-
-            <br />
-            <br />
-            Direction: <b>{dir}</b><br />
-            <em>(Enter <b>{notdir}</b> text, then click out of the editable text area to see a direction change applied.</em>)<br />
-            <br />
-
-          <textarea
-            rows="5"
-            name="example"
-            onBlur={(event) => {
-              const _example = event.target.value;
-              setExample(_example);
-            }}
-            style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', direction: dir, }}
-            defaultValue={example}
-            >
-          </textarea>
+      <textarea
+        rows="5"
+        name="example"
+        onBlur={(event) => {
+          const _example = event.target.value;
+          setExample(_example);
+        }}
+        style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', borderColor: "blue", direction: dir, }}
+        defaultValue={example}
+        >
+      </textarea>
 
     </div >
   );

@@ -20,7 +20,7 @@ function Component(){
   const noneDetectedMsg = 'none detected';
 
   return (
-      <div style = {{ border: 'solid 1px blue'}}>
+      <div style = {{ border: 'solid 2px blue'}}>
         {detectedFonts.length !== 0 ? detectedFonts : noneDetectedMsg}
       </div>
   );
