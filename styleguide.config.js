@@ -6,7 +6,7 @@ const {
   name, version, repository,
 } = require('./package.json');
 
-const pathComponents = path.join(__dirname, 'src/components/');
+// const pathComponents = path.join(__dirname, 'src/components/');
 const pathHooks = path.join(__dirname, 'src/hooks/');
 const sections = [
   {
@@ -14,58 +14,29 @@ const sections = [
     content: 'README.md',
   },
   {
-    name: 'useDetectFonts',
-    description: 'Five examples are shown below:',
-    content: path.join(pathHooks, 'useDetectFonts', '_readme.md'),
-    sections: [
-      {
-        name: 'Font Dropdown',
-        content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-FontDropdown.md'),
-      },
-      {
-        name: 'Inline Array',
-        content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-InlineArray.md'),
-      },
-      {
-        name: 'JSON Array',
-        content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-JsonArray.md'),
-      },
-      {
-        name: 'Graphite Enabled',
-        content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-GraphiteEnabled.md'),
-      },
-    ],
+    name: 'All-in-one Example',
+    content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-FontDropdown.md'),
   },
   {
-    name: 'useGraphite',
-    content: path.join(pathHooks, 'useGraphite', 'useGraphite.md'),
+    name: '➤useDetectFonts',
+    content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-InlineArray.md'),
+    // components: path.join(pathHooks, 'useDetectFonts', '*.jsx'),
   },
   {
-    name: 'useDetectDir',
+    name: '➤useFonts',
+    content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-useFonts.md'),
+  },
+  {
+    name: '➤useAssumeGraphite',
+    content: path.join(pathHooks, 'useAssumeGraphite', 'useAssumeGraphite.md'),
+  },
+  {
+    name: '➤useGraphiteEnabledFonts',
+    content: path.join(pathHooks, 'useDetectFonts', 'useDetectFonts-GraphiteEnabled.md'),
+  },
+  {
+    name: '➤useDetectDir',
     content: path.join(pathHooks, 'useDetectDir', 'useDetectDir.md'),
-  },
-  {
-    name: 'FontOption',
-    content: path.join(pathComponents, 'fontOption', 'FontOption.md'),
-  },
-  {
-    name: 'FontOptions',
-    description: 'Three examples are shown below:',
-    content: path.join(pathComponents, 'fontOptions', '_readme.md'),
-    sections: [
-      {
-        name: 'A Single Font',
-        content: path.join(pathComponents, 'fontOptions', 'FontOptions-SingleFont.md'),
-      },
-      {
-        name: 'Detected Fonts',
-        content: path.join(pathComponents, 'fontOptions', 'FontOptions-DetectedFonts.md'),
-      },
-      {
-        name: 'All Requested Fonts',
-        content: path.join(pathComponents, 'fontOptions', 'FontOptions-AllListedFonts.md'),
-      },
-    ],
   },
   {
     name: 'Codesandbox Examples',
@@ -82,9 +53,9 @@ const sections = [
         href: 'https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx'
       },
       {
-        name: 'useGraphite example',
+        name: 'useAssumeGraphite example',
         external: true,
-        href: 'https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx'
+        href: 'https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx'
       },
       {
         name: 'useDetectDir example',
@@ -97,11 +68,11 @@ const sections = [
 
 module.exports = {
   usageMode: 'expand',
-  // exampleMode: 'expand',
+  exampleMode: 'expand',
   pagePerSection: true,
   sections,
   moduleAliases: { 'font-detect-rhl': path.resolve(__dirname, 'src') },
-  // components: 'src/**/*.{jsx,ts,tsx}',
+  // components: 'src/hooks/**/*.{jsx}',
   getComponentPathLine: componentPath => {
     const _name = path.basename(componentPath, '.js');
     return `import { ${_name.split('.')[0]} } from '${name}';`;

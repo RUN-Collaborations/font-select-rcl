@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = useGraphite;
+exports["default"] = useAssumeGraphite;
 
 var _react = require("react");
 
@@ -11,7 +11,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function useGraphite(_ref) {
+function useAssumeGraphite(_ref) {
   var testClient = _ref.testClient,
       alwaysUse = _ref.alwaysUse;
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,14 +23,14 @@ function useGraphite(_ref) {
 }
 
 ;
-useGraphite.propTypes = {
+useAssumeGraphite.propTypes = {
   /** name of browser to test */
   testClient: _propTypes["default"].string,
 
   /** skip environment test */
   alwaysUse: _propTypes["default"].bool
 };
-useGraphite.propDefaults = {
+useAssumeGraphite.propDefaults = {
   testClient: 'firefox',
   alwaysUse: false
 };

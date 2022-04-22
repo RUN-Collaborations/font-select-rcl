@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-export default function useGraphite({ testClient, alwaysUse }){
+export default function useAssumeGraphite({ testClient, alwaysUse }){
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const browserTest = useMemo(() => (navigator.userAgent.toLowerCase().indexOf(testClient) > -1),[]);
@@ -11,14 +11,14 @@ export default function useGraphite({ testClient, alwaysUse }){
   return (isGraphiteAssumed);
 };
 
-useGraphite.propTypes = {
+useAssumeGraphite.propTypes = {
   /** name of browser to test */
   testClient: PropTypes.string,
   /** skip environment test */
   alwaysUse: PropTypes.bool,
 };
 
-useGraphite.propDefaults = {
+useAssumeGraphite.propDefaults = {
   testClient: 'firefox',
   alwaysUse: false,
 };

@@ -1,5 +1,5 @@
 <!-- # useDetectFonts -->
-This returns an array of detected fonts from a json file with a detected boolean attribute.
+This example applies **useDetectFonts** to **useFonts** and returns an array of detected fonts with a detected boolean attribute.
 ```jsx
 import { useDetectFonts, useFonts } from 'font-detect-rhl';
 

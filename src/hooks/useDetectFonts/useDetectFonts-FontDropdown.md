@@ -1,21 +1,18 @@
 <!-- # useDetectFonts -->
-This utilizes arrays of detected fonts from json files that are returned with a detected boolean attribute. Font size and line height are also shown as additional examples. Text can be typed or pasted into the text area, with RTL and LTR text autodetected.
+* This applies **useDetectFonts** to **useFonts** and returns detected fonts in a dropdown list.
+* It also utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **useGraphiteEnabledFonts**.
+* Font size and line height controls are also included in this example.
+* And text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 
-import { useDetectFonts, useGraphite, useDetectDir, useFonts, useGraphiteEnabledFonts } from 'font-detect-rhl';
+import { useDetectFonts, useAssumeGraphite, useDetectDir, useFonts, useGraphiteEnabledFonts } from 'font-detect-rhl';
 
-import rwfonts from '../../fonts/webFontExamples/webFonts.json';
-import gwfonts from '../../fonts/webFontExamples/graphiteEnabledWebFonts.json';
-
-import '../../fonts//webFontExamples/webFonts.css';
-import '../../fonts//webFontExamples/graphiteEnabledWebFonts.css';
-
-const gfonts = useGraphiteEnabledFonts;
-const rfonts = useFonts;
+const graphiteEnabledFontsArray = useGraphiteEnabledFonts;
+const fontsArray = useFonts;
 
 const EXAMPLE =
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Diam maecenas ultricies mi eget mauris pharetra et. Velit scelerisque in dictum non consectetur a. Pharetra massa massa ultricies mi quis hendrerit. Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate. Tristique sollicitudin nibh sit amet commodo. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Turpis tincidunt id aliquet risus feugiat in ante metus dictum.";
 
 function Component(){
 
@@ -44,17 +41,12 @@ function Component(){
   };
 
   // Should Graphite-enabled fonts be detected?
-  const useGraphiteProps = { testClient: 'firefox', alwaysUse: false };
+  const useAssumeGraphiteProps = { testClient: 'firefox', alwaysUse: false };
 
-  const isGraphiteAssumed = useGraphite( useGraphiteProps );
-
-  // Utilizing Graphite-enabled web fonts
-  const gWebFonts = isGraphiteAssumed && gwfonts.map((i, k) => (
-    <option key={k} value={i.id}>{i.name} {i.version}</option>
-  ));
+  const isGraphiteAssumed = useAssumeGraphite( useAssumeGraphiteProps );
 
   // Detecting Graphite-enabled fonts
-  let fonts = gfonts;
+  let fonts = graphiteEnabledFontsArray;
   const detectedGFontsToMap = useDetectFonts({ fonts });
 
   const gdetectedFonts = isGraphiteAssumed && detectedGFontsToMap.map((i, k) => (
@@ -63,13 +55,8 @@ function Component(){
 
   const noneDetectedGMsg = 'none detected';
 
-  // Utilizing web fonts
-  const rWebFonts = rwfonts.map((i, k) => (
-    <option key={k} value={i.name + ' ' + i.version}>{i.name} {i.version}</option>
-  ));
-
   //Detecting fonts:
-  fonts = rfonts;
+  fonts = fontsArray;
   const detectedFontsToMap = useDetectFonts({ fonts });
 
   const detectedFonts = detectedFontsToMap.map((i, k) => (
@@ -89,16 +76,10 @@ function Component(){
               >
                 <option value="" disabled hidden>Select Font</option>
                 <option value="monospace">default</option>
-                {isGraphiteAssumed && <optgroup label="Graphite-Enabled Web Fonts:">
-                  {gWebFonts}
-                </optgroup>}
-                {isGraphiteAssumed && <optgroup label="Graphite-Enabled (local):">
+                {isGraphiteAssumed && <optgroup label="Graphite-Enabled Fonts:">
                   {gdetectedFonts.length === 0 && <option value="none" disabled>{noneDetectedGMsg}</option>}
                   {gdetectedFonts}
                 </optgroup>}
-                <optgroup label="Web Fonts:">
-                  {rWebFonts}
-                </optgroup>
                 <optgroup label="Detected Fonts:">
                   {detectedFonts.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
                   {detectedFonts}
@@ -133,9 +114,11 @@ function Component(){
               <option key={4} value={'normal'}>default</option>
             </select>
 
-            <p>Direction: <b>{dir}</b>
             <br />
-            <em>(Enter <b>{notdir}</b> text, then click out of the editable text area to see a direction change applied.</em>)</p>
+            <br />
+            Direction: <b>{dir}</b><br />
+            <em>(Enter <b>{notdir}</b> text, then click out of the editable text area to see a direction change applied.</em>)<br />
+            <br />
 
           <textarea
             rows="5"

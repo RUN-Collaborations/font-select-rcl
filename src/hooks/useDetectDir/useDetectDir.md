@@ -1,5 +1,5 @@
 <!-- # useDetectRTL -->
-useDetectDir returns 'rtl' or 'ltr'.
+**useDetectDir** returns 'rtl' or 'ltr'.
 ```jsx
 import { useDetectDir } from 'font-detect-rhl';
 

@@ -14,46 +14,46 @@ For an example of where this is headed, see the "Set Font" dropdowns at [simple-
 
 ## Project Goals
 Deliver a React Hook Library (RHL) that:
- * Detects whether or not fonts are locally installed
+1. Detects whether or not fonts are locally installed
    * Caters to styling of a selectable font dropdown list by the RCL consumer.
- * When specified, also detects whether or not [graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
+1. When specified, also detects whether or not [graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
 
-This is accomplished by testing fonts to indentify whether or not they are installed in the local environment, and return the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays of approximately 475 font families.
-  * The primary exported font array is [useFonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/useFonts.json), which **includes** *Windows 11 system and supplemental font families* and *MacOS system and downloadable font families thru Monterey (v12)*, but **excludes**:
-    * Variants like bold, italic, oblique, light, medium, thin, extra, etc
-    * Thick fonts such as Impact and Cooper
-    * Symbols, icons, emojis, assets, wingdings, webdings, ornaments, math, Marlett, etc
-    * MS Office Cloud fonts or MacOS document fonts except where there is overlap
-  * An array of [graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphite-enabled-fonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/useGraphiteEnabledFonts.json):
-    * These fonts are for use in applications implementing [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about), which supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
+These goals are accomplished by testing fonts to indentify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays of approximately 475 font families:
+* The primary exported font array is [useFonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/useFonts.json), which **includes** *Windows 11 system and supplemental font families* and *MacOS system and downloadable font families thru Monterey (v12)*, but **excludes**:
+   * Variants like bold, italic, oblique, light, medium, thin, extra, etc
+   * Thick fonts such as Impact and Cooper
+   * Symbols, icons, emojis, assets, wingdings, webdings, ornaments, math, Marlett, etc
+   * MS Office Cloud fonts or MacOS document fonts except where there is overlap
+* An array of [graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [useGraphiteEnabledFonts.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/useGraphiteEnabledFonts.json):
+   * These fonts are for use in applications with [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) implemented, which supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
       * Firefox[1] is one such environment and [Electronite](https://www.npmjs.com/package/electronite) is another (see also {[Electronite Packager](https://www.npmjs.com/package/electronite-packager)).
-        * The useGraphite hook detects Firefox.
-    * The addition of user-controlled line-height settings and font-size settings are recommended for graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for customizable presentation optimization.
+         * The useGraphite hook detects Firefox.
+   * The addition of user-controlled line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for customizable presentation optimization.
 
 ## Font Detection Approach
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace.[2] Apps can alternatively define their own baseline generic-family. Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order.
 
 ### Font Test String
 The default test string is currently 'abcdefghijklmnopqrstuvwxyz0123456789'. If a font exists that does not support any of these characters, then that font will not be detected. That use-case can also be mitigated as a custom test string can be utilized in place of the default.  Some test font string observed in other font detect approaches include:
- * `'abcdefghijklmnopqrstuvwxyz& #0123456789'`
- * `random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS`
- * And the following suggestion, which seem to have originated with Lalit Patel[3]:  
+* `'abcdefghijklmnopqrstuvwxyz& #0123456789'`
+* `random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS`
+* And the following suggestion, which seem to have originated with Lalit Patel[3]:  
    * "Use m or w because these two characters take up the maximum width."  
- * See endnote[3] for some some compiled links to additional information.
+* See endnote[3] for some some compiled links to additional information.
 
 ### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text:
- The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js).
+The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js).
 
 ## Getting Started
 
- * [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
- * How to Consume font-detect-rhl:
+* [font-detect-rhl.netlify.app](https://font-detect-rhl.netlify.app/).
+* How to Consume font-detect-rhl:
    * [useDetectFonts](https://codesandbox.io/s/simplefontdropdown-font-detect-rhl-qbv8ee?file=/src/components/SimpleFontDropdown.jsx)
    * [useGraphite](https://codesandbox.io/s/usegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
    * [useDetectRTL](https://codesandbox.io/s/usedetectrtl-font-detect-rhl-280fws?file=/src/components/DetectRTL.jsx)
 
 ### Web Fonts
- * Web fonts are not provided by this rhl, though are certainly another app consideration. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences could exist. One solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font rather than overriding one with the other.
+Web fonts are not provided by this rhl, though are certainly another app consideration. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted. If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences could exist. One solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font rather than overriding one with the other.
 ___
 
 ## Endnotes

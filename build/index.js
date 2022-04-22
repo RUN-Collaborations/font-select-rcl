@@ -3,16 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "FontOption", {
+Object.defineProperty(exports, "useAssumeGraphite", {
   enumerable: true,
   get: function get() {
-    return _FontOption["default"];
-  }
-});
-Object.defineProperty(exports, "FontOptions", {
-  enumerable: true,
-  get: function get() {
-    return _FontOptions["default"];
+    return _useAssumeGraphite["default"];
   }
 });
 Object.defineProperty(exports, "useDetectDir", {
@@ -33,12 +27,6 @@ Object.defineProperty(exports, "useFonts", {
     return _useFonts["default"];
   }
 });
-Object.defineProperty(exports, "useGraphite", {
-  enumerable: true,
-  get: function get() {
-    return _useGraphite["default"];
-  }
-});
 Object.defineProperty(exports, "useGraphiteEnabledFonts", {
   enumerable: true,
   get: function get() {
@@ -46,13 +34,9 @@ Object.defineProperty(exports, "useGraphiteEnabledFonts", {
   }
 });
 
-var _FontOption = _interopRequireDefault(require("./components/fontOption/FontOption"));
-
-var _FontOptions = _interopRequireDefault(require("./components/fontOptions/FontOptions"));
-
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
 
-var _useGraphite = _interopRequireDefault(require("./hooks/useGraphite/useGraphite.js"));
+var _useAssumeGraphite = _interopRequireDefault(require("./hooks/useAssumeGraphite/useAssumeGraphite.js"));
 
 var _useDetectDir = _interopRequireDefault(require("./hooks/useDetectDir/useDetectDir.js"));
 
