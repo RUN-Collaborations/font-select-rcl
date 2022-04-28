@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// Code originated from Christopher Klapp at https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js
+// Code originated from Christopher Klapp at https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js
 var rtlDirCheckRegex = /[\u0591-\u07FF\uFB1D-\uFDFF\uFE70-\uFEFC]/gm;
 
 function useDetectDir(_ref) {
@@ -38,7 +38,7 @@ useDetectDir.propTypes = {
   /** text to examine */
   text: _propTypes["default"].string.isRequired,
 
-  /** RTL:LTR Ratio Threshold  */
+  /** RTL:LTR ratio threshold (default is 0.3)  */
   ratioThreshold: _propTypes["default"].number.isRequired
 };
 useDetectDir.propDefaults = {

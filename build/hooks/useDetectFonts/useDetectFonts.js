@@ -39,10 +39,10 @@ useDetectFonts.propTypes = {
     name: _propTypes["default"].string.isRequired
   }),
 
-  /** String for use in font detection (default is 'abcdefghijklmnopqrstuvwxyz0123456789') */
+  /** String for use in font detection *(default is 'abcdefghijklmnopqrstuvwxyz0123456789')* */
   testString: _propTypes["default"].string,
 
-  /** Baseline font (default is 'monospace') */
+  /** Baseline font *(default is 'monospace')* */
   baselineFont: _propTypes["default"].string
 };
 useDetectFonts.propDefaults = {
