@@ -1,5 +1,5 @@
 <!-- # useDetectFonts -->
-**useDetectFonts** returns an array of detected fonts with a detected boolean attribute.
+**useDetectFonts** returns an array of detected fonts with a detected boolean attribute. For additional information see [Font Detection Approach](#Font_Detection_Approach).
 ```jsx
 import { useDetectFonts } from 'font-detect-rhl';
 
@@ -11,9 +11,9 @@ function Component(){
     { name: 'Not A Font', id: 'not-a-font' },
   ];
 
-  const detectedFontsToMap = useDetectFonts({ fonts, showAll: true });
+  const detectedFonts = useDetectFonts({ fonts, showAll: true });
 
-  const detectedFonts = detectedFontsToMap.map((i, k) => (
+  const detectedFontsComponents = detectedFonts.map((i, k) => (
     <div style={i.detected ? {} : { textDecoration: 'line-through' }} key={k}>{i.name} detected: {i.detected.toString()}</div>
   ));
 
@@ -21,7 +21,7 @@ function Component(){
 
   return (
       <div style = {{ border: 'solid 2px blue'}}>
-        {detectedFonts.length !== 0 ? detectedFonts : noneDetectedMsg}
+        {detectedFontsComponents.length !== 0 ? detectedFontsComponents : noneDetectedMsg}
       </div>
   );
 };

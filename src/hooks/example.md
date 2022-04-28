@@ -1,15 +1,15 @@
 <!-- # useDetectFonts -->
-* Applies **useDetectFonts** to **useFonts** and returns detected fonts in a dropdown list.
-* Utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **useGraphiteEnabledFonts**.
+* Applies **useDetectFonts** to **fontList** and returns detected fonts in a dropdown list.
+* Utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **graphiteEnabledFontList**.
 * Shows font size and line height controls.
 * Text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 
-import { useDetectFonts, useAssumeGraphite, useDetectDir, useFonts, useGraphiteEnabledFonts } from 'font-detect-rhl';
+import { useDetectFonts, useAssumeGraphite, useDetectDir, fontList, graphiteEnabledFontList } from 'font-detect-rhl';
 
-const graphiteEnabledFontsArray = useGraphiteEnabledFonts;
-const fontsArray = useFonts;
+const graphiteEnabledFontsArray = graphiteEnabledFontList;
+const fontsArray = fontList;
 
 const EXAMPLE =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Diam maecenas ultricies mi eget mauris pharetra et. Velit scelerisque in dictum non consectetur a. Pharetra massa massa ultricies mi quis hendrerit. Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate. Tristique sollicitudin nibh sit amet commodo. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Turpis tincidunt id aliquet risus feugiat in ante metus dictum.";
@@ -31,7 +31,6 @@ function Component(){
   const handleChange = (event) => {
     setSelectedFont(event.target.value);
   };
-
   const handleChangeSize = (event) => {
     setSelectedFontSize(event.target.value);
   };
@@ -47,9 +46,9 @@ function Component(){
 
   // Detecting Graphite-enabled fonts
   let fonts = graphiteEnabledFontsArray;
-  const detectedGEFontsToMap = useDetectFonts({ fonts });
+  const detectedGEFonts = useDetectFonts({ fonts });
 
-  const detectedGEFonts = isGraphiteAssumed && detectedGEFontsToMap.map((i, k) => (
+  const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>
   ));
 
@@ -57,9 +56,9 @@ function Component(){
 
   //Detecting fonts:
   fonts = fontsArray;
-  const detectedFontsToMap = useDetectFonts({ fonts });
+  const detectedFonts = useDetectFonts({ fonts });
 
-  const detectedFonts = detectedFontsToMap.map((i, k) => (
+  const detectedFontsComponents = detectedFonts.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>
   ));
 
@@ -82,12 +81,12 @@ function Component(){
           <option value="" disabled hidden>Select Font</option>
           <option value="monospace">default</option>
           {isGraphiteAssumed && <optgroup label="Graphite-Enabled Fonts:">
-            {detectedGEFonts.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>}
-            {detectedGEFonts}
+            {detectedGEFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>}
+            {detectedGEFontsComponents}
           </optgroup>}
           <optgroup label="Detected Fonts:">
-            {detectedFonts.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
-            {detectedFonts}
+            {detectedFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
+            {detectedFontsComponents}
           </optgroup>
         </select>
       </div>
@@ -145,6 +144,43 @@ function Component(){
         >
       </textarea>
 
+      <p></p>
+      <hr />
+      <div
+        style={{
+          display: "flex",
+          color: "grey"
+        }}
+      >
+        <div
+          style={{
+            width: "50%",
+            float: "left",
+            textAlign: "right"
+          }}
+        >
+          <p style={{ fontSize: "0.9em", margin: "0px" }}>
+            <b>Sample RTL Text:</b>
+            <br />
+            (for copy-paste)
+          </p>
+        </div>
+        <div
+          style={{
+            width: "50%",
+            direction: "RTL",
+            border: "1px solid #969696",
+            float: "right"
+          }}
+        >
+          فِي ٱلْبَدْءِ كَانَ ٱلْكَلِمَةُ، وَٱلْكَلِمَةُ كَانَ عِنْدَ ٱللهِ،
+          وَكَانَ ٱلْكَلِمَةُ ٱللهَ. هَذَا كَانَ فِي ٱلْبَدْءِ عِنْدَ ٱللهِ.
+          كُلُّ شَيْءٍ بِهِ كَانَ، وَبِغَيْرِهِ لَمْ يَكُنْ شَيْءٌ مِمَّا كَانَ.
+          فِيهِ كَانَتِ ٱلْحَيَاةُ، وَٱلْحَيَاةُ كَانَتْ نُورَ ٱلنَّاسِ،
+          وَٱلنُّورُ يُضِيءُ فِي ٱلظُّلْمَةِ، وَٱلظُّلْمَةُ لَمْ تُدْرِكْهُ.
+        </div>
+      </div>
+      
     </div >
   );
 };

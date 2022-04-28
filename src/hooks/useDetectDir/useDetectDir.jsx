@@ -8,7 +8,7 @@ export default function useDetectDir(){
 useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
-  /** RTL:LTR Ratio Threshold  */
+  /** RTL:LTR ratio threshold (default is 0.3)  */
   ratioThreshold: PropTypes.number.isRequired,
 };
 

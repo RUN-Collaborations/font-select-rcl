@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-// Code originated from Christopher Klapp at https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/master/src/helpers/detectRTL.js
+// Code originated from Christopher Klapp at https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js
 
 const rtlDirCheckRegex = /[\u0591-\u07FF\uFB1D-\uFDFF\uFE70-\uFEFC]/gm;
 
@@ -22,7 +22,7 @@ export default function useDetectDir({ text, ratioThreshold=0.3 }) {
 useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
-  /** RTL:LTR Ratio Threshold  */
+  /** RTL:LTR ratio threshold (default is 0.3)  */
   ratioThreshold: PropTypes.number.isRequired,
 };
 

@@ -12,9 +12,9 @@ useDetectFonts.propTypes = {
     /** name of font to display */
     name: PropTypes.string.isRequired,
   }),
-  /** String for use in font detection (default is 'abcdefghijklmnopqrstuvwxyz0123456789') */
+  /** String for use in font detection *(default is 'abcdefghijklmnopqrstuvwxyz0123456789')* */
   testString: PropTypes.string,
-  /** Baseline font (default is 'monospace') */
+  /** Baseline font *(default is 'monospace')* */
   baselineFont: PropTypes.string,
 };
 
