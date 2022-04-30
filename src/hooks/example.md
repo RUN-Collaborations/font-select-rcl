@@ -6,10 +6,13 @@
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 
-import { useDetectFonts, useAssumeGraphite, useDetectDir, fontList, graphiteEnabledFontList } from 'font-detect-rhl';
-
-const graphiteEnabledFontsArray = graphiteEnabledFontList;
-const fontsArray = fontList;
+import {
+  useDetectFonts,
+  useAssumeGraphite,
+  useDetectDir,
+  fontList as fontsArray,
+  graphiteEnabledFontList as graphiteEnabledFontsArray
+} from 'font-detect-rhl';
 
 const EXAMPLE =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Diam maecenas ultricies mi eget mauris pharetra et. Velit scelerisque in dictum non consectetur a. Pharetra massa massa ultricies mi quis hendrerit. Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate. Tristique sollicitudin nibh sit amet commodo. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Turpis tincidunt id aliquet risus feugiat in ante metus dictum.";
@@ -45,8 +48,7 @@ function Component(){
   const isGraphiteAssumed = useAssumeGraphite( useAssumeGraphiteProps );
 
   // Detecting Graphite-enabled fonts
-  let fonts = graphiteEnabledFontsArray;
-  const detectedGEFonts = useDetectFonts({ fonts });
+  const detectedGEFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
   const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>
@@ -55,8 +57,7 @@ function Component(){
   const noneDetectedGEMsg = 'none detected';
 
   //Detecting fonts:
-  fonts = fontsArray;
-  const detectedFonts = useDetectFonts({ fonts });
+  const detectedFonts = useDetectFonts({ fonts: fontsArray });
 
   const detectedFontsComponents = detectedFonts.map((i, k) => (
     <option key={k} value={i.name}>{i.name}</option>

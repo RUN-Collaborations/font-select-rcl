@@ -5,16 +5,16 @@
 ## Project Goals
 Deliver a React Hook Library (RHL) that:
 1. Detects whether or not fonts are locally installed
-   * Caters to styling of a selectable font dropdown list by the RCL consumer.
+   * Caters to styling of a selectable font dropdown list by the RHL consumer.
 1. When specified, also detects whether or not [graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
 
 These goals are accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays of approximately 475 font families:
-* The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/fontList.json), which **includes** *Windows 11 system and supplemental font families* and *MacOS system and downloadable font families thru Monterey (v12)*, but **excludes**:
+* The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json), which **includes** *Windows 11 system and supplemental font families* and *MacOS system and downloadable font families thru Monterey (v12)*, but **excludes**:
    * Variants like bold, italic, oblique, light, medium, thin, extra, etc
    * Thick fonts such as Impact and Cooper
    * Symbols, icons, emojis, assets, wingdings, webdings, ornaments, math, Marlett, etc
    * MS Office Cloud fonts or MacOS document fonts except where there is overlap
-* An array of [graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-select-rcl/blob/main/src/fonts/graphiteEnabledFontList.json):
+* An array of [graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/graphiteEnabledFontList.json):
    * These fonts are for use in applications with [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) implemented, a rendering engine for complex scripts that supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
       * *Firefox<sup id="a1">[[1]](#f1)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
       * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
@@ -40,7 +40,8 @@ The useDetectDir hook enables simple autodection of RTL/LTR text through examini
 
 ### Embedded Web Fonts and Web Fonts
 Embedded web fonts and web fonts are not provided by this rhl, though are additional app concerns to contemplate. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
-* If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. A solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font, taking care not to override one with the other. One approach is shown in this [codesandbox example utilizing MUI](https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.js).
+
+If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. A solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
 ___
 
 ## Endnotes

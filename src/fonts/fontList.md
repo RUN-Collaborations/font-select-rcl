@@ -9,11 +9,11 @@ This example below applies **useDetectFonts** to **fontList** and returns an arr
 ```jsx
 import { useDetectFonts, fontList } from 'font-detect-rhl';
 
-const fonts = fontList;
+const fontsArray = fontList;
 
 function Component(){
 
-  const detectedFonts = useDetectFonts({ fonts });
+  const detectedFonts = useDetectFonts({ fonts: fontsArray });
 
   const detectedFontsComponents = detectedFonts.map((i, k) => (
     <div key={k}>{i.name} detected: {i.detected.toString()}</div>

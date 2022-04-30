@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 Graphite will not work in Firefox if gfx.font_rendering.graphite.enabled has been changed to false in about:config.
 See additional info in End Note [1] of README.md. */
 
-export default function useAssumeGraphite({ testClient, alwaysUse }){
+export default function useAssumeGraphite({ testClient='firefox', alwaysUse=false }){
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const browserTest = useMemo(() => (navigator.userAgent.toLowerCase().indexOf(testClient) > -1),[]);

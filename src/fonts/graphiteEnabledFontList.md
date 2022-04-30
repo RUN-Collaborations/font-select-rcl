@@ -5,7 +5,7 @@ When **useAssumeGraphite** is true, this example below applies **useDetectFonts*
 ```jsx
 import { useDetectFonts, useAssumeGraphite, graphiteEnabledFontList } from 'font-detect-rhl';
 
-const fonts = graphiteEnabledFontList;
+const graphiteEnabledFontsArray = graphiteEnabledFontList;
 
 function Component(){
 
@@ -13,7 +13,7 @@ function Component(){
 
   const isGraphiteAssumed = useAssumeGraphite( useAssumeGraphiteProps );
 
-  const detectedFonts = isGraphiteAssumed && useDetectFonts({ fonts });
+  const detectedFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
   const detectedFontsComponents = isGraphiteAssumed && detectedFonts.map((i, k) => (
     <div key={k}>{i.name} detected: {i.detected.toString()}</div>
