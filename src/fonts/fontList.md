@@ -15,8 +15,8 @@ function Component(){
 
   const detectedFonts = useDetectFonts({ fonts: fontsArray });
 
-  const detectedFontsComponents = detectedFonts.map((i, k) => (
-    <div key={k}>{i.name} detected: {i.detected.toString()}</div>
+  const detectedFontsComponents = detectedFonts.map((font, index) => (
+    <div key={index}>{font.name} detected: {font.detected.toString()}</div>
   ));
 
   const noneDetectedMsg = 'none detected';

@@ -15,8 +15,8 @@ function Component(){
 
   const detectedFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
-  const detectedFontsComponents = isGraphiteAssumed && detectedFonts.map((i, k) => (
-    <div key={k}>{i.name} detected: {i.detected.toString()}</div>
+  const detectedFontsComponents = isGraphiteAssumed && detectedFonts.map((font, index) => (
+    <div key={index}>{font.name} detected: {font.detected.toString()}</div>
   ));
 
   const noneDetectedMsg = 'none detected';

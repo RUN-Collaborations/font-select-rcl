@@ -50,8 +50,8 @@ function Component(){
   // Detecting Graphite-enabled fonts
   const detectedGEFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
-  const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((i, k) => (
-    <option key={k} value={i.name} style={{ fontFamily: i.name }}>{i.name}</option>
+  const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((font, index) => (
+    <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
   ));
 
   // Heading for Graphite-enabled fonts
@@ -64,8 +64,8 @@ function Component(){
   //Detecting regular fonts:
   const detectedFonts = useDetectFonts({ fonts: fontsArray });
 
-  const detectedFontsComponents = detectedFonts.map((i, k) => (
-    <option key={k} value={i.name} style={{ fontFamily: i.name }}>{i.name}</option>
+  const detectedFontsComponents = detectedFonts.map((font, index) => (
+    <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
   ));
 
   // Response when no regular fonts are installed
