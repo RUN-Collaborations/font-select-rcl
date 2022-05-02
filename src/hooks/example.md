@@ -51,19 +51,27 @@ function Component(){
   const detectedGEFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
   const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((i, k) => (
-    <option key={k} value={i.name}>{i.name}</option>
+    <option key={k} value={i.name} style={{ fontFamily: i.name }}>{i.name}</option>
   ));
 
-  const noneDetectedGEMsg = 'none detected';
+  // Heading for Graphite-enabled fonts
+  const headingGraphiteEnableFonts = isGraphiteAssumed ? <optgroup label="Graphite-Enabled Fonts:" /> : "";
 
-  //Detecting fonts:
+  // Response when no Graphite-enabled fonts are installed
+  const noneDetectedGEMsg = 'none detected';
+  const ifNoGEFonts = isGraphiteAssumed ? (detectedGEFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>) : "";
+
+  //Detecting regular fonts:
   const detectedFonts = useDetectFonts({ fonts: fontsArray });
 
   const detectedFontsComponents = detectedFonts.map((i, k) => (
-    <option key={k} value={i.name}>{i.name}</option>
+    <option key={k} value={i.name} style={{ fontFamily: i.name }}>{i.name}</option>
   ));
 
+  // Response when no regular fonts are installed
   const noneDetectedMsg = 'none detected';
+  const ifNoFonts = detectedFontsComponents.length === 0 ? <option value="none" disabled>{noneDetectedMsg}</option> : "";
+  
 
   return (
     <div >
@@ -81,14 +89,12 @@ function Component(){
         >
           <option value="" disabled hidden>Select Font</option>
           <option value="monospace">default</option>
-          {isGraphiteAssumed && <optgroup label="Graphite-Enabled Fonts:">
-            {detectedGEFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>}
-            {detectedGEFontsComponents}
-          </optgroup>}
-          <optgroup label="Detected Fonts:">
-            {detectedFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedMsg}</option>}
+          {headingGraphiteEnableFonts}
+            {ifNoGEFonts}
+            {isGraphiteAssumed && detectedGEFontsComponents}
+          <optgroup label="Detected Fonts:" />
+            {ifNoFonts}
             {detectedFontsComponents}
-          </optgroup>
         </select>
       </div>
       <div style={{ display: "table-cell" }}>

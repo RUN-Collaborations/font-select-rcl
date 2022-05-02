@@ -23,7 +23,7 @@ function Component(){
 
   return (
       <React.Fragment>
-        {!isGraphiteAssumed && `useAssumeGraphite is ${isGraphiteAssumed.toString()}.`}{detectedFontsComponents.length !== 0 ? detectedFontsComponents :  noneDetectedMsg}
+        {!isGraphiteAssumed && `useAssumeGraphite is ${isGraphiteAssumed.toString()}.`}{detectedFontsComponents.length !== 0 ? detectedFontsComponents : noneDetectedMsg}
       </React.Fragment>
   );
 };
