@@ -3,6 +3,8 @@
 * Utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **graphiteEnabledFontList**.
 * Shows font size and line height controls.
 * Text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
+
+See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx)
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 

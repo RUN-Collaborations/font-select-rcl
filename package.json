@@ -1,7 +1,7 @@
 {
   "name": "font-detect-rhl",
   "description": "A React Hook Library for Detecting Fonts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "homepage": "https://github.com/RUN-Collaborations/font-detect-rhl",
   "repository": {

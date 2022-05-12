@@ -1,5 +1,5 @@
 <!-- # graphiteEnabledFontList -->
-The graphiteEnabledFontList array contains [graphite-enabled](https://software.sil.org/fonts/) fonts families. User-controlled line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for customizable presentation optimization.
+The graphiteEnabledFontList array contains over 30 [Graphite-enabled](https://software.sil.org/fonts/) *font families<sup>[[1]](#f1)</sup>*. User-controlled line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for customizable presentation optimization.
 
 When **useAssumeGraphite** is true, this example below applies **useDetectFonts** to **graphiteEnabledFontList** and returns an array of detected Graphite-enabled fonts with the detected boolean attribute displayed.
 ```jsx
