@@ -8,21 +8,21 @@ Deliver a React Hook Library (RHL) that:
 1. When specified, also detects whether or not [Graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
 1. The aim of the provided font lists are to cater to normal / regular / roman / plain fonts, with the option for RHL consumers to add their own fonts in as desired.
 
-This is accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays of over 750 *font families<sup id="a1">[[1]](#f1)</sup>*:
+This is accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays approximately 750 *font families<sup id="a1">[[1]](#f1)</sup>*:
 
 ## Font Families -- [[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)] and [[graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)]
 
 The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) [[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)], which ***includes***:
 * Windows 11 system and supplemental font families
 * MacOS system and downloadable font families thru Monterey (v12)
-* Over 275 fonts common to multiple *Linux desktop environments/distributions<sup id="a2">[[2]](#f2)</sup>*
+* Over 250 fonts common to multiple *Linux desktop environments/distributions<sup id="a2">[[2]](#f2)</sup>*
 * Pre-installed *Android fonts<sup id="a3">[[3]](#f3)</sup>*
 * iOS system *fonts<sup id="a4">[[4]](#f4)</sup>*
 
 Note, however that this provided font list ***excludes***:
 * Font names that include hairline, thin, ultra-light, extra-light, light, book, medium, demi-bold, semi-bold, bold, extra-bold, extra heavy, black, extra-black, ultra-black, ultra, italic, slanted, and oblique.
 * Thick fonts such as Impact and Cooper
-* Symbols, icons, emojis, assets, wingdings, webdings, dingbats, ornaments, math, Marlett, etc
+* Symbols, icons, emojis, assets, wingdings, webdings, dingbats, ornaments, math, music, hieroglyphs, cuneiform, numbers, Marlett, etc.
 * MS Office Cloud fonts or MacOS document fonts except where there is overlap
 
 A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/graphiteEnabledFontList.json) [[graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)]:
