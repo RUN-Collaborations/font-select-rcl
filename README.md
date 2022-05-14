@@ -1,18 +1,16 @@
-## Built With
-
- * React.js
-
-## Project Goals
-Deliver a React Hook Library (RHL) that:
+## Font-Detect-RHL <sub><sub><sup><sup>[[npm](https://www.npmjs.com/package/font-detect-rhl) | [github](https://github.com/RUN-Collaborations/font-detect-rhl) | [netlify](https://font-detect-rhl.netlify.app/) ]</sup></sup></sub></sub>
+Font-Detect-RHL is a [React.js](https://reactjs.org/) Hook Library (RHL) that:
 1. Detects whether or not fonts are locally installed, catering to a selectable font dropdown list that is stylable by the RHL consumer.
 1. When specified, also detects whether or not [Graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
 1. The aim of the provided font lists are to cater to normal / regular / roman / plain fonts, with the option for RHL consumers to add their own fonts in as desired.
 
-This is accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can create their own font list or utilize the exported arrays approximately 750 *font families<sup id="a1">[[1]](#f1)</sup>*:
+This is accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can utilize the exported arrays listing over 730 *font families<sup id="a1">[[1]](#f1)</sup>* and/or specify their own fonts.
 
-## Font Families -- [[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)] and [[graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)]
+### Contents: <sub><sup id="Contents">[[Font Families](#Font_Families) | [Font Detection Approach](#Font_Detection_Approach) | [Getting Started](#Getting_Started)]</sup></sub>
 
-The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) [[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)], which ***includes***:
+## <span id="Font_Families">Font Families </span><sub><sub><sup><sup>[[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)] ... [↩](#Contents)</sup></sup></sub></sub>
+
+The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) ([fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)), which ***includes***:
 * Windows 11 system and supplemental font families
 * MacOS system and downloadable font families thru Monterey (v12)
 * Over 250 fonts common to multiple *Linux desktop environments/distributions<sup id="a2">[[2]](#f2)</sup>*
@@ -25,33 +23,34 @@ Note, however that this provided font list ***excludes***:
 * Symbols, icons, emojis, assets, wingdings, webdings, dingbats, ornaments, math, music, hieroglyphs, cuneiform, numbers, Marlett, etc.
 * MS Office Cloud fonts or MacOS document fonts except where there is overlap
 
-A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/graphiteEnabledFontList.json) [[graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)]:
+A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/graphiteEnabledFontList.json) ([graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)):
 * These fonts are for use in applications with [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) implemented, a rendering engine for complex scripts that supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
    * *Firefox<sup id="a5">[[5]](#f5)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
    * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
 
-## <span id="Font_Detection_Approach">Font Detection Approach</span> [[useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)]
+## <span id="Font_Detection_Approach">Font Detection Approach </span><sub><sub><sup><sup>[[useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)] ... [↩](#Contents)</sup></sup></sub></sub>
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace<span style="white-space:nowrap;">.*<sup id="a6">[[6]](#f6)</sup>*</span> Apps can also define their own baseline generic-family if prefered. Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order.
 
 ### Font Test String
 The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. If a font exists that does not support any of these characters, then that font will not be detected. That use-case can be mitigated through use of a custom test string that exists in both the baseline font and the tested font. Some test strings observed in other font detect approaches include `'abcdefghijklmnopqrstuvwxyz& #0123456789'`, `'random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS'`, and the following suggestion (which seem to have originated with *Lalit Patel<sup id="a7">[[7]](#f7)</sup>*): *"Use m or w because these two characters take up the maximum width."* See *endnotes<sup>[[7]](#f7)</sup>* for links to additional information.
 
-### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text:
+### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[[useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir)]</sup></sub>
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
-## Getting Started
+## <span id="Getting_Started">Getting Started </span><sub><sub><sup><sup>... [↩](#Contents)</sup></sup></sub></sub>
 1. Explore the [Styleguide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
 1. Then take advantage of these codesandbox examples applying font-detect-rhl:
-   * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js)
-      * See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx)
+   * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js) -- See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx).
    * [useDetectDir](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
    * [useAssumeGraphite](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
-### Embedded Web Fonts and Web Fonts
-Embedded web fonts and web fonts are not provided by this rhl, though are additional app concerns to contemplate. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
+### Web Fonts
+Web fonts are not addressed by this rhl, though are an additional app concern for developers to consider. There are multiple ways in which web fonts can be delivered such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
 
 If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. A solution that gives users maximum control is to allow selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
+
+For excellent insight on application of webfonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
 ___
 
 ## Endnotes

@@ -24,7 +24,7 @@ const sections = [
   },
   {
     name: 'Codesandbox',
-    description: 'The following links lead to Codesandbox examples:<br /><br /><ul><li>[Material UI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js)<ul><li>See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx)</li></ul></li><li>[useDetectDir Example](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)</li><br><li>[useAssumeGraphite Example](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)</li></ul>',
+    description: 'The following links lead to Codesandbox examples:<br /><br /><ul><li>[Material UI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js) -- See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx).</li><li>[useDetectDir Example](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)</li><li>[useAssumeGraphite Example](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)</li></ul>',
   },
   /**
   {
