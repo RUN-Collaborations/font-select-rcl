@@ -4,7 +4,7 @@
 * Shows font size and line height controls.
 * Text can be typed or pasted into the text area, with RTL and LTR text autodetected by **useDetectDir**.
 
-See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/FontSelect.jsx)
+<sup>*(See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) / [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/).)*</sup>
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 
@@ -179,7 +179,8 @@ function Component(){
             width: "50%",
             direction: "RTL",
             border: "1px solid #969696",
-            float: "right"
+            float: "right",
+            textAlign: "right"
           }}
         >
           فِي ٱلْبَدْءِ كَانَ ٱلْكَلِمَةُ، وَٱلْكَلِمَةُ كَانَ عِنْدَ ٱللهِ،
