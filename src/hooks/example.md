@@ -36,6 +36,7 @@ function Component(){
   const handleChange = (event) => {
     setSelectedFont(event.target.value);
   };
+  
   const handleChangeSize = (event) => {
     setSelectedFontSize(event.target.value);
   };
