@@ -41,7 +41,7 @@ The useDetectDir hook enables simple autodection of RTL/LTR text through examini
 1. Explore the [Styleguide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
 1. Then take advantage of these codesandbox examples applying font-detect-rhl:
-   * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.js)
+   * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.jsx)
       * *See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) / [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/)*
    * [Tailwind CSS Example with Headless UI](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx)<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame ( ⟳ ).</sup>
       * *See also [Simple USFM Alignment Prototype](https://simple-usfm-alignment-prototype.netlify.app/) / [source code](https://github.com/RUN-Collaborations/simple-usfm-alignment-prototype/blob/master/src/components/FontDropdown.jsx))*
@@ -54,7 +54,7 @@ Web fonts are not addressed by this rhl, though are an additional app concern fo
 If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. Consider giving users maximum control by allowing selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
 
 For one approach to webfonts coupled with locally detected fonts, see:
-   * *[Font-Detect-RHL + Embedded Web Fonts with MUI in Codesandbox](https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.js)*
+   * *[Font-Detect-RHL + Embedded Web Fonts with MUI in Codesandbox](https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.jsx)*
    * *[Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI in Codesandbox](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)*<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame ( ⟳ ).</sup>
 
 And for further insight on application of webfonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
