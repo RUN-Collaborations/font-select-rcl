@@ -11,7 +11,7 @@ function Component(){
 
     isGraphiteAssumed = useAssumeGraphite( useAssumeGraphiteProps );
 
-    return (<div>Detect for Graphite-enabled fonts: {isGraphiteAssumed.toString()}</div>);
+    return (<div>Detect for Graphite-enabled fonts: <b>{isGraphiteAssumed.toString()}</b></div>);
 };
 
 <Component />

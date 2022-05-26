@@ -16,14 +16,43 @@ function Component(){
   const detectedFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
 
   const detectedFontsComponents = isGraphiteAssumed && detectedFonts.map((font, index) => (
-    <div key={index} style={{ fontFamily: font.name }}>{font.name} detected: {font.detected.toString()}</div>
+    <div
+      style={{
+        display: 'flex',
+        paddingTop: '0.125rem',
+        paddingBottom: '0.125rem',
+        width: "400px",
+        justifyContent: "space-between",
+        alignItems: 'center',
+        borderBottom: "1px outset",
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        lineHeight: '1.25'
+      }}
+        key={index}
+    >
+      <span>
+        {font.name} detected: <b>{font.detected.toString()}</b>&nbsp;
+      </span>
+      <button
+        style={{
+          fontFamily: font.name,
+          lineHeight: '1.0',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }
+      }>
+        {font.detected ? font.name : ""}
+      </button>
+    </div>
   ));
 
   const noneDetectedMsg = 'none detected';
 
   return (
       <React.Fragment>
-        {!isGraphiteAssumed && `useAssumeGraphite is ${isGraphiteAssumed.toString()}.`}{detectedFontsComponents.length !== 0 ? detectedFontsComponents : noneDetectedMsg}
+        {!isGraphiteAssumed && <span><em>useAssumeGraphite</em> is <b>{isGraphiteAssumed.toString()}</b>.</span>}{detectedFontsComponents.length !== 0 ? detectedFontsComponents : noneDetectedMsg}
       </React.Fragment>
   );
 };

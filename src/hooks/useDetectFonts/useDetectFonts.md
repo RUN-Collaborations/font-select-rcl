@@ -14,7 +14,7 @@ function Component(){
   const detectedFonts = useDetectFonts({ fonts, showAll: true });
 
   const detectedFontsComponents = detectedFonts.map((font, index) => (
-    <div style={ font.detected ? {fontFamily: font.name} : { textDecoration: 'line-through' }} key={index}>{font.name} detected: {font.detected.toString()}</div>
+    <div style={ font.detected ? {fontFamily: font.name} : { textDecoration: 'line-through' }} key={index}>{font.name} detected: <b>{font.detected.toString()}</b></div>
   ));
 
   const noneDetectedMsg = 'none detected';
