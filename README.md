@@ -1,16 +1,19 @@
-## Font-Detect-RHL <sub><sub><sup><sup>[[npm](https://www.npmjs.com/package/font-detect-rhl) | [github](https://github.com/RUN-Collaborations/font-detect-rhl) | [netlify](https://font-detect-rhl.netlify.app/) ]</sup></sup></sub></sub>
+## Font-Detect-RHL <sub><sup>[[npm](https://www.npmjs.com/package/font-detect-rhl) | [github](https://github.com/RUN-Collaborations/font-detect-rhl) | [netlify](https://font-detect-rhl.netlify.app/) ]</sup></sub>
 Font-Detect-RHL is a [React.js](https://reactjs.org/) Hook Library (RHL) that:
-1. Detects whether or not fonts are locally installed, catering to a selectable font dropdown list that is stylable by the RHL consumer.
-1. When specified, also detects whether or not [Graphite-enabled](https://software.sil.org/fonts/) fonts are locally installed.
-1. The aim of the provided font lists are to cater to normal / regular / roman / plain fonts, with the option for RHL consumers to add their own fonts in as desired.
+1. Detects whether or not fonts are locally installed, and returns the status.
+1. Caters to a stylable font dropdown list.
+1. Considers [Graphite-enabled](https://software.sil.org/fonts/) fonts and supporting environments.
 
-This is accomplished by testing fonts to identify whether or not they are installed in the local environment, and returning the detection status of each font tested. Consumers can utilize the exported arrays listing over 730 *font families<sup id="a1">[[1]](#f1)</sup>* and/or specify their own fonts.
+Use the exported arrays listing over 730 *font families<sup id="a1">[[1]](#f1)</sup>*, and make custom additions as needed.
 
-### Contents: <sub><sup id="Contents">[[Font Families](#Font_Families) | [Font Detection Approach](#Font_Detection_Approach) | [Getting Started](#Getting_Started)]</sup></sub>
+### <span id="Contents">Contents:</span>
+* [Font Families](#Font_Families)
+* [Font Detection Approach](#Font_Detection_Approach)
+* [Getting Started](#Getting_Started)
 
-## <span id="Font_Families">Font Families </span><sub><sub><sup><sup>[[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)] ... [↩](#Contents)</sup></sup></sub></sub>
+## <span id="Font_Families">Font Families </span><sub><sup>[[fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)] ... [↩](#Contents)</sup></sub>
 
-The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) ([fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)), which ***includes***:
+Provided font lists focus on normal, regular, roman, and plain fonts. The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) ([fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)), which ***includes***:
 * Windows 11 system and supplemental font families
 * MacOS system and downloadable font families thru Monterey (v12)
 * Over 250 fonts common to multiple *Linux desktop environments/distributions<sup id="a2">[[2]](#f2)</sup>*
@@ -28,7 +31,7 @@ A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is
    * *Firefox<sup id="a5">[[5]](#f5)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
    * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
 
-## <span id="Font_Detection_Approach">Font Detection Approach </span><sub><sub><sup><sup>[[useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)] ... [↩](#Contents)</sup></sup></sub></sub>
+## <span id="Font_Detection_Approach">Font Detection Approach </span><sub><sup>[[useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)] ... [↩](#Contents)</sup></sub>
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace<span style="white-space:nowrap;">.*<sup id="a6">[[6]](#f6)</sup>*</span> Apps can also define their own baseline generic-family if prefered. Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order.
 
 ### Font Test String
@@ -37,13 +40,13 @@ The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. I
 ### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[[useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir)]</sup></sub>
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
-## <span id="Getting_Started">Getting Started </span><sub><sub><sup><sup>... [↩](#Contents)</sup></sup></sub></sub>
+## <span id="Getting_Started">Getting Started </span><sub><sup>... [↩](#Contents)</sup></sub>
 1. Explore the [Styleguide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
 1. Then take advantage of these codesandbox examples applying font-detect-rhl:
    * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.jsx)
       * *See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) / [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/)*
-   * [Tailwind CSS Example with Headless UI](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx)<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame ( ⟳ ).</sup>
+   * [Tailwind CSS Example with Headless UI](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx)<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame (⟳).</sup>
       * *See also [Simple USFM Alignment Prototype](https://simple-usfm-alignment-prototype.netlify.app/) / [source code](https://github.com/RUN-Collaborations/simple-usfm-alignment-prototype/blob/master/src/components/FontDropdown.jsx))*
    * [useDetectDir](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
    * [useAssumeGraphite](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
@@ -55,7 +58,7 @@ If providing a web font for which a user may also have a local version, consider
 
 For one approach to webfonts coupled with locally detected fonts, see:
    * *[Font-Detect-RHL + Embedded Web Fonts with MUI in Codesandbox](https://codesandbox.io/s/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.jsx)*
-   * *[Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI in Codesandbox](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)*<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame ( ⟳ ).</sup>
+   * *[Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI in Codesandbox](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)*<br /><sup>On 502 gateway errors, wait for the codesandbox terminal frame to reach "webpack compiled successfully" then refresh the browser frame (⟳).</sup>
 
 And for further insight on application of webfonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
 ___
