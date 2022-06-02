@@ -19,7 +19,8 @@ Use the exported arrays listing over 730 *font families<sup id="a1">[[1]](#f1)</
 
 ————————————————————————————
 
-## <span id="Font_Families">Font Families </span><sub><sup>[ [fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist) ] ... [↩](#Contents)</sup></sub>
+<span id="Font_Families"></span>
+## Font Families <sub><sup>[ [fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist) ] ... [↩](#Contents)</sup></sub>
 
 Provided font lists focus on normal, regular, roman, and plain fonts. The primary exported font array is [fontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/fontList.json) ([fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts)), which ***includes***:
 * Windows 11 system and supplemental font families
@@ -39,28 +40,33 @@ A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is
    * *Firefox<sup id="a5">[[5]](#f5)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
    * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
 
-## <span id="Font_Detection_Approach">Font Detection Approach </span><sub><sup>[ [useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) ] ... [↩](#Contents)</sup></sub>
+<span id="Font_Detection_Approach"></span>
+## Font Detection Approach <sub><sup>[ [useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) ] ... [↩](#Contents)</sup></sub>
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace<span style="white-space:nowrap;">.*<sup id="a6">[[6]](#f6)</sup>*</span> Apps can also define their own baseline generic-family if prefered. Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order.
 
-### <span id="Font_Test_String">Font Test String </span><sub><sup>... [↩](#Contents)</sup></sub>
+<span id="Font_Test_String"></span>
+### Font Test String <sub><sup>... [↩](#Contents)</sup></sub>
 The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. If a font exists that does not support any of these characters, then that font will not be detected. That use-case can be mitigated through use of a custom test string that exists in both the baseline font and the tested font. Some test strings observed in other font detect approaches include `'abcdefghijklmnopqrstuvwxyz& #0123456789'`, `'random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS'`, and the following suggestion (which seem to have originated with *Lalit Patel<sup id="a7">[[7]](#f7)</sup>*): *"Use m or w because these two characters take up the maximum width."* See *endnotes<sup>[[7]](#f7)</sup>* for links to additional information.
 
-### <span id="Handling_RTL_and_LTR_Text">Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text </span><sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#Contents)</sup></sub>
+<span id="Handling_RTL_and_LTR_Text"></span>
+### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#Contents)</sup></sub>
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
-## <span id="Getting_Started">Getting Started </span><sub><sup>... [↩](#Contents)</sup></sub>
+<span id="Getting_Started"></span>
+## Getting Started <sub><sup>... [↩](#Contents)</sup></sub>
 1. Explore the [Styleguide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
 1. Then take advantage of these codesandbox examples applying font-detect-rhl:
    * [MUI Example](https://codesandbox.io/s/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.jsx)<br />
       *See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/)*
-   * [Tailwind CSS Example with Tailwind Elements](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-tw-elements-5lzvjg?file=/src/components/Example.jsx)<sup>⟳ *as needed [[8]](#f8)*</sup>
+   * [Tailwind CSS Example with Tailwind Elements](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-tw-elements-5lzvjg?file=/src/components/Example.jsx)<sup id="a8">⟳ *as needed [[8]](#f8)*</sup>
    * [Tailwind CSS Example with Headless UI](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx)<sup>⟳ *as needed [[8]](#f8)*</sup><br />
    *See also [Simple USFM Alignment Prototype](https://simple-usfm-alignment-prototype.netlify.app/) | [source code](https://github.com/RUN-Collaborations/simple-usfm-alignment-prototype/blob/master/src/components/FontDropdown.jsx)*
    * [useDetectDir](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
    * [useAssumeGraphite](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
-### <span id="Web_Fonts">Web Fonts </span><sub><sup>... [↩](#Contents)</sup></sub>
+<span id="Web_Fonts"></span>
+### Web Fonts <sub><sup>... [↩](#Contents)</sup></sub>
 Web fonts are not addressed by this rhl, though are an additional app concern for developers to consider. There are multiple ways in which web fonts can be delivered, such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
 
 If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. Consider giving users maximum control by allowing selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
@@ -71,9 +77,11 @@ For one approach to webfonts coupled with locally detected fonts, see:
    * [Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI](https://codesandbox.io/s/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)<sup>⟳ *as needed [[8]](#f8)*</sup>
 
 And for further insight on application of webfonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
+
 ___
 
-## <span id="Endnotes">Endnotes </span><sub><sup>... [↩](#Contents)</sup></sub>
+<span id="Endnotes"></span>
+## Endnotes <sub><sup>... [↩](#Contents)</sup></sub>
 [<b id="f1">1</b>] ... "Font family refers to all the variations of a typeface that share a common name. For example, Times Roman, Times Italic, Times Bold, and Times Bold Italic are all members of the same font family." [[source](http://theworldsgreatestbook.com/choosing-book-font/)] ... [↩](#a1)
 
 [<b id="f2">2</b>] ... Fonts installed with linux vary significantly by desktop environment and [distribution](https://distrowatch.com/). The compiled list included here represents style="Regular", style="Normal", and style="Roman" from an `fc-list` from at least four of the following combinations:
