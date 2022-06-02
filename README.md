@@ -6,14 +6,18 @@ Font-Detect-RHL is a [React.js](https://reactjs.org/) Hook Library (RHL) that:
 
 Use the exported arrays listing over 730 *font families<sup id="a1">[[1]](#f1)</sup>*, and make custom additions as needed.
 
-<span id="Contents">—————————————</span>
+<span id="Contents">————————————————————————————</span>
 
-### **Contents:**
-* [Font Families](#Font_Families)
-* [Font Detection Approach](#Font_Detection_Approach)
-* [Getting Started](#Getting_Started)
+### Contents:
+1. [Font Families](#Font_Families)
+2. [Font Detection Approach](#Font_Detection_Approach)
+<br />2.1 [Font Test String](#Font_Test_String)
+<br />2.2 [Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text](#Handling_RTL_and_LTR_Text)
+3. [Getting Started](#Getting_Started)
+<br />3.1 [Web Fonts](#Web_Fonts)
+4. [Endnotes](#Endnotes)
 
-—————————————
+————————————————————————————
 
 ## <span id="Font_Families">Font Families </span><sub><sup>[ [fontList](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) | [graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist) ] ... [↩](#Contents)</sup></sub>
 
@@ -38,10 +42,10 @@ A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is
 ## <span id="Font_Detection_Approach">Font Detection Approach </span><sub><sup>[ [useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) ] ... [↩](#Contents)</sup></sub>
 The current approach compares the width of a test string in each font to that of a baseline generic-family, defaulted to monospace<span style="white-space:nowrap;">.*<sup id="a6">[[6]](#f6)</sup>*</span> Apps can also define their own baseline generic-family if prefered. Some other font detect approaches use multiple fallback generic-families, such as `serif, sans-serif, monospace`, though not always in that order.
 
-### Font Test String
+### <span id="Font_Test_String">Font Test String </span><sub><sup>... [↩](#Contents)</sup></sub>
 The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. If a font exists that does not support any of these characters, then that font will not be detected. That use-case can be mitigated through use of a custom test string that exists in both the baseline font and the tested font. Some test strings observed in other font detect approaches include `'abcdefghijklmnopqrstuvwxyz& #0123456789'`, `'random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS'`, and the following suggestion (which seem to have originated with *Lalit Patel<sup id="a7">[[7]](#f7)</sup>*): *"Use m or w because these two characters take up the maximum width."* See *endnotes<sup>[[7]](#f7)</sup>* for links to additional information.
 
-### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ]</sup></sub>
+### <span id="Handling_RTL_and_LTR_Text">Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text </span><sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#Contents)</sup></sub>
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
 ## <span id="Getting_Started">Getting Started </span><sub><sup>... [↩](#Contents)</sup></sub>
@@ -56,7 +60,7 @@ The useDetectDir hook enables simple autodection of RTL/LTR text through examini
    * [useDetectDir](https://codesandbox.io/s/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
    * [useAssumeGraphite](https://codesandbox.io/s/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
-### Web Fonts
+### <span id="Web_Fonts">Web Fonts </span><sub><sup>... [↩](#Contents)</sup></sub>
 Web fonts are not addressed by this rhl, though are an additional app concern for developers to consider. There are multiple ways in which web fonts can be delivered, such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
 
 If providing a web font for which a user may also have a local version, consider making allowances for the possiblity that version differences can exist. Consider giving users maximum control by allowing selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
@@ -69,7 +73,7 @@ For one approach to webfonts coupled with locally detected fonts, see:
 And for further insight on application of webfonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
 ___
 
-## Endnotes
+## <span id="Endnotes">Endnotes </span><sub><sup>... [↩](#Contents)</sup></sub>
 [<b id="f1">1</b>] ... "Font family refers to all the variations of a typeface that share a common name. For example, Times Roman, Times Italic, Times Bold, and Times Bold Italic are all members of the same font family." [[source](http://theworldsgreatestbook.com/choosing-book-font/)] ... [↩](#a1)
 
 [<b id="f2">2</b>] ... Fonts installed with linux vary significantly by desktop environment and [distribution](https://distrowatch.com/). The compiled list included here represents style="Regular", style="Normal", and style="Roman" from an `fc-list` from at least four of the following combinations:
