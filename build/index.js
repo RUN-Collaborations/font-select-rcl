@@ -33,15 +33,9 @@ Object.defineProperty(exports, "useDetectFonts", {
     return _useDetectFonts["default"];
   }
 });
-
 var _useDetectFonts = _interopRequireDefault(require("./hooks/useDetectFonts/useDetectFonts.js"));
-
 var _useAssumeGraphite = _interopRequireDefault(require("./hooks/useAssumeGraphite/useAssumeGraphite.js"));
-
 var _useDetectDir = _interopRequireDefault(require("./hooks/useDetectDir/useDetectDir.js"));
-
 var _fontList = _interopRequireDefault(require("./fonts/fontList.json"));
-
 var _graphiteEnabledFontList = _interopRequireDefault(require("./fonts/graphiteEnabledFontList.json"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
