@@ -52,6 +52,41 @@ The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. I
 ### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#toc)</sup></sub>
 The useDetectDir hook enables simple autodection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
+RTL scripts taken into account are listed below. Unicode ranges [utilzed](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/hooks/useDetectDir/useDetectDir.js#L5) are from v15.1 standards:
+* Contemporary Scripts
+   * Adlam
+   * Arabic, Arabic Supplement, Arabic Presentation Forms-A, Arabic Presentation Forms-B
+   * Hanifi Rohingya
+   * Hebrew, Alphabetic Presentation Forms
+   * Mandaic
+   * Mende Kikakui
+   * N'Ko
+   * Samaritan
+   * Syriac
+   * Thaana
+   * Yezidi
+* Ancient Scripts
+   * Old South Arabian
+   * Old North Arabian
+   * Imperial Aramaic
+   * Avestan
+   * Cypriot Syllabary
+   * Egyptian Hieroglyphs, Egyptian Hieroglyph Format Controls
+   * Ethiopic, Ethiopic Supplement, Ethiopic Extended, Ethiopic Extended-A, Ethiopic Extended-B
+   * Hatran
+   * Old Hungarian
+   * Old Italic
+   * Kharoshthi
+   * Lydian
+   * Nabataean
+   * Inscriptional Pahlavi, Inscriptional Parthian, Psalter Pahlavi
+   * Old Persian
+   * Phoenician
+   * Sogdian, Old Sogdian
+   * Old Turkic
+
+Note: Todhri and Garay are two additional RTL scripts [projected](https://en.wikipedia.org/w/index.php?title=Unicode&oldid=1197435625#Projected_versions) to be added in Unicode v16.0 Standards.
+
 <span id="3-getting-started">&nbsp;</span>
 ## Getting Started <sub><sup>... [↩](#toc)</sup></sub>
 1. Explore the [Styleguide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
@@ -84,7 +119,7 @@ ___
 ## Endnotes <sub><sup>... [↩](#toc)</sup></sub>
 [<b id="f1">1</b>] ... "Font family refers to all the variations of a typeface that share a common name. For example, Times Roman, Times Italic, Times Bold, and Times Bold Italic are all members of the same font family." [[source](http://theworldsgreatestbook.com/choosing-book-font/)] ... [↩](#a1)
 
-[<b id="f2">2</b>] ... Fonts installed with linux vary significantly by desktop environment and [distribution](https://distrowatch.com/). The compiled list included here represents style="Regular", style="Normal", and style="Roman" from an `fc-list` from at least four of the following combinations:
+[<b id="f2">2</b>] ... Fonts installed with linux vary significantly by desktop environment and [distribution](https://distrowatch.com/). The compiled list included here represents style="Regular", style="Normal", and style="Roman" from an `fc-list` that overlap in four or more of the following combinations:
 * Cinnamon - Linux Mint 20.3
 * Fluxbox - MX Linux 22.1
 * Gnome - Manjaro 21.2.6
@@ -96,7 +131,7 @@ ___
 * Xfce - Linux Mint 20.3
 * Xfce - MX Linux 22.1 ... [↩](#a2)
 
-[<b id="f3">3</b>] ... Android: Droid Sans, Droid Serif), Droid Sans Mono, and Roboto [[source](https://www.exeideas.com/2016/02/list-of-default-fonts-in-android.html)] [[see also](https://stackoverflow.com/questions/3532397/how-to-retrieve-a-list-of-available-installed-fonts-in-android)] ... [↩](#a3)
+[<b id="f3">3</b>] ... Android: Droid Sans, Droid Serif, Droid Sans Mono, and Roboto [[source](https://www.exeideas.com/2016/02/list-of-default-fonts-in-android.html)] [[see also](https://stackoverflow.com/questions/3532397/how-to-retrieve-a-list-of-available-installed-fonts-in-android)] ... [↩](#a3)
 
 [<b id="f4">4</b>] ... iOS: SF Pro Text, SF Pro Display, SF Pro, SF Compact, SF Mono, SF Arabic, and New York [[source](https://9to5mac.com/2021/10/25/apple-refreshes-design-resources-for-ios-15-with-new-templates-fonts-and-website/) | [see also](https://developer.apple.com/fonts/)], and many pre-installed fonts that overlap with MacOS system and downloadable font families [[source](https://developer.apple.com/fonts/system-fonts/)]  ... [↩](#a4)
 
