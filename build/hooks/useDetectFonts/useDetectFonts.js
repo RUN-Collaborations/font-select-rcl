@@ -31,12 +31,12 @@ useDetectFonts.propTypes = {
     /** name of font to display */
     name: _propTypes["default"].string.isRequired
   }),
-  /** String for use in font detection *(default is 'abcdefghijklmnopqrstuvwxyz0123456789')* */
+  /** String for use in font detection */
   testString: _propTypes["default"].string,
-  /** Baseline font *(default is 'monospace')* */
+  /** Baseline font *(use a generic font family)* */
   baselineFont: _propTypes["default"].string
 };
-useDetectFonts.propDefaults = {
+useDetectFonts.defaultProps = {
   testString: 'abcdefghijklmnopqrstuvwxyz0123456789',
   baselineFont: 'monospace'
 };

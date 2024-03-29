@@ -25,12 +25,12 @@ function useAssumeGraphite(_ref) {
 }
 ;
 useAssumeGraphite.propTypes = {
-  /** name of browser to test *(default is 'firefox')* */
+  /** name of browser to test */
   testClient: _propTypes["default"].string,
-  /** skips browser test if true *(default is false; true is the same as not applying useAssumeGraphite)* */
+  /** skips browser test if true *(true is the same as not applying useAssumeGraphite)* */
   alwaysUse: _propTypes["default"].bool
 };
-useAssumeGraphite.propDefaults = {
+useAssumeGraphite.defaultProps = {
   testClient: 'firefox',
   alwaysUse: false
 };
