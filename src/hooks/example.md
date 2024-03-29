@@ -20,6 +20,7 @@ const EXAMPLE =
 function Component(){
 
   const [selectedFont, setSelectedFont] = useState('monospace');
+  const [quoteOrNot, setQuoteOrNot] = React.useState("");
   const [selectedFontSize, setSelectedFontSize] = useState('1em');
   const [selectedLineHeight, setSelectedLineHeight] = useState('normal');
   const [example, setExample] = useState(EXAMPLE);
@@ -33,6 +34,8 @@ function Component(){
 
   const handleChange = (event) => {
     setSelectedFont(event.target.value);
+    // useDetectFonts uses quotes when detecting fonts. However, a generic font family (no quotes) is used as the default font in this example.
+    setQuoteOrNot(event.target.value === "monospace" ? "" : "'");
   };
   
   const handleChangeSize = (event) => {
@@ -147,7 +150,7 @@ function Component(){
           const _example = event.target.value;
           setExample(_example);
         }}
-        style= {{ fontFamily: selectedFont, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', borderColor: "blue", direction: dir, }}
+        style= {{ fontFamily: quoteOrNot + selectedFont + quoteOrNot, fontSize: selectedFontSize, lineHeight: selectedLineHeight, width: '100%', borderColor: "blue", direction: dir, }}
         defaultValue={example}
         >
       </textarea>
