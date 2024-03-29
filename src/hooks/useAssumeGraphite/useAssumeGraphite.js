@@ -16,13 +16,13 @@ export default function useAssumeGraphite({ testClient='firefox', alwaysUse=fals
 };
 
 useAssumeGraphite.propTypes = {
-  /** name of browser to test *(default is 'firefox')* */
+  /** name of browser to test */
   testClient: PropTypes.string,
-  /** skips browser test if true *(default is false; true is the same as not applying useAssumeGraphite)* */
+  /** skips browser test if true *(true is the same as not applying useAssumeGraphite)* */
   alwaysUse: PropTypes.bool,
 };
 
-useAssumeGraphite.propDefaults = {
+useAssumeGraphite.defaultProps = {
   testClient: 'firefox',
   alwaysUse: false,
 };

@@ -14,11 +14,11 @@ useDetectFonts.propTypes = {
   }),
   /** String for use in font detection *(default is 'abcdefghijklmnopqrstuvwxyz0123456789')* */
   testString: PropTypes.string,
-  /** Baseline font *(default is 'monospace')* */
+  /** Baseline font *(use a generic font family)* */
   baselineFont: PropTypes.string,
 };
 
-useDetectFonts.propDefaults = {
+useDetectFonts.defaultProps = {
   testString: 'abcdefghijklmnopqrstuvwxyz0123456789',
   baselineFont: 'monospace',
 };
