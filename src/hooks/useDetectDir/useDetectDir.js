@@ -99,12 +99,12 @@ export default function useDetectDir({ text, ratioThreshold=0.3 }) {
 
   if (text && text.length) {
     const rtlMatches = text.match(rtlDirCheckRegex);
-    const rtlChars = rtlMatches?.length;
+    const rtlChars = rtlMatches?.length || 0;
     
     const bidiMatches = text.match(bidiDirCheckRegex);
-    const bidiChars = bidiMatches?.length;
+    const bidiChars = bidiMatches?.length || 0;
 
-    const textChars = text.length - bidiChars;
+    const textChars = text.length - bidiChars || 1;
     const rtlRatio = rtlChars / textChars;
  
     if (rtlRatio > ratioThreshold) { mostlyRtl = true; }
