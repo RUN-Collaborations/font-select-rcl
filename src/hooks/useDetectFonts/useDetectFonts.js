@@ -1,6 +1,6 @@
 import {useDeepCompareMemo} from 'use-deep-compare';
 import PropTypes from 'prop-types';
-import { detectFonts } from '../helpers';
+import { detectFonts } from '../helpers/font';
 
 export default function useDetectFonts({
   fonts,
