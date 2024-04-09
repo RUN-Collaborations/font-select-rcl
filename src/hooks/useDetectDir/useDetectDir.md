@@ -1,7 +1,7 @@
 <!-- # useDetectDir -->
 **useDetectDir** examines the range of unicode values of characters in the text, returning 'rtl' for right-to-left or 'ltr' for left-to-right. It ignores neutral characters, and can optionally also adjust for markup via regular expression. Code utilized in this hook originated from [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js), developed by [Christopher Klapp](https://github.com/klappy).
 
-Two examples follow. The first treats the input as plain text. If you have are working with plain texts or have already stripped markup (e.g., run USFM through Proskomma) then use the first approach and adjust the ratioThreshold as needed. The second example (scroll further down) offers two different examples of compensating for markup with customizable regex statements.
+Two examples follow. The first treats input as plain text. If you are working with plain texts or have already stripped markup (e.g., usfm run through Proskomma) then use the first approach and adjust the ratioThreshold as needed. The second example (scroll further down) shows compensating for markup with customizable regex statements.
 
 ***useDetectDir - Plain Text:***
 ```jsx
@@ -21,9 +21,9 @@ function Component(){
 <!-- # useDetectDir -->
 ***useDetectDir - Markup Text:***
 
-The following examples show adjustment for markdown. Results do not have to be exactly, though it can allow for increasing the ratioThreshold where markdown may contain a large volume of LTR text (e.g., some alignment approaches in usfm).
+The following examples adjust for markup. Results do not have to be exactly, though increasing precision allows for use of a higher ratioThreshold where markdown contains a large volume of LTR text (e.g., some alignment approaches in usfm).
 
-One example is usfm, and the other is markdown, though it can be any type of markup. Improve upon these regex statements, use them as is, or setup entirely different ones that fit your needs.
+One example below is with usfm, and the other is with markdown. Improve upon these regex statements, use them as is, or setup entirely different ones as best fit your needs.
  
 ```jsx
 import { useState } from 'react';
