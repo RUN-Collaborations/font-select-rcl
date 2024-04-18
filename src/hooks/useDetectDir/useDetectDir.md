@@ -3,7 +3,7 @@
 
 Two examples follow. The first treats input as plain text. If you are working with plain texts or have already stripped markup (e.g., usfm run through Proskomma) then use the first approach and adjust the ratioThreshold as needed. The second example (scroll further down) shows compensating for markup with customizable regex statements.
 
-***useDetectDir - Plain Text:***
+### *useDetectDir - Plain Text*
 ```jsx
 import { useDetectDir } from 'font-detect-rhl';
 
@@ -19,11 +19,21 @@ function Component(){
 <Component />
 ```
 <!-- # useDetectDir -->
-***useDetectDir - Markup Text:***
+### *useDetectDir - Markup Text*
 
 The following examples adjust for markup. Results do not have to be exactly, though increasing precision allows for use of a higher ratioThreshold where markdown contains a large volume of LTR text (e.g., some alignment approaches in usfm).
 
 One example below is with usfm, and the other is with markdown. Improve upon these regex statements, use them as is, or setup entirely different ones as best fit your needs.
+
+With verbose set to true, the js console log will show the following calculated number of characters:
+
+- total raw
+- total neutral
+- total markup characters - neutral characters in markup regex = markup characters without neutral characters
+- adjusted total characters (LTR & RTL)
+- total RTL characters - neutral characters in RTL regex = RTL characters without neutral characters
+- LTR characters without neutral characters
+- the calculated ratio of RTL:(LTR & RTL)
  
 ```jsx
 import { useState } from 'react';
@@ -80,8 +90,8 @@ function Component(){
   const [example, setExample] = useState(EXAMPLE);
 
   // Note the ratioThreshold (RTL %) is increased from the default of 0.3 in this example.
-  // const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, rtlScope, neutralScope, isMarkup: true, markupScope });
-  const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, isMarkup: true });
+  // const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, rtlScope, neutralScope, isMarkup: true, markupScope, verbose: true });
+  const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, isMarkup: true, verbose: true });
 
   dir = useDetectDir( useDetectDirProps );
 

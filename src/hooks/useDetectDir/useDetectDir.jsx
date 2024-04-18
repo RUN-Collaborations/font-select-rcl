@@ -8,7 +8,7 @@ export default function useDetectDir(){
 useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
-  /** RTL:(LTR + RTL), as in RTL % */
+  /** RTL:(LTR + RTL) */
   ratioThreshold: PropTypes.number.isRequired,
   /** RegEx for RTL Character Scope */
   rtlScope: PropTypes.shape({
@@ -24,6 +24,8 @@ useDetectDir.propTypes = {
   markupScope: PropTypes.shape({
     regex: PropTypes.string,
   }),
+  /** Show extra info in the js console? */
+  verbose: PropTypes.bool,
 };
 
 useDetectDir.defaultProps = {
@@ -38,5 +40,6 @@ useDetectDir.defaultProps = {
   markupScope: {
     regex: [/\\(id|c|v|ca|va|vp|\+fv|fr)( |\*)(\w+-?\w*)?(\.|,)?(\w*)?(-)?(\w*)?:?|\\(usfm|ide|sts).*|(\+ )?\\(?!(id|c|v|ca|va|vp|fr|usfm|ide|sts)( |\*))\w+\*?(-\w+\\?\*?)?|\|? ?x?-?[\w-]+=".*"/gm], // USFM: References and \id <code> | Full lines | Remaining markers | Attributes
   },
+  verbose: false,
 };
 

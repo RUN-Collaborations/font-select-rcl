@@ -15,7 +15,8 @@ export default function useDetectDir({
   isMarkup=false, // default is false (for plain text)
   markupScope={
     regex: [/\\(id|c|v|ca|va|vp|\+fv|fr)( |\*)(\w+-?\w*)?(\.|,)?(\w*)?(-)?(\w*)?:?|\\(usfm|ide|sts).*|(\+ )?\\(?!(id|c|v|ca|va|vp|fr|usfm|ide|sts)( |\*))\w+\*?(-\w+\\?\*?)?|\|? ?x?-?[\w-]+=".*"/gm], // References and \id <code> | Full lines | Remaining markers | Attributes
-  }
+  },
+  verbose=false
 }) {
   let mostlyRtl = false;
 
@@ -25,29 +26,33 @@ export default function useDetectDir({
 
   if (text && text.length) {
 
-    // length of string of all matches (also equals the number of matches on default regex)
+    if (verbose) console.log(text.length + ' total raw chars');
+
+    // length of string of neutral matches
     const neutralChars = count (matchesStr (text, neutralDirCheckRegex));
 
-    // length of string of all matches excluding neutral matches (equals the number of matches on default regex)
-    const rtlChars = adjcount ( text, rtlDirCheckRegex, neutralDirCheckRegex);
+    // useEffect(() => { if (verbose) console.log('EditableBlock First Render'); }, []);
+    if (verbose) console.log(neutralChars + ' total neutral chars');
 
-    // length of string of all matches excluding neutral matches
-    const markupCount = adjcount ( text, markupCheckRegex, neutralDirCheckRegex);
-    
+    // length of string of all Markup matches excluding neutral matches inside Markup matches
+    const markupCount = adjcount ( 'markup', text, markupCheckRegex, neutralDirCheckRegex, verbose);
+
     // length of all characters under text dir consideration
     const textChars = text.length - neutralChars - markupCount || 1;
 
+    if (verbose) console.log(text.length + ' - ' + neutralChars + ' - ' + markupCount + ' = ' + textChars + ' adj total chars (LTR & RTL)');
+
+    // length of string of all RTL matches excluding neutral matches inside RTL matches
+    const rtlChars = adjcount ( 'RTL', text, rtlDirCheckRegex, neutralDirCheckRegex, verbose);
+
     // Percent of RTL Characters
     const rtlRatio = rtlChars / textChars;
+    
+    if (verbose) console.log(textChars + ' adj total - ' + rtlChars + ' RTL without neutral = ' + (textChars - rtlChars) + ' LTR chars without neutral');
 
-    console.log('. . . . . . . . . . . .');
-    console.log('Total raw chars: ' + text.length);
-    console.log(' Less neutral chars: ' + neutralChars);
-    console.log(' Less Markup chars (excl neutral): ' + markupCount);
-    console.log(' = Adj Total (RTL + LTR): ' + textChars);
-    console.log('   Less RTL chars (excl neutral): ' + rtlChars);
-    console.log('   = LTR chars: ' + (textChars - rtlChars));
-    console.log('Calculated RTL/Adj Total: ' + rtlRatio + ' ("ratioThreshold")')
+    if (verbose) console.log(rtlChars + ' RTL without neutural / ' + textChars + ' Adj Total = ' + rtlRatio + ' calculated ratio of RTL:(LTR & RTL)');
+    
+    if (verbose) console.log('. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .');
 
     if (rtlRatio > ratioThreshold) { mostlyRtl = true; }
   };
@@ -58,7 +63,7 @@ export default function useDetectDir({
 useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
-  /** RTL:(LTR + RTL), as in RTL % */
+  /** RTL:(LTR + RTL) */
   ratioThreshold: PropTypes.number.isRequired,
   /** RegEx for RTL Character Scope */
   rtlScope: PropTypes.shape({
@@ -74,6 +79,8 @@ useDetectDir.propTypes = {
   markupScope: PropTypes.shape({
     regex: PropTypes.string,
   }),
+  /** Show extra info in the js console? */
+  verbose: PropTypes.bool,
 };
 
 useDetectDir.defaultProps = {
@@ -88,4 +95,5 @@ useDetectDir.defaultProps = {
   markupScope: {
     regex: [/\\(id|c|v|ca|va|vp|\+fv|fr)( |\*)(\w+-?\w*)?(\.|,)?(\w*)?(-)?(\w*)?:?|\\(usfm|ide|sts).*|(\+ )?\\(?!(id|c|v|ca|va|vp|fr|usfm|ide|sts)( |\*))\w+\*?(-\w+\\?\*?)?|\|? ?x?-?[\w-]+=".*"/gm], // USFM: References and \id <code> | Full lines | Remaining markers | Attributes
   },
+  verbose: false,
 };
