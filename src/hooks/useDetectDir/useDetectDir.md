@@ -89,7 +89,7 @@ function Component(){
 
   const [example, setExample] = useState(EXAMPLE);
 
-  // Note the ratioThreshold (RTL %) is increased from the default of 0.3 in this example.
+  // Note the ratioThreshold is increased from the default of 0.3 in this example.
   // const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, rtlScope, neutralScope, isMarkup: true, markupScope, verbose: true });
   const useDetectDirProps = ({ text: example, ratioThreshold: 0.51, isMarkup: true, verbose: true });
 

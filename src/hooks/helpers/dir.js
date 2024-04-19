@@ -15,7 +15,7 @@ export const count = (matchesStr) => {
 };
 
 // removes neutral characters as per neutralScope regex
-export const adjcount = (what, string, regexp, neutralDirCheckRegex, verbose) =>  {
+export const adjcount = (what, string, regexp, neutralDirCheckRegex, verbose, isMarkup) =>  {
 
   const capturedTextStr = matchesStr (string, regexp);
   const capturedChars = count (capturedTextStr);
@@ -24,7 +24,7 @@ export const adjcount = (what, string, regexp, neutralDirCheckRegex, verbose) =>
 
   const adjCaptureChars = capturedChars - neutralCaptureChars;
 
-  if (verbose) console.log(capturedChars + ' total ' + what + ' - ' + neutralCaptureChars + ' neutral in ' + what + ' = ' + adjCaptureChars + ' ' + what + ' w/o neutral');
+  if (verbose) console.log(( what === 'markup' && 'isMarkup = ' + isMarkup + '; ') + capturedChars + ' total ' + what + ' - ' + neutralCaptureChars + ' neutral in ' + what + ' = ' + adjCaptureChars + ' ' + what + ' w/o neutral');
 
   return (adjCaptureChars);
 };

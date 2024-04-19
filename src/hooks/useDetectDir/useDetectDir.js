@@ -50,11 +50,10 @@ export default function useDetectDir({
     // length of string of neutral matches
     const neutralChars = count (matchesStr (text, neutralDirCheckRegex));
 
-    // useEffect(() => { if (verbose) console.log('EditableBlock First Render'); }, []);
     if (verbose) console.log(neutralChars + ' total neutral');
 
     // length of string of all Markup matches excluding neutral matches inside Markup matches
-    const markupCount = adjcount ( 'markup', text, markupCheckRegex, neutralDirCheckRegex, verbose);
+    const markupCount = adjcount ( 'markup', text, markupCheckRegex, neutralDirCheckRegex, verbose, isMarkup);
 
     // length of all characters under text dir consideration
     const textChars = text.length - neutralChars - markupCount || 1;
@@ -62,7 +61,7 @@ export default function useDetectDir({
     if (verbose) console.log(text.length + ' - ' + neutralChars + ' - ' + markupCount + ' = ' + textChars + ' adj total (LTR & RTL combined, w/o neutral or markup)');
 
     // length of string of all RTL matches excluding neutral matches inside RTL matches
-    const rtlChars = adjcount ( 'RTL', text, rtlDirCheckRegex, neutralDirCheckRegex, verbose);
+    const rtlChars = adjcount ( 'RTL', text, rtlDirCheckRegex, neutralDirCheckRegex, verbose, isMarkup);
 
     // Percent of RTL Characters
     const rtlRatio = rtlChars / textChars;
