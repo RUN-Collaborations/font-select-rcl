@@ -25,15 +25,15 @@ The following examples adjust for markup. Results do not have to be exactly, tho
 
 One example below is with usfm, and the other is with markdown. Improve upon these regex statements, use them as is, or setup entirely different ones as best fit your needs.
 
-With verbose set to true, the js console log will show the following calculated number of characters:
+With verbose set to true, the js console log will show the following calculated number of characters counts as per RegEx:
 
 - total raw
 - total neutral
-- total markup characters - neutral characters in markup regex = markup characters without neutral characters
-- adjusted total characters (LTR & RTL)
-- total RTL characters - neutral characters in RTL regex = RTL characters without neutral characters
-- LTR characters without neutral characters
-- the calculated ratio of RTL:(LTR & RTL)
+- total markup - neutral in markup = markup without neutral
+- adjusted total (LTR and RTL combined, without neutral or markup)
+- total RTL - neutral in RTL = RTL without neutral
+- LTR without neutral
+- the calculated ratio of RTL : adjusted total
  
 ```jsx
 import { useState } from 'react';

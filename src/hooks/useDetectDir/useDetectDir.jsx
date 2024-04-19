@@ -8,7 +8,7 @@ export default function useDetectDir(){
 useDetectDir.propTypes = {
   /** text to examine */
   text: PropTypes.string.isRequired,
-  /** RTL:(LTR + RTL) */
+  /** RTL : (LTR + RTL) */
   ratioThreshold: PropTypes.number.isRequired,
   /** RegEx for RTL Character Scope */
   rtlScope: PropTypes.shape({

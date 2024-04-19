@@ -24,7 +24,7 @@ export const adjcount = (what, string, regexp, neutralDirCheckRegex, verbose) =>
 
   const adjCaptureChars = capturedChars - neutralCaptureChars;
 
-  if (verbose) console.log(capturedChars + ' total ' + what + ' chars - ' + neutralCaptureChars + ' neutral chars in ' + what + ' regex = ' + adjCaptureChars + ' ' + what + ' without neutral');
+  if (verbose) console.log(capturedChars + ' total ' + what + ' - ' + neutralCaptureChars + ' neutral in ' + what + ' = ' + adjCaptureChars + ' ' + what + ' w/o neutral');
 
   return (adjCaptureChars);
 };
