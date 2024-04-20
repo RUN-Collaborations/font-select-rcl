@@ -41,8 +41,8 @@ Note, however that this provided font list ***excludes***:
 
 A separate array of [Graphite-enabled](https://software.sil.org/fonts/) fonts is also exported -- [graphiteEnabledFontList.json](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/fonts/graphiteEnabledFontList.json) ([graphiteEnabledFontList](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfontlist)):
 * These fonts are for use in applications with [Graphite](https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_about) implemented, a rendering engine for complex scripts that supports “smart fonts” capable of advanced behaviors, including combination and positioning of letters in complex ways.
-   * *Firefox<sup id="a5">[[5]](#f5)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
-   * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
+  * *Firefox<sup id="a5">[[5]](#f5)</sup>* is an application in which Graphite is implemented, and [Electronite](https://www.npmjs.com/package/electronite) is a framework that can be used to build and [package](https://www.npmjs.com/package/electronite-packager) others.
+  * Addition of line-height settings and font-size settings are recommended for Graphite-enabled fonts, for purposes of mitigating collisions or near collisions across rows, and for presentation optimization.
 
 <span id="2-font-detection-approach">&nbsp;</span>
 ## Font Detection Approach <sub><sup>[ [useDetectFonts](https://font-detect-rhl.netlify.app/#/Example?id=usedetectfonts) ] ... [↩](#toc)</sup></sub>
@@ -56,53 +56,76 @@ The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. I
 ### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#toc)</sup></sub>
 The useDetectDir hook enables simple autodetection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
-RTL scripts taken into account are listed below. Unicode ranges [utilized](https://github.com/RUN-Collaborations/font-detect-rhl/blob/main/src/hooks/useDetectDir/useDetectDir.js#L5) are from v15.1 standards:
+While a custom RTL scope can be utilized, the default RTL scope is comprehensive for all RTL unicode ranges in v15.1 standards, as follows:
 * Contemporary Scripts
-   * Adlam
-   * Arabic, Arabic Supplement, Arabic Presentation Forms-A, Arabic Presentation Forms-B
-   * Hanifi Rohingya
-   * Hebrew, Alphabetic Presentation Forms
-   * Mandaic
-   * Mende Kikakui
-   * N'Ko
-   * Samaritan
-   * Syriac
-   * Thaana
-   * Yezidi
+  * Adlam (U+1E900 - U+1E95F)
+  * Arabic, Arabic Supplement, Arabic Presentation Forms-A, Arabic Presentation Forms-B (U+0600 - U+06FF, U+0750 - U+077F, U+FB50 - U+FDFD, U+FE70 - U+FEFF)
+  * Hanifi Rohingya (U+10D00 - U+10D3F)
+  * Hebrew, Alphabetic Presentation Forms (U+0590 - U+05FF, U+FB00 - U+FB4F)
+  * Mandaic (U+0840 - U+085F)
+  * Mende Kikakui (U+1E800 - U+1E8DF)
+  * N'Ko (U+07C0 - U+07FF)
+  * Samaritan (U+0800 - U+083F)
+  * Syriac (U+0700 - U+074F)
+  * Thaana (U+0780 - U+07BF)
+  * Yezidi (U+10E80 - U+10EBF)
 * Ancient Scripts
-   * Old South Arabian
-   * Old North Arabian
-   * Imperial Aramaic
-   * Avestan
-   * Cypriot Syllabary
-   * Egyptian Hieroglyphs, Egyptian Hieroglyph Format Controls
-   * Ethiopic, Ethiopic Supplement, Ethiopic Extended, Ethiopic Extended-A, Ethiopic Extended-B
-   * Hatran
-   * Old Hungarian
-   * Old Italic
-   * Kharoshthi
-   * Lydian
-   * Nabataean
-   * Inscriptional Pahlavi, Inscriptional Parthian, Psalter Pahlavi
-   * Old Persian
-   * Phoenician
-   * Sogdian, Old Sogdian
-   * Old Turkic
+  * Old South Arabian (U+10A60 - U+10A7F)
+  * Old North Arabian (U+10A80 - U+10A9F)
+  * Imperial Aramaic (U+10840 - U+1085F)
+  * Avestan (U+10B00 - U+10B3F)
+  * Cypriot Syllabary (U+10800 - U+1083F)
+  * Egyptian Hieroglyphs, Egyptian Hieroglyph Format Controls (U+13000 - U+1342F, U+13430 - U+1345F)
+  * Ethiopic, Ethiopic Supplement, Ethiopic Extended, Ethiopic Extended-A, Ethiopic Extended-B (U+1200 - U+137F, U+1380 - U+139F, U+2D80 - U+2DDF, U+AB00 - U+AB2F, U+1E7E0 - U+1E7FF)
+  * Hatran (U+108E0 - U+108FF)
+  * Old Hungarian (U+10C80 - U+10CFF)
+  * Old Italic (U+10300 - U+1032F)
+  * Kharoshthi (U+10A00 - U+10A5F)
+  * Lydian (U+10920 - U+1093F)
+  * Nabataean (U+10880 - U+108AF)
+  * Inscriptional Pahlavi, Inscriptional Parthian, Psalter Pahlavi (U+10B60 - U+10B7F, U+10B40 - U+10B5F, U+10B80 - U+10BAF)
+  * Old Persian (U+103A0 - U+103DF)
+  * Phoenician (U+10900 - U+1091F)
+  * Sogdian, Old Sogdian (U+10F30 - U+10F6F , U+10F00 - U+10F2F)
+  * Old Turkic (U+10C00 - U+10C4F)
 
 Note: Todhri and Garay are two additional RTL scripts [projected](https://en.wikipedia.org/w/index.php?title=Unicode&oldid=1197435625#Projected_versions) to be added in Unicode v16.0 Standards.
+
+A custom neutral character scope can also be utilized to specify text that is not meant to be considered in the RTL or LTR direction test. The default neutral scope includes:
+* line breaks -- /\r?\n|\r/g (also matches unix \n and old Mac's single \r)
+* periods -- /\./g
+* hyphen-minus -- /-/g
+* [Bidirectional "White Space" Characters](https://www.compart.com/en/unicode/bidiclass/WS)
+  * Form Feed -- \u000C = \f
+  * Space -- U+0020
+  * Ogham Space Mark -- U+1680
+  * En Quad -- U+2000
+  * Em Quad -- U+2001
+  * En Space -- U+2002
+  * Em Space -- U+2003
+  * Three-Per-Em Space -- U+2004
+  * Four-Per-Em Space -- U+2005
+  * Six-Per-Em Space -- U+2006
+  * Figure Space -- U+2007
+  * Punctuation Space -- U+2008
+  * Thin Space -- U+2009
+  * Hair Space -- U+200A
+  * Line Separator -- U+2028
+  * Medium Mathematical Space -- U+205F
+  * Ideographic Space -- U+3000
 
 <span id="3-getting-started">&nbsp;</span>
 ## Getting Started <sub><sup>... [↩](#toc)</sup></sub>
 1. Explore the [Style Guide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
 1. Then take advantage of these CodeSandbox examples applying font-detect-rhl:
-   * Material UI Examples: [Font Dropdown](https://codesandbox.io/p/devbox/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.jsx) | [with type your font](https://codesandbox.io/p/devbox/mui-font-detect-rhl-type-your-font-8xqw6p)<br />
-      *See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/)*
-   * Tailwind CSS Examples with Tailwind Elements with sliders for Font Size and Height: [Font Dropdown](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-5lzvjg?file=/src/components/Example.jsx) | [with type your font](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-type-your-font-pjd3qs)
-   * Tailwind CSS Examples with Headless UI: [Font Dropdown](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx) | [with type your font](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-type-your-font-zpcprs)<br />
-   *See also [Simple USFM Alignment Prototype](https://simple-usfm-alignment-prototype.netlify.app/) | [source code](https://github.com/RUN-Collaborations/simple-usfm-alignment-prototype/blob/master/src/components/FontDropdown.jsx)*
-   * [useDetectDir](https://codesandbox.io/p/devbox/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
-   * [useAssumeGraphite](https://codesandbox.io/p/devbox/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
+  * Material UI Examples: [Font Dropdown](https://codesandbox.io/p/devbox/mui-font-detect-rhl-xui47y?file=/src/components/SelectMUI.jsx) | [with type your font](https://codesandbox.io/p/devbox/mui-font-detect-rhl-type-your-font-8xqw6p)<br />
+     *See also [Simple USFM Editor App](https://simple-usfm-editor-app.netlify.app/) | [source code](https://github.com/klappy/simple-usfm-editor-app/blob/main/src/components/font-configuration/)*
+  * Tailwind CSS Examples with Tailwind Elements with sliders for Font Size and Height: [Font Dropdown](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-5lzvjg?file=/src/components/Example.jsx) | [with type your font](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-type-your-font-pjd3qs)
+  * Tailwind CSS Examples with Headless UI: [Font Dropdown](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-sfcneo?file=/src/components/Example.jsx) | [with type your font](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-type-your-font-zpcprs)<br />
+  *See also [Simple USFM Alignment Prototype](https://simple-usfm-alignment-prototype.netlify.app/) | [source code](https://github.com/RUN-Collaborations/simple-usfm-alignment-prototype/blob/master/src/components/FontDropdown.jsx)*
+  * [useDetectDir](https://codesandbox.io/p/devbox/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
+  * [useAssumeGraphite](https://codesandbox.io/p/devbox/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
 <span id="3-1-web-fonts">&nbsp;</span>
 ### Web Fonts <sub><sup>... [↩](#toc)</sup></sub>
@@ -111,9 +134,9 @@ Web fonts are not addressed by this rhl, though are an additional app concern fo
 If providing a web font for which a user may also have a local version, consider making allowances for the possibility that version differences can exist. Consider giving users maximum control by allowing selection of either a web font or a locally installed version of the font, taking care not to override one with the other.
 
 For one approach to web fonts coupled with locally detected fonts, see:
-   * [Font-Detect-RHL + Embedded Web Fonts with MUI](https://codesandbox.io/p/devbox/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.jsx)
-   * [Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and Tailwind Elements with sliders for Font Size and Height](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-embedded-web-fonts-cpzhl8?file=%2Fsrc%2Fcomponents%2FExample.jsx)
-   * [Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)
+  * [Font-Detect-RHL + Embedded Web Fonts with MUI](https://codesandbox.io/p/devbox/mui-font-detect-rhl-embedded-web-fonts-rtn566?file=/src/components/SelectMUI.jsx)
+  * [Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and Tailwind Elements with sliders for Font Size and Height](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-tw-elements-embedded-web-fonts-cpzhl8?file=%2Fsrc%2Fcomponents%2FExample.jsx)
+  * [Font-Detect-RHL + Embedded Web Fonts with TailwindCSS and HeadlessUI](https://codesandbox.io/p/devbox/font-detect-rhl-react18-tailwindcss3-headlessui-embedded-web-fonts-6m4gdt?file=/src/components/Example.jsx)
 
 And for further insight on application of web fonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
 
@@ -160,13 +183,13 @@ ___
 * [JavaScript/CSS Font Detector by Lalit Patel](https://gist.github.com/szepeviktor/d28dfcfc889fe61763f3)
 * Additional reference links are available in the Alternatives section of https://github.com/rwoodr/fontcheck
 * Consider also the following search strings to look for further information:
-   * Detect Font
-   * Font Detect
-   * Font Detector
-   * Font Check
-   * Font Checker
-   * Available Fonts
-   * Is Font Available ... [↩](#a7)
+  * Detect Font
+  * Font Detect
+  * Font Detector
+  * Font Check
+  * Font Checker
+  * Available Fonts
+  * Is Font Available ... [↩](#a7)
 
 [<b id="f8">8</b>] ... While fonts technically can be requested without quotes, that calls for escaping special characters. See [Unquoted font family names in CSS](https://mathiasbynens.be/notes/unquoted-font-family). ... [↩](#a8)
 
