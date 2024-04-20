@@ -43,7 +43,7 @@ export default function useDetectDir({
 
   if (text && text.length) {
 
-    if (verbose) console.group('Characters Counts as per RegEx:');
+    if (verbose) console.group('Character Counts as per RegEx:');
 
     if (verbose) console.log(text.length + ' total raw');
 

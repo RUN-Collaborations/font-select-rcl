@@ -1,10 +1,10 @@
 ## Font-Detect-RHL <sub><sup>[ [npm](https://www.npmjs.com/package/font-detect-rhl) | [github](https://github.com/RUN-Collaborations/font-detect-rhl) | [netlify](https://font-detect-rhl.netlify.app/) ]</sup></sub>
 Font-Detect-RHL is a [React.js](https://reactjs.org/) Hook Library (RHL) that:
-1. Detects whether or not fonts are locally installed, and returns the status.
-1. Caters to a stylable font dropdown list.
+1. Detects if fonts are locally installed and returns the status, catering to a stylable font dropdown list.
 1. Considers [Graphite](https://graphite.sil.org/)-enabled [fonts](https://software.sil.org/fonts/) and supporting environments.
+1. Calculates the text direction ratio by identifying characters as either LTR, RTL, neutral, or markup (optional) as per RegEx.
 
-Use the exported arrays listing over 1000 *font families<sup id="a1">[[1]](#f1)</sup>*, and make custom additions as needed.
+Use the exported arrays listing over 1000 *font families<sup id="a1">[[1]](#f1)</sup>*, and/or supplied RegEx, customizing as needed.
 
 See also: [How To Tell If A Font Is Copyrighted & Why You Should Always Check](https://logosbynick.com/how-to-tell-if-a-font-is-copyrighted/).
 
