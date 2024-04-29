@@ -14,17 +14,49 @@ export const count = (matchesStr) => {
   return (charCount);
 };
 
-// removes neutral characters as per neutralScope regex
-export const adjcount = (what, string, regexp, neutralDirCheckRegex, verbose, isMarkup) =>  {
+// Identify markup Count less neutral in markup, RTL in markup, and neutral in RTL in markup (should be 0)
+export const adjMarkupCount = (string, markupCheckRegex, neutralDirCheckRegex, rtlDirCheckRegex, verbose, isMarkup) =>  {
 
-  const capturedTextStr = matchesStr (string, regexp);
-  const capturedChars = count (capturedTextStr);
+  // markupScope including overlap with neutralScope and rtlScope
+  const markupMatches = matchesStr (string, markupCheckRegex);
+  const markupChars = count (markupMatches);
 
-  const neutralCaptureChars = count (matchesStr (capturedTextStr, neutralDirCheckRegex));
+  // rtlScope in markupScope including any overlap with neutralScope
+  const rtlInMarkupMatches = matchesStr (markupMatches, rtlDirCheckRegex);
+  const rtlCharsInMarkup = count (matchesStr (rtlInMarkupMatches, rtlDirCheckRegex));
 
-  const adjCaptureChars = capturedChars - neutralCaptureChars;
+  // Any neutralScope in rtlScope in markupScope 
+  const neutInRtlInMarkup = count (matchesStr (rtlInMarkupMatches, neutralDirCheckRegex));
+  
+  // neutralScope in markupScope
+  const neutralCaptureChars = count (matchesStr (markupMatches, neutralDirCheckRegex));
 
-  if (verbose) console.log(( what === 'markup' && 'isMarkup = ' + isMarkup + '; ') + capturedChars + ' total ' + what + ' - ' + neutralCaptureChars + ' neutral in ' + what + ' = ' + adjCaptureChars + ' ' + what + ' w/o neutral');
+  // markupScope less neutralScope in markupScope
+  const markupLessNeut = markupChars - neutralCaptureChars;
 
-  return (adjCaptureChars);
+  if (verbose) console.log('%c isMarkup = %c' + isMarkup + '; %c\n %c adj markup %c =  ' + markupChars + ' markup - ' + neutralCaptureChars + ' neutral in markup = %c ' + markupLessNeut +' ', 'font-weight: bold; font-style: italic; background-color: yellow;','font-weight: bold; font-style: italic; background-color: yellow; color: ' + (isMarkup ? 'green' : 'red') + ';','','color: yellow; background-color: black; font-weight: bold;','','color: yellow; background-color: black; font-weight: bold;');
+
+  const adjMarkupCountObj = {
+    markupLessNeut: markupLessNeut,
+    rtlInMarkup: rtlCharsInMarkup,
+    neutInRtlInMarkup: neutInRtlInMarkup // should be 0
+  }
+  return (adjMarkupCountObj);
+};
+
+// Identify RTL count and neutral in RTL (should be 0)
+export const preAdjRtlCount = (string, rtlDirCheckRegex, neutralDirCheckRegex) =>  {
+
+  // rltScope including overlap with markupScope and neutralScope
+  const rtlMatches = matchesStr (string, rtlDirCheckRegex);
+  const rtlChars = count (rtlMatches);
+
+  // Any neutralScope in rtlScope (should be 0)
+  const neutralInRtlInMarkup = count (matchesStr (rtlMatches, neutralDirCheckRegex));  // Should be 0
+
+  const adjMarkupCountObj = {
+    rtlChars: rtlChars,
+    neutralInRtl: neutralInRtlInMarkup // should be 0
+  }
+  return (adjMarkupCountObj);
 };
