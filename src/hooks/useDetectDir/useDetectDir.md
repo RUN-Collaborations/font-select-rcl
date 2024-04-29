@@ -21,20 +21,26 @@ function Component(){
 <!-- # useDetectDir -->
 ### *useDetectDir - Markup Text*
 
-The following examples adjust for markup. Results do not have to be exactly, though increasing precision allows for use of a higher ratioThreshold where markdown contains a large volume of LTR text (e.g., some alignment approaches in usfm).
+The following examples adjust for markup. Results do not have to be exactly, though increasing precision allows for use of a higher ratioThreshold where markup contains a large volume of LTR text (e.g., some alignment approaches in usfm).
 
-One example below is with usfm, and the other is with markdown. Improve upon these regex statements, use them as is, or setup entirely different ones as best fit your needs.
+One example below is with usfm, and the other is with Markdown. Improve upon these regex statements, use them as is, or setup entirely different ones as best fit your needs.
 
 With verbose set to true, the js console log will show the following calculated number of characters counts as per RegEx:
 
 - total raw
 - total neutral
-- total markup - neutral in markup = markup without neutral
-- adjusted total (LTR and RTL combined, without neutral or markup)
-- total RTL - neutral in RTL = RTL without neutral
-- LTR without neutral
-- the calculated ratio of RTL : adjusted total
- 
+- isMarkup value (true or false)
+- adjusted markup = total markup - neutral in markup
+- adjusted total = total raw - total neutral - adjusted markup<br />
+*The adjusted total is LTR and RTL combined without markup or neutral.*
+- adjusted RTL = total RTL - neutral<sup>**§**</sup> in RTL - ( RTL in markup - neutral<sup>**§**</sup> in RTL in markup)
+- adjusted LTR = adjusted Total - adjusted RTL
+- the calculated ratio = adjusted RTL : adjusted total
+
+**§** Zero in provided markup
+
+For further clarification see this [venn diagram](https://codesandbox.io/p/sandbox/usedetectdir-markup-venn-diagram-gfhrsh?file=%2Fsrc%2FApp.js), as well as [this reference showing pattern matches of an RTL usfm with RTL in markup](https://codesandbox.io/p/sandbox/font-detect-rhl-usedetectdir-default-regex-2sdsmt).
+
 ```jsx
 import { useState } from 'react';
 import { useDetectDir } from 'font-detect-rhl';
@@ -65,7 +71,7 @@ const rtlScope = {
 
 /*
 const neutralScope = {
-  regex: [/\.|-|\r?\n|\r|[\u{000C}\u{0020}\u{1680}\u{2000}-\u{200A}\u{2028}\u{205F}\u{3000}]/ugm],
+  regex: [/\.|-|\r?\n|\r|[\u{000C}\u{0020}\u{00A0}\u{1680}\u{180E}\u{2000}-\u{200A}-\u{200F}\u{2028}\u{202F}\u{205F}\u{2060}\u{2420}\u{2422}\u{2423}\u{2800}\u{3000}\u{3164}\u{FEFF}]/ugm],
 };
 */
 

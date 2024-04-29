@@ -95,8 +95,27 @@ A custom neutral character scope can also be utilized to specify text that is no
 * line breaks -- /\r?\n|\r/g (also matches unix \n and old Mac's single \r)
 * periods -- /\./g
 * hyphen-minus -- /-/g
+* no-break space (NBSP) -- U+00A0
+* narrow no-break space (NNBSP) -- U+202F
+* Directionality characters
+  * left-to-right mark (LRM) -- U+200E
+  * right-to-left-mark (RLM) --  U+200F
+* Zero Width Characters
+  * zero width space (ZWSP) -- U+200B
+  * ‌zero width non-joiner (ZWNJ) - U+200C
+  * ‍zero width joiner (ZWJ) -- U+200D
+  * word joiner (WJ) -- U+2060
+  * zero-width no-break space (ZWNBSP) -- U+FEFF
+* [Characters that Act Like Spaces](https://unicode-explorer.com/articles/space-characters)
+  * mongolian vowel separator (MVS) -- U+180e
+  * braille pattern blank -- U+2800
+  * hangul filler -- U+3164
+* Visible Spaces
+ * symbol for space -- U+2420
+ * blank symbol -- U+2422
+ * open box -- U+2423
 * [Bidirectional "White Space" Characters](https://www.compart.com/en/unicode/bidiclass/WS)
-  * Form Feed -- \u000C = \f
+  * Form Feed -- U+000C = \f
   * Space -- U+0020
   * Ogham Space Mark -- U+1680
   * En Quad -- U+2000
