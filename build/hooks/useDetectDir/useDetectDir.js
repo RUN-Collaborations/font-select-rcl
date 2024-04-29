@@ -24,7 +24,8 @@ var defaults = {
     regex: [/(?:[\u0590-\u085F\u1200-\u139F\u2D80-\u2DDF\uAB00-\uAB2F\uFB00-\uFDFF\uFE70-\uFEFC]|\uD800[\uDF00-\uDF2F\uDFA0-\uDFDF]|[\uD802\uD80D][\uDC00-\uDC5F\uDC80-\uDCAF\uDCE0-\uDD3F\uDE00-\uDE9F\uDF00-\uDFAF]|\uD803[\uDC00-\uDC4F\uDC80-\uDD3F\uDE80-\uDEBF\uDF00-\uDF6F]|\uD80C[\uDC00-\uDFFF]|\uD839[\uDFE0-\uDFFF]|\uD83A[\uDC00-\uDCDF\uDD00-\uDD5F])/gm]
   },
   neutralScope: {
-    regex: [/\.|\x2D|\r?\n|\r|[\f \u1680\u2000-\u200A\u2028\u205F\u3000]/gm]
+    // eslint-disable-next-line no-misleading-character-class
+    regex: [/\.|\x2D|\r?\n|\r|[\f \x2D\xA0\u1680\u180E\u2000-\u200A\u200F\u2028\u202F\u205F\u2060\u2420\u2422\u2423\u2800\u3000\u3164\uFEFF]/gm]
   },
   isMarkup: false,
   // default is false (for plain text)
@@ -52,26 +53,37 @@ function useDetectDir(_ref) {
   var markupCheckRegex = isMarkup ? markupScope.regex[0] : '//gm';
   if (text && text.length) {
     if (verbose) console.group('Character Counts as per RegEx:');
-    if (verbose) console.log(text.length + ' total raw');
+    if (verbose) console.log('%c total raw %c = ' + '%c ' + text.length + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
 
     // length of string of neutral matches
     var neutralChars = (0, _dir.count)((0, _dir.matchesStr)(text, neutralDirCheckRegex));
-    if (verbose) console.log(neutralChars + ' total neutral');
+    if (verbose) console.log('%c neutral %c = ' + '%c ' + neutralChars + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
 
-    // length of string of all Markup matches excluding neutral matches inside Markup matches
-    var markupCount = (0, _dir.adjcount)('markup', text, markupCheckRegex, neutralDirCheckRegex, verbose, isMarkup);
+    // length of string of all Markup matches excluding neutral matches inside Markup matches and calculate overlap of RTL in Markup
+    var markupCountObj = (0, _dir.adjMarkupCount)(text, markupCheckRegex, neutralDirCheckRegex, rtlDirCheckRegex, verbose, isMarkup);
+    var markupLessNeut = markupCountObj.markupLessNeut;
+    var rtlInMarkup = markupCountObj.rtlInMarkup;
+    var neutInRtlInMarkup = markupCountObj.neutInRtlInMarkup; // should be 0
+
+    // rtlScope in markupScope less any overlap in neutralScope
+    var adjRtlInMarkup = rtlInMarkup - neutInRtlInMarkup;
 
     // length of all characters under text dir consideration
-    var textChars = text.length - neutralChars - markupCount || 1;
-    if (verbose) console.log(text.length + ' - ' + neutralChars + ' - ' + markupCount + ' = ' + textChars + ' adj total (LTR & RTL combined, w/o neutral or markup)');
+    var textChars = text.length - neutralChars - markupLessNeut || 1;
+    if (verbose) console.log('%c adj total %c = ' + text.length + ' total raw - ' + neutralChars + ' neutral - ' + markupLessNeut + ' adj Markup = %c ' + textChars + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
 
-    // length of string of all RTL matches excluding neutral matches inside RTL matches
-    var rtlChars = (0, _dir.adjcount)('RTL', text, rtlDirCheckRegex, neutralDirCheckRegex, verbose, isMarkup);
+    // length of string of all RTL matches and overlap with neutral matches inside RTL matches (should be 0)
+    var rtlCharsObj = (0, _dir.preAdjRtlCount)(text, rtlDirCheckRegex, neutralDirCheckRegex, verbose, isMarkup);
+    var rtlChars = rtlCharsObj.rtlChars;
+    var neutralInRtl = rtlCharsObj.neutralInRtl; // Should be 0
+
+    var adjRTL = rtlChars - neutralInRtl - adjRtlInMarkup;
+    if (verbose) console.log('%c adj RTL %c = ' + rtlChars + ' RTL - ' + neutralInRtl + ' neutral in RTL - ( ' + rtlInMarkup + ' RTL in markup - ' + neutInRtlInMarkup + ' neutral in RLT in markup ) = %c ' + adjRTL + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
 
     // Percent of RTL Characters
-    var rtlRatio = rtlChars / textChars;
-    if (verbose) console.log(textChars + ' adj total - ' + rtlChars + ' RTL w/o neutral = ' + (textChars - rtlChars) + ' LTR w/o neutral');
-    if (verbose) console.log(rtlChars + ' RTL w/o neutral : ' + textChars + ' adj total = ' + rtlRatio + ' calculated ratio of RTL : adj total');
+    var rtlRatio = adjRTL / textChars;
+    if (verbose) console.log('%c adj LTR %c = ' + textChars + ' adj total - ' + adjRTL + ' adj RTL = %c ' + (textChars - adjRTL) + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
+    if (verbose) console.log('%c calculated ratio of adj RTL : adj total %c = ' + adjRTL + ' adj RTL : ' + textChars + ' adj total = %c ' + rtlRatio + ' ', 'color: yellow; background-color: black; font-weight: bold;', '', 'color: yellow; background-color: black; font-weight: bold;');
     if (verbose) console.groupEnd();
     if (rtlRatio > ratioThreshold) {
       mostlyRtl = true;
@@ -109,7 +121,7 @@ useDetectDir.defaultProps = {
     regex: [/(?:[\u0590-\u085F\u1200-\u139F\u2D80-\u2DDF\uAB00-\uAB2F\uFB00-\uFDFF\uFE70-\uFEFC]|\uD800[\uDF00-\uDF2F\uDFA0-\uDFDF]|[\uD802\uD80D][\uDC00-\uDC5F\uDC80-\uDCAF\uDCE0-\uDD3F\uDE00-\uDE9F\uDF00-\uDFAF]|\uD803[\uDC00-\uDC4F\uDC80-\uDD3F\uDE80-\uDEBF\uDF00-\uDF6F]|\uD80C[\uDC00-\uDFFF]|\uD839[\uDFE0-\uDFFF]|\uD83A[\uDC00-\uDCDF\uDD00-\uDD5F])/gm]
   },
   neutralScope: {
-    regex: [/\.|\x2D|\r?\n|\r|[\f \u1680\u2000-\u200A\u2028\u205F\u3000]/gm]
+    regex: [/\.|\x2D|\r?\n|\r|[\f \x2D\xA0\u1680\u180E\u2000-\u200A\u200F\u2028\u202F\u205F\u2060\u2420\u2422\u2423\u2800\u3000\u3164\uFEFF]/gm]
   },
   isMarkup: false,
   // false for plain text or to not apply markupScope
