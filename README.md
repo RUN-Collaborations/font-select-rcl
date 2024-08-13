@@ -14,12 +14,15 @@ See also: [How To Tell If A Font Is Copyrighted & Why You Should Always Check](h
 1. [Font Families](#1-font-families)
 2. [Font Detection Approach](#2-font-detection-approach)
 <br />2.1 [Font Test String](#2-1-font-test-string)
-<br />2.2 [Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text](#2-2-handling-rtl-and-ltr-text)
-3. [Getting Started](#3-getting-started)
-<br />3.1 [Web Fonts](#3-1-web-fonts)
-<br />3.2 [To Quote or Not to Quote](#3-2-to-quote-or-not-to-quote)
-<br />3.3 [Minor Browser Differences Possible](#3-3-minor-browser-differences-possible)
-4. [Endnotes](#4-endnotes)
+3. [Font Features](#3-font-features)
+<br />3.1 [Graphite-enabled Smart Font Features](#3-1-graphite-enabled-smart-font-features)
+<br />3.2 [Open-type Font Features](#3-2-open-type-font-features)
+4. [Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text](#4-handling-rtl-and-ltr-text)
+5. [Getting Started](#5-getting-started)
+<br />3.1 [Web Fonts](#5-1-web-fonts)
+<br />3.2 [To Quote or Not to Quote](#5-2-to-quote-or-not-to-quote)
+<br />3.3 [Minor Browser Differences Possible](#5-3-minor-browser-differences-possible)
+6. [Endnotes](#6-endnotes)
 
 ————————————————————————————
 
@@ -52,8 +55,37 @@ The current approach compares the width of a test string in each font to that of
 ### Font Test String <sub><sup>... [↩](#toc)</sup></sub>
 The default test string is currently `'abcdefghijklmnopqrstuvwxyz0123456789'`. If a font exists that does not support any of these characters, then that font will not be detected. That use-case can be mitigated through use of a custom test string that exists in both the baseline font and the tested font. Some test strings observed in other font detect approaches include `'abcdefghijklmnopqrstuvwxyz& #0123456789'`, `'random_words_#!@#$^&*()+mdvejreu_RANDOM_WORDS'`, and the following suggestion (which seem to have originated with *Lalit Patel<sup id="a7">[[7]](#f7)</sup>*): *"Use m or w because these two characters take up the maximum width."* See *endnotes<sup>[[7]](#f7)</sup>* for links to additional information.
 
-<span id="2-2-handling-rtl-and-ltr-text">&nbsp;</span>
-### Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[ [useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir) ] ... [↩](#toc)</sup></sub>
+<span id="3-font-features">&nbsp;</span>
+## Font Features <sub><sup> ... [↩](#toc)</sup></sub>
+
+<span id="3-1-graphite-enabled-smart-font-features">&nbsp;</span>
+### Graphite-enabled Smart Font Features <sub><sup>[ [graphiteEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfeatures) ] ... [↩](#toc)</sup></sub>
+Graphite-enabled font features have been compiled into json from the following sources as of the indicated font versions. Reference implementations are provided showcasing available font variations for user selection from a Graphite-enabled environment (e.g., Firefox or [Electronite](https://github.com/unfoldingWord/electronite)). Options range from collision avoidance and spacing to regional character variation and other adjustable font-specific display features.
+
+| Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
+| :---  | :---: | :---: | :---  |
+| [Abyssinica SIL](https://software.sil.org/abyssinica/features/) | 2.201 | 29 | many of the languages of Ethiopia and Eritrea |
+| [Alkalami](https://software.sil.org/alkalami/features/) | 3.000 | 7 | the Kano region of Nigeria and in Niger |
+| [Andika](https://software.sil.org/andika/features/) | 6.200 | 53 | comprehensive support for thousands of languages around the world written with Latin and Cyrillic letters and their many variants, including a wide range of additional characters and symbols useful for linguistic and literacy work. |
+| [Annapurna SIL](https://software.sil.org/downloads/r/annapurna/AnnapurnaSIL-features.pdf) | 2.100 | 18 | writing systems that use the Devanagari script |
+| [Awami Nastaliq](https://software.sil.org/awami/features/) | 3.200 | 10 | wide variety of languages of South Asia, including but not limited to Urdu |
+| [Charis SIL](https://software.sil.org/charis/features/) | 6.200 | 41 | wide range of languages that use the Latin and Cyrillic scripts. |
+| [Doulos SIL](https://software.sil.org/doulos/features/) | 6.200 | 40 | wide range of languages that use the Latin and Cyrillic scripts |
+| [Gentium Plus](https://software.sil.org/gentium/features/) | 6.200 | 45 | Latin, Cyrillic, and Greek scripts |
+| [Harmattan](https://software.sil.org/harmattan/features/) | 4.000 | 19 | languages using the Arabic script in West Africa. |
+| [Kanchenjunga](https://software.sil.org/kanchenjunga/features/) | 1.000 | 4 | Kirat Rai script of South Asia. |
+| [Lateef](https://software.sil.org/lateef/features/) | 4.200 | 17 | Sindhi and other languages of southern Asia |
+| [Ruwudu](https://software.sil.org/ruwudu/features/) | 3.000 | 7 | style of writing is used by the Manga people in Niger, West Africa |
+| [Scheherazade New](https://software.sil.org/scheherazade/features/) | 4.000 | 18 | a “simplified” rendering of Arabic script, using basic - connecting glyphs but not including a wide variety of additional ligatures or contextual alternates (only the required lam-alef ligatures) |
+| [Padauk](https://software.sil.org/downloads/r/padauk/Padauk-features.pdf) | 5.001 | 15 | writing systems that use the Myanmar script. |
+| [Tagmukay](https://software.sil.org/tagmukay/smart-font-features/) | 2.000 | 2 | a Shifinagh script font with support for the Tawallammat Tamajaq language |
+
+<span id="3-2-open-type-font-features">&nbsp;</span>
+### Open-type Font Features <sub><sup> ... [↩](#toc)</sup></sub>
+- Addition of some Open Type font variations are under consideration.
+
+<span id="4-handling-rtl-and-ltr-text">&nbsp;</span>
+## Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[&nbsp;[useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir)&nbsp;] ... [↩](#toc)</sup></sub>
 The useDetectDir hook enables simple autodetection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
 While a custom RTL scope can be utilized, the default RTL scope is comprehensive for all RTL unicode ranges in v15.1 standards, as follows:
@@ -133,7 +165,7 @@ A custom neutral character scope can also be utilized to specify text that is no
   * Medium Mathematical Space -- U+205F
   * Ideographic Space -- U+3000
 
-<span id="3-getting-started">&nbsp;</span>
+<span id="5-getting-started">&nbsp;</span>
 ## Getting Started <sub><sup>... [↩](#toc)</sup></sub>
 1. Explore the [Style Guide Example](#/Example) and documentation of [useDetectFonts](#/Example?id=usedetectfonts), [fontList](#/Example?id=fontlist), [useAssumeGraphite](#/Example?id=useassumegraphite), [graphiteEnabledFontList](#/Example?id=graphiteenabledfontlist), and [useDetectDir](#/Example?id=usedetectdir).
 
@@ -146,7 +178,7 @@ A custom neutral character scope can also be utilized to specify text that is no
   * [useDetectDir](https://codesandbox.io/p/devbox/usedetectdir-font-detect-rhl-280fws?file=/src/components/DetectDir.jsx)
   * [useAssumeGraphite](https://codesandbox.io/p/devbox/useassumegraphite-font-detect-rhl-dnlqs1?file=/src/components/UtilizeGraphiteFonts.jsx)
 
-<span id="3-1-web-fonts">&nbsp;</span>
+<span id="5-1-web-fonts">&nbsp;</span>
 ### Web Fonts <sub><sup>... [↩](#toc)</sup></sub>
 Web fonts are not addressed by this rhl, though are an additional app concern for developers to consider. There are multiple ways in which web fonts can be delivered, such as base64, woff2, woff, ttf, otf, packaged with an app, self hosted, or third-party-hosted.
 
@@ -159,18 +191,18 @@ For one approach to web fonts coupled with locally detected fonts, see:
 
 And for further insight on application of web fonts, see *[How to Optimize Web Font Loading Performance with Best Practices](https://www.holisticseo.digital/pagespeed/loading-font/)*.
 
-<span id="3-2-to-quote-or-not-to-quote">&nbsp;</span>
+<span id="5-2-to-quote-or-not-to-quote">&nbsp;</span>
 ### To Quote or Not to Quote <sub><sup>... [↩](#toc)</sup></sub>
 Font lists provided here do not include any Generic Font Families. It is recommended<sup id="a8">[[8]](#f8)</sup> to add quotes around detected font results. useDetectFonts tests fonts with quotes around them against a baseline generic font without quotes.
 
 Generic<sup id="a9">[[9]](#f9)</sup> font families, global values<sup id="a10">[[10]](#f10)</sup>, and Apple's aliases<sup id="a11">[[11]](#f11)</sup> for default fonts must be requested without quotes. Adding quotes requests a specific font by that name rather than applying the keyword.
 
-<span id="3-3-minor-browser-differences-possible">&nbsp;</span>
+<span id="5-3-minor-browser-differences-possible">&nbsp;</span>
 ### Minor Browser Differences Possible <sub><sup>... [↩](#toc)</sup></sub>
 There are some one-off cases in which at least one web browser does not properly apply a few locally installed fonts to pages served over the Internet. So, if your browser is not cooperating with an installed font in the detectable list used, then try a different browser or serve your page locally.<sup id="a12">[[12]](#f12)</sup>
 ___
 
-<span id="4-endnotes">&nbsp;</span>
+<span id="6-endnotes">&nbsp;</span>
 ## Endnotes <sub><sup>... [↩](#toc)</sup></sub>
 [<b id="f1">1</b>] ... "Font family refers to all the variations of a typeface that share a common name. For example, Times Roman, Times Italic, Times Bold, and Times Bold Italic are all members of the same font family." [[source](http://theworldsgreatestbook.com/choosing-book-font/)] ... [↩](#a1)
 
