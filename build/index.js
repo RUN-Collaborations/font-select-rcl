@@ -9,6 +9,12 @@ Object.defineProperty(exports, "fontList", {
     return _fontList["default"];
   }
 });
+Object.defineProperty(exports, "graphiteEnabledFeatures", {
+  enumerable: true,
+  get: function get() {
+    return _graphiteEnabledFeatures["default"];
+  }
+});
 Object.defineProperty(exports, "graphiteEnabledFontList", {
   enumerable: true,
   get: function get() {
@@ -38,4 +44,5 @@ var _useAssumeGraphite = _interopRequireDefault(require("./hooks/useAssumeGraphi
 var _useDetectDir = _interopRequireDefault(require("./hooks/useDetectDir/useDetectDir.js"));
 var _fontList = _interopRequireDefault(require("./fonts/fontList.json"));
 var _graphiteEnabledFontList = _interopRequireDefault(require("./fonts/graphiteEnabledFontList.json"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _graphiteEnabledFeatures = _interopRequireDefault(require("./fonts/graphiteEnabledFeatures.json"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }

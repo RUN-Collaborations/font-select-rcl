@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = useAssumeGraphite;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /** This detects for the the browser defined in "testClient", with results overridden when "alwaysUse" is true.
 Graphite will not work in Firefox if gfx.font_rendering.graphite.enabled has been changed to false in about:config.
 See additional info in End Note [1] of README.md. */

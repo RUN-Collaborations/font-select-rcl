@@ -7,7 +7,7 @@ exports["default"] = useDetectFonts;
 var _useDeepCompare = require("use-deep-compare");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _font = require("../helpers/font");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function useDetectFonts(_ref) {
   var fonts = _ref.fonts,
     baselineFont = _ref.baselineFont,
