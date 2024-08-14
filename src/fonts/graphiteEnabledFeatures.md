@@ -17,7 +17,7 @@ import { useDetectDir, useAssumeGraphite, graphiteEnabledFeatures } from 'font-d
 
 import FontFeatureSettings from "../hooks/helpers/FontFeatureSettings";
 
-// These are included here for the sake of example. Locally installed versions of the same fonts can also be detected and utilized.
+// These are included to showcase features. Locally installed versions of the same fonts can also be detected and utilized.
 import GraphiteEnabledWebFontsArray from '../embeddedWebFonts/GraphiteEnabledWebFonts.json';
 import '../embeddedWebFonts/GraphiteEnabledWebFonts.css';
 
