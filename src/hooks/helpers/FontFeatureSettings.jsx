@@ -61,7 +61,7 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
                         {set.options.map((option, optionIndex) => {
                           return (<div key={optionIndex}>
                             <label
-                              htmlFor={option.value}
+                              htmlFor={set.name+option.value}
                               style={{ 
                                 fontFamily:  quoteOrNot + selectedFont + quoteOrNot,
                                 fontFeatureSettings: '"' + set.name + '" ' + option.value,
@@ -72,8 +72,8 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
                               <input
                                 type="radio"
                                 name={set.name}
-                                id={option.value}
-                                data-test-id={option.value}
+                                id={set.name+option.value}
+                                data-test-id={set.name+option.value}
                                 value={option.value}
                                 onClick={handleChangeFeature}
                                 checked={fontSettings[count].value.toString() === option.value}
