@@ -40,7 +40,7 @@ const EXAMPLE =
 
 function Component(){
 
-  const [selectedFont, setSelectedFont] = useState("Andika 6-200");
+  const [selectedFont, setSelectedFont] = useState('monospace');
   const [quoteOrNot, setQuoteOrNot] = React.useState("");
   const [selectedFontSize, setSelectedFontSize] = useState('1em');
   const [selectedLineHeight, setSelectedLineHeight] = useState('normal');
@@ -214,8 +214,7 @@ function Component(){
         <div style={{ display: "table-cell", }}>
           <div>
             <p align="left" style={{ marginTop: "0px" }}>
-              <em>Change dropdowns to see selected settings applied to the editable
-              text area.</em>
+              <em>Change the font to load available font settings for the selected font.</em>
             </p>
           </div>
           <div>
@@ -228,6 +227,7 @@ function Component(){
                   defaultValue={selectedFont}
                   onChange={handleChange}
                 >
+                  <option value="monospace">default</option>
                   <optgroup label="Graphite-Enabled Fonts:" />
                     {GraphiteEnabledWebFonts}
                 </select>
