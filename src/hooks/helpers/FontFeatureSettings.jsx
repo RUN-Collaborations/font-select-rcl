@@ -1,10 +1,7 @@
 import React, { useMemo } from "react";
 import DOMPurify from 'dompurify';
 
-// import { graphiteEnabledFeatures } from 'font-detect-rhl';
-import graphiteEnabledFeatures from '../../fonts/graphiteEnabledFeatures.json';
-
-// Separating this component helps keep React state management in sync for fontSettings.
+// Separating this component keeps React state management in sync for fontSettings.
 export default function FontFeatureSettings(fontFeatureSettingsProps) {
   const {
     featureFont,
@@ -15,10 +12,11 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
     radioLabelRightMargin,
     radioLabelLeftMargin,
     diffStyle,
+    featureArray,
   } = fontFeatureSettingsProps;
 
+
   const fieldsetLabelStyle = useMemo(() => ({
-    fontFamily: 'sans-serif',
     fontStyle: 'italic',
   }),[]);
 
@@ -42,7 +40,7 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
   }),[radioLabelLeftMargin, radioLabelRightMargin]);
 
   let count = -1;
-  const featureSettings = useMemo(() => graphiteEnabledFeatures.filter((name) => name.name === featureFont).map((font, fontIndex) => (
+  const featureSettings = useMemo(() => featureArray.filter((name) => name.name === featureFont).map((font, fontIndex) => (
     <div key={fontIndex}>
       {font.categories.map((categories, categoriesIndex) => {
         return (<div key={categoriesIndex}>
@@ -77,6 +75,7 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
                                 value={option.value}
                                 onClick={handleChangeFeature}
                                 checked={fontSettings[count].value.toString() === option.value}
+                                readOnly
                               />
                               {option.tip}
                               <div
@@ -96,7 +95,7 @@ export default function FontFeatureSettings(fontFeatureSettingsProps) {
         </div>)
       })}
     </div>
-  )), [count, featureFont, fieldsetLabelMarkStyle, fieldsetLabelStyle, fieldsetStyle, fontSettings, handleChangeFeature, quoteOrNot, selectedFont, setLabelDivStyle, diffStyle]);
+  )), [featureArray, featureFont, count, fieldsetLabelStyle, fieldsetLabelMarkStyle, fieldsetStyle, quoteOrNot, selectedFont, handleChangeFeature, fontSettings, setLabelDivStyle, diffStyle]);
 
   return featureSettings;
 }

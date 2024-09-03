@@ -1,24 +1,37 @@
-<!-- # useDetectFonts -->
-* Applies **useDetectFonts** to **fontList** and returns detected fonts in a dropdown list.
-* Applies **openTypeEnabledFeatures** where fonts included are locally installed.
-* Utilizes **useAssumeGraphite** to determine whether or not to also apply **useDetectFonts** to **graphiteEnabledFontList** and subsequently **graphiteEnabledFeatures** where applicable.
-* Shows font size, line height controls, and Graphite-enabled font features where applicable.
-* Text can be typed or pasted into the text area, with RTL and LTR text auto-detected by **useDetectDir**.
+<!-- # openTypeEnabledFeatures -->
+The example below uses **openTypeEnabledFeatures** to return a list of features available for the selected font.
+
+Fonts available for selection below are served from embedded web fonts, to ensure full coverage of **openTypeEnabledFeatures**. For an example using locally installed fonts, see the [opening Example](#/Example) in this style guide.
+
+*Change the font below to see available font settings.*
+
+(See also [this MUI](https://github.com/RUN-Collaborations/translatable/blob/main/src/components/ToolbarFontFeatures.jsx) implementation. It detects and utilizes both locally installed versions of these fonts and embedded fonts, and also carries the last selected setting over react routes.)
+
 ```jsx
 import React, { useState, useEffect, useMemo } from 'react';
 import { renderToString } from 'react-dom/server';
 
-import {
-  useDetectFonts,
-  useAssumeGraphite,
-  useDetectDir,
-  fontList as fontsArray,
-  openTypeEnabledFeatures,
-  graphiteEnabledFeatures,
-  graphiteEnabledFontList as graphiteEnabledFontsArray
-} from 'font-detect-rhl';
+import { useDetectDir, openTypeEnabledFeatures, useAssumeGraphite } from 'font-detect-rhl';
 
 import FontFeatureSettings from "../hooks/helpers/FontFeatureSettings";
+
+// These are included to showcase features. Locally installed versions of the same fonts can also be detected and utilized.
+import openTypeEnabledWebFontsArray from '../embeddedWebFonts/OpenTypeEnabledWebFonts.json';
+import '../embeddedWebFonts/WebFonts.css';
+
+/*
+  Key (corresponds with openTypeEnabledFeatures json):
+    * Font name without version is {featureFont} and also {font.name}
+    * Each category of font features is {category.name}
+    * Each font feature name is `{set.name}` and its default value is `{set.default}`.
+    * CSS syntax is: font-feature-settings: "name" value;
+    * In ../hooks/helpers/FontFeatureSettings.jsx:
+      + Each possible font feature name's value is `{option.value}`
+      + Last selected value is `fontSettings[count].value.toString()`.
+      + Label is `{set.label}`.
+      + Tip is `{option.tip}`.
+      + Title is `{set.title}`.
+*/
 
 const EXAMPLE =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac tortor. Diam maecenas ultricies mi eget mauris pharetra et. Velit scelerisque in dictum non consectetur a. Pharetra massa massa ultricies mi quis hendrerit. Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate. Tristique sollicitudin nibh sit amet commodo. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Turpis tincidunt id aliquet risus feugiat in ante metus dictum.";
@@ -30,6 +43,7 @@ function Component(){
   const [selectedFontSize, setSelectedFontSize] = useState('1em');
   const [selectedLineHeight, setSelectedLineHeight] = useState('normal');
   const [example, setExample] = useState(EXAMPLE);
+  const [fontSettingsCss, setFontSettingsCss] = useState("");
 
   const dir = useDetectDir({ text: example });
 
@@ -43,68 +57,18 @@ function Component(){
     // useDetectFonts uses quotes when detecting fonts. However, a generic font family (no quotes) is used as the default font in this example.
     setQuoteOrNot(event.target.value === "monospace" ? "" : "'");
   };
-  
-  const handleChangeSize = (event) => {
-    setSelectedFontSize(event.target.value);
-  };
-  
-  const handleChangeLineHeight = (event) => {
-    setSelectedLineHeight(event.target.value);
-  };
 
-  // Should Graphite-enabled fonts be detected?
+  // The embedded font naming convention used here is "name version", so we remove "version" to get just the name
+  const featureFont = selectedFont.substring(0, selectedFont.lastIndexOf(" "));
+
   const isGraphiteAssumed = useAssumeGraphite({});
 
-  // Detecting Graphite-enabled fonts
-  const detectedGEFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteEnabledFontsArray : []) });
-
-  const detectedGEFontsComponents = isGraphiteAssumed && detectedGEFonts.map((font, index) => (
-    <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
-  ));
-
-  // Heading for Graphite-enabled fonts
-  const headingGraphiteEnableFonts = isGraphiteAssumed ? <optgroup label="Graphite-Enabled Fonts:" /> : "";
-
-  // Response when no Graphite-enabled fonts are installed
-  const noneDetectedGEMsg = 'none detected';
-  const ifNoGEFonts = isGraphiteAssumed ? (detectedGEFontsComponents.length === 0 && <option value="none" disabled>{noneDetectedGEMsg}</option>) : "";
-
-  /* Annapurna SIL 2.100 uses *some ifferent* font features settings for rendering with OpenType vs. rendering with Graphite. 
-   *  In Firefox use settings from graphiteEnabledFeatures instead of openTypeEnabledFeatures for Annapurna SIL 2.100.
-   * Abyssinica SIL 2.201 and Padauk 5.001 render in both OpenType and Graphite using the *same* font features settings.
-   *  In Firefox this is using graphiteEnabledFeatures, consistent with the 'RenderingUnknown' test result of 'RenderingGraphite'. */
-  const enabledFeatures = ([...graphiteEnabledFeatures, ...openTypeEnabledFeatures.filter((name) => (name.name != 'Annapurna SIL' && name.name != 'Abyssinica SIL' && name.name != 'Padauk'))]);
-
-  const featureArray = (isGraphiteAssumed ? enabledFeatures : openTypeEnabledFeatures)
-
-  //Detecting regular fonts:
-  const adjFontsArray = fontsArray.filter((name) => 
-    (isGraphiteAssumed ? (name.name != 'Annapurna SIL' && name.name != 'Abyssinica SIL' && name.name != 'Padauk') : name.name != ''));
-  const detectedFonts = useDetectFonts({ fonts: adjFontsArray });
-
-  const detectedFontsComponents = detectedFonts.map((font, index) => (
-    <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
-  ));
-
-  // Response if no regular fonts are detected
-  const noneDetectedMsg = 'none detected';
-  const ifNoFonts = detectedFontsComponents.length === 0 ? <option value="none" disabled>{noneDetectedMsg}</option> : "";
-  
-  // Identify when we have font features for the selected font
-  const fontIfListed = useMemo(() => featureArray.filter((name) => name.name === selectedFont).map(({ name }) => name),[selectedFont]);
-	
-  const [enabledSettings, setEnabledSettings] = useState(false);
-
-  useEffect(() => {
-    if (fontIfListed.length > 0) {
-      setEnabledSettings(true);
-    } else {
-      setEnabledSettings(false);
-    }
-  }, [fontIfListed.length]);
+  /* Annapurna SIL 2.100 uses *some different* font features settings for rendering with OpenType vs. rendering with Graphite. Settings from openTypeEnabledFeatures should *not* be offered in Firefox for Annapurna SIL 2.100.
+   * Abyssinica SIL 2.201 and Padauk 5.001 render in both OpenType and Graphite using the *same* font features settings. We will exclude OpenType settings in Firefox from these two fonts, consistent with the 'RenderingUnknown' test result of 'RenderingGraphite'. */
+  const featureArray = isGraphiteAssumed ? openTypeEnabledFeatures.filter((name) => (name.name != 'Annapurna SIL' && name.name != 'Abyssinica SIL' && name.name != 'Padauk')) : openTypeEnabledFeatures;
 
   // Create an array of font setting names and default values
-  const fontSettingsJsx = useMemo(() => featureArray.filter((name) => name.name === selectedFont).map((font, fontIndex) => (
+  const fontSettingsJsx = useMemo(() => featureArray.filter((name) => name.name === featureFont).map((font, fontIndex) => (
     <div key={fontIndex}>
       {font.categories.map((categories, categoriesIndex) => {
         return (<div key={categoriesIndex}>
@@ -124,7 +88,7 @@ function Component(){
         </div>)
       })}
     </div>
-  )), [selectedFont]);
+  )), [featureFont]);
 
   // Convert the jsx return of default values to a string and remove html tags and attributes (e.g., div's)
   const fontSettingsStr = renderToString(fontSettingsJsx).replace(/(<([^>]+)>)/ig, '');
@@ -139,15 +103,29 @@ function Component(){
   // Get new defaults when the font name changes.
   useEffect (() => {
     setFontSettings(fontFeatureDefaults);
-  },[selectedFont])
+  },[featureFont])
 
   // This helps state management w.r.t fontSettings[count] in FontFeatureSettings.jsx
   if(fontFeatureDefaults.length > fontSettings.length) {
     setFontSettings(fontFeatureDefaults);
   }
+  
+  const handleChangeSize = (event) => {
+    setSelectedFontSize(event.target.value);
+  };
+  
+  const handleChangeLineHeight = (event) => {
+    setSelectedLineHeight(event.target.value);
+  };
 
+  // OpenType-enabled web fonts use a different css id from the actual font name to avoid conflict with locally installed fonts (which could be a different version). We will also remove a few fonts from dropdown selection in Firefox where Graphite is assumed.
+  const openTypeEnabledWebFonts =
+    openTypeEnabledWebFontsArray.filter((name) => (isGraphiteAssumed ? (name.name != 'Annapurna SIL 2-100' && name.name != 'Abyssinica SIL 2-201' && name.name != 'Padauk 5-001') : name.name != '')).map((font, index) => (
+      <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
+    ));
+  
   // Get all radio label text and use it to identify the most common text direction, for use in the font feature settings area.
-  const labelJsxText = useMemo(() => featureArray.filter((name) => name.name === selectedFont).map((font, fontIndex) => (
+  const labelJsxText = useMemo(() => featureArray.filter((name) => name.name === featureFont).map((font, fontIndex) => (
     <div key={fontIndex}>
       {font.categories.map((categories, categoriesIndex) => {
         return (<div key={categoriesIndex}>
@@ -168,7 +146,7 @@ function Component(){
       </div>)
       })}
     </div>
-  )), [selectedFont]);
+  )), [featureFont]);
 
   // Convert label text jsx return to string, replace quote and apostrophe html special entities, and remove html tags and attributes
   const labelStr = useMemo(() => renderToString(labelJsxText).replace(/&quot;/ig, '"').replace(/&#x27;/ig, "'").replace(/(<([^>]+)>)/ig, ''),[labelJsxText]);
@@ -192,10 +170,6 @@ function Component(){
     }
   }, [labelDir]);
 
-  // The diffStyle constant is for emphasis in Awami Nastliq labels.
-  // eslint-disable-next-line no-unused-vars
-  const diffStyle = "color: limegreen;";
-
   // Apply the selected value to the selected name
   const handleChangeFeature = useMemo(() => (event) => {
     // console.log(event.target.name + ": " + event.target.value)
@@ -207,8 +181,6 @@ function Component(){
     });
     setFontSettings(newState);
   },[fontSettings]);
-
-  const [fontSettingsCss, setFontSettingsCss] = useState("");
 
   // Css Font Feature Settings
   useEffect(() => {
@@ -222,47 +194,29 @@ function Component(){
   },[fontSettings])
 
   const fontFeatureSettingsProps = {
-    featureFont: selectedFont,
+    featureFont,
     quoteOrNot,
     selectedFont,
     fontSettings,
     handleChangeFeature,
     radioLabelRightMargin,
     radioLabelLeftMargin,
-    diffStyle,
     featureArray,
   }
 
-  const fontFeatures = 
-    enabledSettings
-    ?
-      (<div style= {{
-          fontFamily: quoteOrNot + selectedFont + quoteOrNot,
-          fontSize: selectedFontSize,
-          lineHeight: selectedLineHeight,
-          direction: labelDir,
-          textAlign: placementDir,
-          fontFeatureSettings: fontSettingsCss,
-          MozFontFeatureSettings: fontSettingsCss,
-          WebkitFontFeatureSettings: fontSettingsCss,
-          display: "table-cell",
-          width: "50%",
-          paddingLeft: "10px"
-        }}
-      >
-        <FontFeatureSettings {...fontFeatureSettingsProps} />
-      </div>)
-    :
-      <></>
+  const tagmukayNote = (<i>The <a href="https://software.sil.org/tagmukay/">Tagmukay font description</a> indicates both "Graphite and OpenType tables ...". In either case the OpenType font feature settings will still work.</i>)
+  const renderingAssumed = (isGraphiteAssumed && selectedFont === 'Tagmukay 2-000') ? tagmukayNote : 'OpenType'
 
   return (
-    <>  
-      <div style={{ display: "table-cell", }}>
+  <>
+    <div style={{ display: "table-cell", }}>
+      <div>
+        <p align="left" style={{ marginTop: "0px" }}>
+          <em>Change the font to load available font settings for the selected font.</em>
+        </p>
+      </div>
+      <div>
         <div>
-          <p align="left" style={{ marginTop: "0px" }}>
-            <em>Change dropdowns to see selected settings applied to the editable
-            text area.</em>
-          </p>
           <div style={{ display: "table-cell" }}>
             <label htmlFor="font"><b>Select Font:</b></label>
             <select
@@ -271,14 +225,9 @@ function Component(){
               defaultValue={selectedFont}
               onChange={handleChange}
             >
-              <option value="" disabled hidden>Select Font</option>
               <option value="monospace">default</option>
-              {headingGraphiteEnableFonts}
-                {ifNoGEFonts}
-                {isGraphiteAssumed && detectedGEFontsComponents}
-              <optgroup label="Detected Fonts:" />
-                {ifNoFonts}
-                {detectedFontsComponents}
+              <optgroup label="OpenType-Enabled Fonts:" />
+                {openTypeEnabledWebFonts}
             </select>
           </div>
           <div style={{ display: "table-cell" }}>
@@ -318,10 +267,16 @@ function Component(){
               <option key={5} value={'normal'}>default</option>
             </select>
           </div>
+        </div>
+        <div style={{display: "table-cell", paddingRight: "3px"}} >
           <p
             align="left"
             style={{ marginBottom: "0px" }}
           >
+            Rendering Test Results: <span style={{fontFamily: quoteOrNot + selectedFont + quoteOrNot}}><b>RenderingUnknown</b></span>
+            <br />
+            Rendering Assumed: {renderingAssumed}
+            <br />
             Direction: <b>{dir}</b>
             <br />
             <em>
@@ -331,7 +286,7 @@ function Component(){
           </p>
 
           <textarea
-            rows="5"
+            rows="10"
             name="example"
             onBlur={(event) => {
               const _example = event.target.value;
@@ -356,15 +311,16 @@ function Component(){
           <hr />
           <div
             style={{
-              display: "flex",
+              display: "table-cell",
               color: "grey"
             }}
           >
             <div
               style={{
+                display: "table-cell",
                 width: "48%",
                 float: "left",
-                textAlign: "right"
+                textAlign: "right",
               }}
             >
               <p style={{ fontSize: "0.9em", margin: "0px" }}>
@@ -372,16 +328,17 @@ function Component(){
                 <br />
                 (for copy-paste)
                 <br />
-                {enabledSettings && labelDir === 'rtl' && '...or copy label-text from ' + selectedFont + ' selected font features!'}
+                {labelDir === 'rtl' && '...or copy label-text from ' + featureFont + ' selected font features!'}
               </p>
             </div>
             <div
               style={{
+                display: "table-cell",
                 width: "50%",
                 direction: "RTL",
                 border: "1px solid #969696",
                 float: "right",
-                textAlign: "right"
+                textAlign: "right",
               }}
             >
               فِي ٱلْبَدْءِ كَانَ ٱلْكَلِمَةُ، وَٱلْكَلِمَةُ كَانَ عِنْدَ ٱللهِ،
@@ -393,9 +350,25 @@ function Component(){
           </div>
         </div>
       </div>
-      {fontFeatures}
-    </>
-  );
+    </div>
+    <div
+      style= {{
+        fontFamily: quoteOrNot + selectedFont + quoteOrNot,
+        fontSize: selectedFontSize,
+        lineHeight: selectedLineHeight,
+        direction: labelDir,
+        textAlign: placementDir,
+        fontFeatureSettings: fontSettingsCss,
+        MozFontFeatureSettings: fontSettingsCss,
+        WebkitFontFeatureSettings: fontSettingsCss,
+        display: "table-cell",
+        width: "50%",
+        paddingLeft: "10px"
+      }}
+    >
+      <FontFeatureSettings {...fontFeatureSettingsProps} />
+    </div>
+  </>);
 };
 
 <Component />

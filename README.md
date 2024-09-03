@@ -16,7 +16,8 @@ See also: [How To Tell If A Font Is Copyrighted & Why You Should Always Check](h
 <br />2.1 [Font Test String](#2-1-font-test-string)
 3. [Font Features](#3-font-features)
 <br />3.1 [Graphite-enabled Smart Font Features](#3-1-graphite-enabled-smart-font-features)
-<br />3.2 [Open-type Font Features](#3-2-open-type-font-features)
+<br />3.2 [Both Graphite-Enabled and OpenType Font Features](#3-2-both-graphite-enabled-and-opentype-font-features)
+<br />3.3 [OpenType Font Features](#3-3-opentype-font-features)
 4. [Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text](#4-handling-rtl-and-ltr-text)
 5. [Getting Started](#5-getting-started)
 <br />3.1 [Web Fonts](#5-1-web-fonts)
@@ -64,11 +65,31 @@ Graphite-enabled font features have been compiled into json from the following s
 
 | Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
 | :---  | :---: | :---: | :---  |
+| [Awami Nastaliq](https://software.sil.org/awami/features/) | 3.200 | 10 | wide variety of languages of South Asia, including but not limited to Urdu |
+
+<span id="3-2-both-graphite-enabled-and-opentype-font-features">&nbsp;</span>
+### Both Graphite-Enabled and OpenType Font Features <sub><sup> ... [↩](#toc)</sup></sub>
+The following fonts are both Graphite enabled and OpenType enabled. They are included in both [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures) and  [graphiteEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfeatures) as the 'RenderingUnknown' test confirms both RenderingOpenType and RenderingGraphite, depending on the environment. The font features settings are the same in both arrays.
+
+| Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
+| :---  | :---: | :---: | :---  |
 | [Abyssinica SIL](https://software.sil.org/abyssinica/features/) | 2.201 | 29 | many of the languages of Ethiopia and Eritrea |
+| [Padauk](https://software.sil.org/downloads/r/padauk/Padauk-features.pdf) | 5.001 | 15 | writing systems that use the Myanmar script. |
+
+The following font currently utilize *some different* font feature settings when rendered in Graphite vs. when rendered in OpenType enabled. It is included in both [graphiteEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfeatures) and [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures) with differing font feature settings.
+
+| Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
+| :---  | :---: | :---: | :---  |
+| [Annapurna SIL](https://software.sil.org/downloads/r/annapurna/AnnapurnaSIL-features.pdf) | 2.100 | 18 | writing systems that use the Devanagari script |
+
+
+<span id="3-3-opentype-font-features">&nbsp;</span>
+### OpenType Font Features <sub><sup>[ [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures) ] ... [↩](#toc)</sup></sub>
+
+| Links to Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
+| :---  | :---: | :---: | :---  |
 | [Alkalami](https://software.sil.org/alkalami/features/) | 3.000 | 7 | the Kano region of Nigeria and in Niger |
 | [Andika](https://software.sil.org/andika/features/) | 6.200 | 53 | comprehensive support for thousands of languages around the world written with Latin and Cyrillic letters and their many variants, including a wide range of additional characters and symbols useful for linguistic and literacy work. |
-| [Annapurna SIL](https://software.sil.org/downloads/r/annapurna/AnnapurnaSIL-features.pdf) | 2.100 | 18 | writing systems that use the Devanagari script |
-| [Awami Nastaliq](https://software.sil.org/awami/features/) | 3.200 | 10 | wide variety of languages of South Asia, including but not limited to Urdu |
 | [Charis SIL](https://software.sil.org/charis/features/) | 6.200 | 41 | wide range of languages that use the Latin and Cyrillic scripts. |
 | [Doulos SIL](https://software.sil.org/doulos/features/) | 6.200 | 40 | wide range of languages that use the Latin and Cyrillic scripts |
 | [Gentium Plus](https://software.sil.org/gentium/features/) | 6.200 | 45 | Latin, Cyrillic, and Greek scripts |
@@ -77,12 +98,9 @@ Graphite-enabled font features have been compiled into json from the following s
 | [Lateef](https://software.sil.org/lateef/features/) | 4.200 | 17 | Sindhi and other languages of southern Asia |
 | [Ruwudu](https://software.sil.org/ruwudu/features/) | 3.000 | 7 | style of writing is used by the Manga people in Niger, West Africa |
 | [Scheherazade New](https://software.sil.org/scheherazade/features/) | 4.000 | 18 | a “simplified” rendering of Arabic script, using basic - connecting glyphs but not including a wide variety of additional ligatures or contextual alternates (only the required lam-alef ligatures) |
-| [Padauk](https://software.sil.org/downloads/r/padauk/Padauk-features.pdf) | 5.001 | 15 | writing systems that use the Myanmar script. |
-| [Tagmukay](https://software.sil.org/tagmukay/smart-font-features/) | 2.000 | 2 | a Shifinagh script font with support for the Tawallammat Tamajaq language |
+| [Tagmukay](https://software.sil.org/tagmukay/smart-font-features/)<sup>(*)</sup> | 2.000 | 2 | a Shifinagh script font with support for the Tawallammat Tamajaq language |
 
-<span id="3-2-open-type-font-features">&nbsp;</span>
-### Open-type Font Features <sub><sup> ... [↩](#toc)</sup></sub>
-- Addition of some Open Type font variations are under consideration.
+ (*) The [Tagumukay font desription](https://software.sil.org/tagmukay/) indicates both "Graphite and OpenType tables..." The 'RenderingUnknown' test leads to 'RenderingUnknown' with version 2.000. The font features settings are presently only included in [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures). However, it is rendering in Graphite in Firefox, the OpenType font features settings will still work.
 
 <span id="4-handling-rtl-and-ltr-text">&nbsp;</span>
 ## Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[&nbsp;[useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir)&nbsp;] ... [↩](#toc)</sup></sub>
