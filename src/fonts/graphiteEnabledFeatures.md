@@ -1,9 +1,7 @@
 <!-- # graphiteEnabledFeatures -->
-The graphiteEnabledFeatures array contains the smart font features settings for [these 15](#3-1-graphite-enabled-smart-font-features) [Graphite](https://graphite.sil.org/)-enabled *[font](https://software.sil.org/fonts/) families<sup>[[1]](#f1)</sup>*.
+When **useAssumeGraphite** is true (use **Firefox**), the example below uses **graphiteEnabledFeatures** to return a list of features available for the selected font.
 
-When **useAssumeGraphite** is true (use **Firefox**), the example below uses **graphiteEnabledFontFeatures** to return a list of features available for the selected font.
-
-Fonts available for selection below are served from embedded web fonts, to ensure full coverage of **graphiteEnabledFontFeatures**. For an example using locally installed fonts, see the [opening Example](#/Example) in this style guide.
+Fonts available for selection below are served from embedded web fonts, to ensure full coverage of **graphiteEnabledFeatures**. For an example using locally installed fonts, see the [opening Example](#/Example) in this style guide.
 
 *In Firefox, change the font below to see available font settings.*
 
@@ -19,16 +17,17 @@ import FontFeatureSettings from "../hooks/helpers/FontFeatureSettings";
 
 // These are included to showcase features. Locally installed versions of the same fonts can also be detected and utilized.
 import GraphiteEnabledWebFontsArray from '../embeddedWebFonts/GraphiteEnabledWebFonts.json';
-import '../embeddedWebFonts/GraphiteEnabledWebFonts.css';
+import '../embeddedWebFonts/WebFonts.css';
 
 /*
   Key (corresponds with graphiteEnabledFeatures json):
-    * Font name without version is featureFont and also {font.name}
+    * Font name without version is {featureFont} and also {font.name}
     * Each category of font features is {category.name}
-    * Each font feature name is `{set.name}` and its default value is `{set.default}`, for the CSS syntax of: font-feature-settings: "name" value;
+    * Each font feature name is `{set.name}` and its default value is `{set.default}`.
+    * CSS syntax is: font-feature-settings: "name" value;
     * In ../hooks/helpers/FontFeatureSettings.jsx:
       + Each possible font feature name's value is `{option.value}`
-        ~ Note the Awami Nastaliq font includes <span> tags for label differences. See const diffStyle below.
+        ~ The Awami Nastaliq font includes <span> tags for label differences. See {diffStyle} below.
       + Last selected value is `fontSettings[count].value.toString()`.
       + Label is `{set.label}`.
       + Tip is `{option.tip}`.
@@ -60,11 +59,13 @@ function Component(){
     setQuoteOrNot(event.target.value === "monospace" ? "" : "'");
   };
 
-  // The embedded font naming convention used here is "name version", so we remove "version" with pop to get just the name
+  // The embedded font naming convention used here is "name version", so we remove "version" to get just the name
   const featureFont = selectedFont.substring(0, selectedFont.lastIndexOf(" "));
 
-  // This creates an array of font settings names and default values
-  const fontSettingsJsx = useMemo(() => graphiteEnabledFeatures.filter((name) => name.name === featureFont).map((font, fontIndex) => (
+  const featureArray = graphiteEnabledFeatures;
+
+  // Create an array of font setting names and default values
+  const fontSettingsJsx = useMemo(() => featureArray.filter((name) => name.name === featureFont).map((font, fontIndex) => (
     <div key={fontIndex}>
       {font.categories.map((categories, categoriesIndex) => {
         return (<div key={categoriesIndex}>
@@ -101,7 +102,7 @@ function Component(){
     setFontSettings(fontFeatureDefaults);
   },[featureFont])
 
-  // The additional set is needed for fontSettings[count] in FontFeatureSettings.jsx
+  // This helps state management w.r.t fontSettings[count] in FontFeatureSettings.jsx
   if(fontFeatureDefaults.length > fontSettings.length) {
     setFontSettings(fontFeatureDefaults);
   }
@@ -114,18 +115,16 @@ function Component(){
     setSelectedLineHeight(event.target.value);
   };
 
-  const useAssumeGraphiteProps = { testClient: 'firefox', alwaysUse: false };
+  const isGraphiteAssumed = useAssumeGraphite({});
 
-  const isGraphiteAssumed = useAssumeGraphite( useAssumeGraphiteProps );
-
-  // Graphite-enabled web fonts with a different css id from the actual font name to avoid conflict with locally installed fonts (which could be a different version).
+  // Graphite-enabled web fonts use a different css id from the actual font name to avoid conflict with locally installed fonts (which could be a different version).
   const GraphiteEnabledWebFonts =
     GraphiteEnabledWebFontsArray.map((font, index) => (
       <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
     ));
   
-  // This gets all radio label text and uses it to identify the most common text direction, for use in the font feature settings area.
-  const labelJsxText = useMemo(() => graphiteEnabledFeatures.filter((name) => name.name === featureFont).map((font, fontIndex) => (
+  // Get all radio label text and use it to identify the most common text direction, for use in the font feature settings area.
+  const labelJsxText = useMemo(() => featureArray.filter((name) => name.name === featureFont).map((font, fontIndex) => (
     <div key={fontIndex}>
       {font.categories.map((categories, categoriesIndex) => {
         return (<div key={categoriesIndex}>
@@ -176,7 +175,7 @@ function Component(){
 
   // Apply the selected value to the selected name
   const handleChangeFeature = useMemo(() => (event) => {
-    console.log(event.target.name + ": " + event.target.value)
+    // console.log(event.target.name + ": " + event.target.value)
     const newState = fontSettings.map(obj => {
       if (obj.name === event.target.name) {
         return {...obj, value: +event.target.value};
@@ -206,6 +205,7 @@ function Component(){
     radioLabelRightMargin,
     radioLabelLeftMargin,
     diffStyle,
+    featureArray,
   }
 
   const renderInFirefox = isGraphiteAssumed
@@ -237,7 +237,6 @@ function Component(){
                 <select
                   name="font-size"
                   id="font-size"
-                  default='"Andika 6-200"'
                   value={selectedFontSize}
                   onChange={handleChangeSize}
                 >            
@@ -276,6 +275,10 @@ function Component(){
                 align="left"
                 style={{ marginBottom: "0px" }}
               >
+                Rendering Test Results: <span style={{fontFamily: quoteOrNot + selectedFont + quoteOrNot}}><b>RenderingUnknown</b></span>
+                <br />
+                Rendering Assumed: Graphite
+                <br />
                 Direction: <b>{dir}</b>
                 <br />
                 <em>
