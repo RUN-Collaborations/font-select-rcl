@@ -247,7 +247,7 @@ function Component(){
                   <option key={4} value={'1.5em'}>150%</option>
                   <option key={5} value={'1.75em'}>175%</option>
                   <option key={6} value={'2em'}>200%</option>
-                  <option key={7} value={'2.25em'}>150%</option>
+                  <option key={7} value={'2.25em'}>225%</option>
                   <option key={8} value={'2.5em'}>250%</option>
                   <option key={9} value={'2.75em'}>275%</option>
                   <option key={10} value={'3em'}>300%</option>
