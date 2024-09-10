@@ -1,8 +1,6 @@
-.DS_Store
 .env
 npm-debug.log
 node_modules/
-Thumbs.db
 .idea/
 .vscode/
 *.sublime-project
@@ -12,3 +10,80 @@ Thumbs.db
 styleguide/
 package-lock.json
 yarn.lock
+
+# On switch to Zero-Installs, remove `.pnp.*` and add `!.yarn/cache`
+# Not using Zero-Installs
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# MacOS general
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# MacOS icon must end with two \r
+Icon
+
+# MacOS thumbnails
+._*
+
+# MacOS files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# MacOS directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows Dump file
+*.stackdump
+
+# Windows Folder config file
+[Dd]esktop.ini
+
+# Windows Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Linux
+*~
+
+# Linux temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# Linux KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# Linux .nfs files are created when an open file is removed but is still being accessed
+.nfs*

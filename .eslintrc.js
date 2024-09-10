@@ -3,7 +3,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    '@unfoldingword',
     'prettier',
   ],
   'parserOptions': {
@@ -19,6 +18,7 @@ module.exports = {
     'react/jsx-tag-spacing': ['error'],
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'indent': ['error', 2, { 'ignoredNodes': ['TemplateLiteral'] }],
+    "no-control-regex": 0,
   },
   'env': {
     'browser': true,
