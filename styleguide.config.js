@@ -52,4 +52,14 @@ module.exports = {
     url: repository.url,
     text: 'View on GitHub',
   },
+  dangerouslyUpdateWebpackConfig(webpackConfig) {
+    webpackConfig.resolve.alias = {
+      ...webpackConfig.resolve.alias,
+      'requireInRuntime': path.resolve(__dirname, 'node_modules/react-styleguidist/lib/loaders/utils/client/requireInRuntime.js'),
+    };
+
+    
+    return webpackConfig;
+
+  },
 };
