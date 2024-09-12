@@ -56,9 +56,10 @@ module.exports = {
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
       'requireInRuntime': path.resolve(__dirname, 'node_modules/react-styleguidist/lib/loaders/utils/client/requireInRuntime.js'),
+      'requireInRuntime.d.ts': path.resolve(__dirname, 'node_modules/react-styleguidist/lib/loaders/utils/client/requireInRuntime.d.ts'),
     };
 
-    
+
     return webpackConfig;
 
   },
