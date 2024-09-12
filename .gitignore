@@ -9,7 +9,6 @@ node_modules/
 .eslintcache
 styleguide/
 package-lock.json
-yarn.lock
 
 # On switch to Zero-Installs, remove `.pnp.*` and add `!.yarn/cache`
 # Not using Zero-Installs
