@@ -1,1 +1,2 @@
-*.nvmrc		text eol=lf
+* text=auto
+*.nvmrc text eol=lf
