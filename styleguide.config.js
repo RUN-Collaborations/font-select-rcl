@@ -55,7 +55,8 @@ module.exports = {
   dangerouslyUpdateWebpackConfig(webpackConfig) {
     webpackConfig.resolve.alias = {
       ...webpackConfig.resolve.alias,
-      'react-styleguidist/lib/loaders/utils/client/requireInRuntime': path.resolve(__dirname, 'src/requireInRuntime'),
+      'react-styleguidist/lib/loaders/utils/client/requireInRuntime': path.resolve(__dirname, 'src/requireInRuntime.js'),
+      'react-styleguidist/lib/loaders/utils/client/requireInRuntime.d.ts': path.resolve(__dirname, 'src/requireInRuntime.d.ts'),
     };
 
 
