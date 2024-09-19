@@ -19,7 +19,7 @@
     "start": "styleguidist server",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "build": "babel src --out-dir build --ignore ./src/hooks/**/*.jsx && shx cp ./src/fonts/*.json ./build/fonts",
+    "build": "babel src --out-dir build --ignore ./src/hooks/**/*.jsx && shx cp ./src/fonts/*.json ./build/fonts && shx cp ./src/requireInRuntime.* ./build/repo/node_modules/react-styleguidist/lib",
     "prepublishOnly": "rimraf ./build && yarn build"
   },
   "eslintConfig": {
