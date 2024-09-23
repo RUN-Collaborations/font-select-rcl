@@ -94,7 +94,7 @@ The following font currently utilize *some different* font feature settings when
 | [Doulos SIL](https://software.sil.org/doulos/features/) | 6.200 | 40 | wide range of languages that use the Latin and Cyrillic scripts |
 | [Gentium Plus](https://software.sil.org/gentium/features/) | 6.200 | 45 | Latin, Cyrillic, and Greek scripts |
 | [Harmattan](https://software.sil.org/harmattan/features/) | 4.000 | 19 | languages using the Arabic script in West Africa. |
-| [Kanchenjunga](https://software.sil.org/kanchenjunga/features/) | 1.000 | 4 | Kirat Rai script of South Asia. |
+| [Kanchenjunga](https://software.sil.org/kanchenjunga/features/) | 2.001 | 4 | Kirat Rai script of South Asia. |
 | [Lateef](https://software.sil.org/lateef/features/) | 4.200 | 17 | Sindhi and other languages of southern Asia |
 | [Ruwudu](https://software.sil.org/ruwudu/features/) | 3.000 | 7 | style of writing is used by the Manga people in Niger, West Africa |
 | [Scheherazade New](https://software.sil.org/scheherazade/features/) | 4.000 | 18 | a “simplified” rendering of Arabic script, using basic - connecting glyphs but not including a wide variety of additional ligatures or contextual alternates (only the required lam-alef ligatures) |
@@ -106,10 +106,11 @@ The following font currently utilize *some different* font feature settings when
 ## Handling Right-to-Left (RTL) and Left-to-Right (LTR) Text <sub><sup>[&nbsp;[useDetectDir](https://font-detect-rhl.netlify.app/#/Example?id=usedetectdir)&nbsp;] ... [↩](#toc)</sup></sub>
 The useDetectDir hook enables simple autodetection of RTL/LTR text through examining the range of unicode values of characters of the text. Code utilized in this hook originated from [Christopher Klapp](https://github.com/klappy)'s [detectRTL.js](https://github.com/unfoldingWord-box3/simple-text-editor-rcl/blob/9e34aa5618cf1b06409b2c169ba5bd86229e6d45/src/helpers/detectRTL.js).
 
-While a custom RTL scope can be utilized, the default RTL scope is comprehensive for all RTL unicode ranges in v15.1 standards, as follows:
+While a custom RTL scope can be utilized, the default RTL scope is comprehensive for all RTL unicode ranges in v16.0 standards, as follows:
 * Contemporary Scripts
   * Adlam (U+1E900 - U+1E95F)
-  * Arabic, Arabic Supplement, Arabic Presentation Forms-A, Arabic Presentation Forms-B (U+0600 - U+06FF, U+0750 - U+077F, U+FB50 - U+FDFD, U+FE70 - U+FEFF)
+  * Arabic, Arabic Supplement, Arabic Presentation Forms-A, Arabic Presentation Forms-B, Arabic Extended-A, Arabic Extended-B, Arabic Extended-C (U+0600 - U+06FF, U+0750 - U+077F, U+FB50 - U+FDFF, U+FE70 - U+FEFF, U+08A0 – U+08FF, U+0870 – U+089F, U+10EC0 – U+10EFF)
+  * Garay (U+10D40 - U+10D8F)
   * Hanifi Rohingya (U+10D00 - U+10D3F)
   * Hebrew, Alphabetic Presentation Forms (U+0590 - U+05FF, U+FB00 - U+FB4F)
   * Mandaic (U+0840 - U+085F)
@@ -125,7 +126,7 @@ While a custom RTL scope can be utilized, the default RTL scope is comprehensive
   * Imperial Aramaic (U+10840 - U+1085F)
   * Avestan (U+10B00 - U+10B3F)
   * Cypriot Syllabary (U+10800 - U+1083F)
-  * Egyptian Hieroglyphs, Egyptian Hieroglyph Format Controls (U+13000 - U+1342F, U+13430 - U+1345F)
+  * Egyptian Hieroglyphs, Egyptian Hieroglyph Format Controls, Egyptian Hieroglyphs Extended-A (U+13000 - U+1342F, U+13430 - U+1345F, U+13460 – U+143FF)
   * Ethiopic, Ethiopic Supplement, Ethiopic Extended, Ethiopic Extended-A, Ethiopic Extended-B (U+1200 - U+137F, U+1380 - U+139F, U+2D80 - U+2DDF, U+AB00 - U+AB2F, U+1E7E0 - U+1E7FF)
   * Hatran (U+108E0 - U+108FF)
   * Old Hungarian (U+10C80 - U+10CFF)
@@ -137,9 +138,8 @@ While a custom RTL scope can be utilized, the default RTL scope is comprehensive
   * Old Persian (U+103A0 - U+103DF)
   * Phoenician (U+10900 - U+1091F)
   * Sogdian, Old Sogdian (U+10F30 - U+10F6F , U+10F00 - U+10F2F)
+  * Todhri (U+105C0 - U+105FF)
   * Old Turkic (U+10C00 - U+10C4F)
-
-Note: Todhri and Garay are two additional RTL scripts [projected](https://en.wikipedia.org/w/index.php?title=Unicode&oldid=1197435625#Projected_versions) to be added in Unicode v16.0 Standards.
 
 A custom neutral character scope can also be utilized to specify text that is not meant to be considered in the RTL or LTR direction test. The default neutral scope includes:
 * line breaks -- /\r?\n|\r/g (also matches unix \n and old Mac's single \r)
