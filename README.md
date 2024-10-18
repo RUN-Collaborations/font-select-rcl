@@ -65,7 +65,7 @@ Graphite-enabled font features have been compiled into json from the following s
 
 | Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
 | :---  | :---: | :---: | :---  |
-| [Awami Nastaliq](https://software.sil.org/awami/features/) | 3.200 | 10 | wide variety of languages of South Asia, including but not limited to Urdu |
+| [Awami Nastaliq](https://software.sil.org/awami/features/) | 3.300 | 10 | wide variety of languages of South Asia, including but not limited to Urdu |
 
 <span id="3-2-both-graphite-enabled-and-opentype-font-features">&nbsp;</span>
 ### Both Graphite-Enabled and OpenType Font Features <sub><sup> ... [↩](#toc)</sup></sub>
