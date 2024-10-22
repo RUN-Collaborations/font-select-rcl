@@ -93,11 +93,11 @@ The following font currently utilize *some different* font feature settings when
 | [Charis SIL](https://software.sil.org/charis/features/) | 6.200 | 41 | wide range of languages that use the Latin and Cyrillic scripts. |
 | [Doulos SIL](https://software.sil.org/doulos/features/) | 6.200 | 40 | wide range of languages that use the Latin and Cyrillic scripts |
 | [Gentium Plus](https://software.sil.org/gentium/features/) | 6.200 | 45 | Latin, Cyrillic, and Greek scripts |
-| [Harmattan](https://software.sil.org/harmattan/features/) | 4.000 | 19 | languages using the Arabic script in West Africa. |
+| [Harmattan](https://software.sil.org/harmattan/features/) | 4.300 | 19 | languages using the Arabic script in West Africa. |
 | [Kanchenjunga](https://software.sil.org/kanchenjunga/features/) | 2.001 | 4 | Kirat Rai script of South Asia. |
-| [Lateef](https://software.sil.org/lateef/features/) | 4.200 | 17 | Sindhi and other languages of southern Asia |
+| [Lateef](https://software.sil.org/lateef/features/) | 4.300 | 17 | Sindhi and other languages of southern Asia |
 | [Ruwudu](https://software.sil.org/ruwudu/features/) | 3.000 | 7 | style of writing is used by the Manga people in Niger, West Africa |
-| [Scheherazade New](https://software.sil.org/scheherazade/features/) | 4.000 | 18 | a “simplified” rendering of Arabic script, using basic - connecting glyphs but not including a wide variety of additional ligatures or contextual alternates (only the required lam-alef ligatures) |
+| [Scheherazade New](https://software.sil.org/scheherazade/features/) | 4.300 | 18 | a “simplified” rendering of Arabic script, using basic - connecting glyphs but not including a wide variety of additional ligatures or contextual alternates (only the required lam-alef ligatures) |
 | [Tagmukay](https://software.sil.org/tagmukay/smart-font-features/)<sup>(*)</sup> | 2.000 | 2 | a Shifinagh script font with support for the Tawallammat Tamajaq language |
 
  (*) The [Tagumukay font desription](https://software.sil.org/tagmukay/) indicates both "Graphite and OpenType tables..." The 'RenderingUnknown' test leads to 'RenderingUnknown' with version 2.000. The font features settings are presently only included in [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures). However, it is rendering in Graphite in Firefox, the OpenType font features settings will still work.
