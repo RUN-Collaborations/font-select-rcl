@@ -5384,6 +5384,10 @@
                       {
                         "tip": "Alternate",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Simple",
+                        "value": "2"
                       }
                     ]
                   }
@@ -5426,6 +5430,10 @@
                       {
                         "tip": "Sindhi-style",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Long-tail",
+                        "value": "2"
                       }
                     ]
                   }
@@ -5434,7 +5442,7 @@
               {
                 "set": [
                   {
-                    "title": "Heh",
+                    "title": "Heh (Not recommended; Heh Doachashmee preferred.)",
                     "name": "cv48",
                     "id": "heh-label",
                     "default": "0",
@@ -5476,6 +5484,10 @@
                       {
                         "tip": "Knotted",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Bowtie",
+                        "value": "2"
                       },
                       {
                         "tip": "Kurdish-style",
@@ -5522,6 +5534,10 @@
                       {
                         "tip": "Right hamza",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Mid hamza",
+                        "value": "2"
                       }
                     ]
                   }
@@ -5593,6 +5609,10 @@
                       {
                         "tip": "Short",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Crossed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -5614,6 +5634,10 @@
                       {
                         "tip": "Six-nine",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Two-nine",
+                        "value": "2"
                       }
                     ]
                   }
@@ -5689,6 +5713,10 @@
                       {
                         "tip": "Open left",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Closed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -5701,7 +5729,7 @@
                     "name": "cv80",
                     "id": "end-of-ayah-label",
                     "default": "0",
-                    "label": "‭۝123‬ ‭۝١٢٣‬",
+                    "label": "‭࣢٣٤٥‬ ‭۝123‬ ‭۝١٢٣‬",
                     "options": [
                       {
                         "tip": "Standard",
@@ -5733,6 +5761,14 @@
                         "value": "0"
                       },
                       {
+                        "tip": "Sindhi-style",
+                        "value": "1"
+                      },
+                      {
+                        "tip": "Urdu-style",
+                        "value": "2"
+                      },
+                      {
                         "tip": "Kurdish-style",
                         "value": "3"
                       },
@@ -5741,12 +5777,8 @@
                         "value": "4"
                       },
                       {
-                        "tip": "Sindhi-style",
-                        "value": "1"
-                      },
-                      {
-                        "tip": "Urdu-style",
-                        "value": "2"
+                        "tip": "Default",
+                        "value": "5"
                       }
                     ]
                   }
@@ -5766,7 +5798,7 @@
                         "value": "0"
                       },
                       {
-                        "tip": "Downward",
+                        "tip": "Downward (Not recommended; Use ⹁ U+2E41 and ⁏ U+204F instead.)",
                         "value": "1"
                       }
                     ]
@@ -5924,6 +5956,10 @@
                       {
                         "tip": "Sindhi-style",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Long-tail",
+                        "value": "2"
                       }
                     ]
                   }
@@ -5932,7 +5968,7 @@
               {
                 "set": [
                   {
-                    "title": "Heh",
+                    "title": "Heh (Not recommended; Heh Doachashmee preferred.)",
                     "name": "cv48",
                     "id": "heh-label",
                     "default": "0",
@@ -5974,6 +6010,10 @@
                       {
                         "tip": "Knotted",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Bowtie",
+                        "value": "2"
                       },
                       {
                         "tip": "Kurdish-style",
@@ -6020,6 +6060,10 @@
                       {
                         "tip": "Right hamza",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Mid hamza",
+                        "value": "2"
                       }
                     ]
                   }
@@ -6070,6 +6114,10 @@
                       {
                         "tip": "Short",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Crossed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -6091,6 +6139,10 @@
                       {
                         "tip": "Six-nine",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Two-nine",
+                        "value": "2"
                       }
                     ]
                   }
@@ -6166,6 +6218,10 @@
                       {
                         "tip": "Open left",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Closed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -6178,7 +6234,7 @@
                     "name": "cv80",
                     "id": "end-of-ayah-label",
                     "default": "0 ",
-                    "label": "‭۝123‬ ‭۝١٢٣‬",
+                    "label": "‭࣢٣٤٥‬ ‭۝123‬ ‭۝١٢٣‬",
                     "options": [
                       {
                         "tip": "Standard",
@@ -6210,6 +6266,14 @@
                         "value": "0"
                       },
                       {
+                        "tip": "Sindhi-style",
+                        "value": "1"
+                      },
+                      {
+                        "tip": "Urdu-style",
+                        "value": "2"
+                      },
+                      {
                         "tip": "Kurdish-style",
                         "value": "3"
                       },
@@ -6218,17 +6282,55 @@
                         "value": "4"
                       },
                       {
-                        "tip": "Sindhi-style",
-                        "value": "1"
-                      },
-                      {
-                        "tip": "Urdu-style",
-                        "value": "2"
+                        "tip": "Default",
+                        "value": "5"
                       }
                     ]
                   }
                 ]
-              }
+              },
+              {
+                "set": [
+                  {
+                    "title": "Comma",
+                    "name": "cv84",
+                    "id": "comma-label",
+                    "default": "0",
+                    "label": "، ؛",
+                    "options": [
+                      {
+                        "tip": "Upward",
+                        "value": "0"
+                      },
+                      {
+                        "tip": "Downward (Not recommended; Use ⹁ U+2E41 and ⁏ U+204F instead.)",
+                        "value": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "set": [
+                  {
+                    "title": "Decimal separator",
+                    "name": "cv85",
+                    "id": "decimal-separator-label",
+                    "default": "0",
+                    "label": "٫",
+                    "options": [
+                      {
+                        "tip": "Small reh",
+                        "value": "0"
+                      },
+                      {
+                        "tip": "Slash",
+                        "value": "1"
+                      }
+                    ]
+                  }
+                ]
+              }        
             ]
           }
         ]
@@ -6283,48 +6385,6 @@
                       },
                       {
                         "tip": "Yes",
-                        "value": "1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "set": [
-                  {
-                    "title": "Comma",
-                    "name": "cv84",
-                    "id": "comma-label",
-                    "default": "0",
-                    "label": "، ؛",
-                    "options": [
-                      {
-                        "tip": "Upward",
-                        "value": "0"
-                      },
-                      {
-                        "tip": "Downward",
-                        "value": "1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "set": [
-                  {
-                    "title": "Decimal separator",
-                    "name": "cv85",
-                    "id": "decimal-separator-label",
-                    "default": "0",
-                    "label": "٫",
-                    "options": [
-                      {
-                        "tip": "Small reh",
-                        "value": "0"
-                      },
-                      {
-                        "tip": "Slash",
                         "value": "1"
                       }
                     ]
@@ -6858,7 +6918,7 @@
                     "name": "cv12",
                     "id": "dal-label",
                     "default": "0",
-                    "label": "د ذ ڈ ډ ڊ ڋ ڌ ڍ ڎ ڏ ڐ ۮ ݙ ݚ ࢮ",
+                    "label": "د ذ ڈ ډ ڊ ڋ ڌ ڍ ڎ ڏ ڐ ۮ ݙ ݚ ࢮ 𐻂",
                     "options": [
                       {
                         "tip": "Standard",
@@ -6867,6 +6927,10 @@
                       {
                         "tip": "Alternate",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Simple",
+                        "value": "2"
                       }
                     ]
                   }
@@ -6888,6 +6952,10 @@
                       {
                         "tip": "Sindhi-style",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Long-tail",
+                        "value": "2"
                       }
                     ]
                   }
@@ -6896,7 +6964,7 @@
               {
                 "set": [
                   {
-                    "title": "Heh",
+                    "title": "Heh (Not recommended; Heh Doachashmee preferred.)",
                     "name": "cv48",
                     "id": "heh-label",
                     "default": "0",
@@ -6938,6 +7006,10 @@
                       {
                         "tip": "Knotted",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Bowtie",
+                        "value": "2"
                       },
                       {
                         "tip": "Kurdish-style",
@@ -6984,6 +7056,10 @@
                       {
                         "tip": "Right hamza",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Mid hamza",
+                        "value": "2"
                       }
                     ]
                   }
@@ -7055,6 +7131,10 @@
                       {
                         "tip": "Short",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Crossed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -7076,6 +7156,10 @@
                       {
                         "tip": "Six-nine",
                         "value": "1"
+                      },
+                      {
+                        "tip": "Two-nine",
+                        "value": "2"
                       }
                     ]
                   }
@@ -7151,6 +7235,10 @@
                       {
                         "tip": "Open left",
                         "value": "2"
+                      },
+                      {
+                        "tip": "Closed",
+                        "value": "3"
                       }
                     ]
                   }
@@ -7163,7 +7251,7 @@
                     "name": "cv80",
                     "id": "end-of-ayah-label",
                     "default": "0",
-                    "label": "‭۝123‬ ‭۝١٢٣‬",
+                    "label": "‭࣢٣٤٥‬ ‭۝123‬ ‭۝١٢٣‬",
                     "options": [
                       {
                         "tip": "Standard",
@@ -7197,11 +7285,7 @@
                       {
                         "tip": "Simplified",
                         "value": "1"
-                      },
-                      {
-                        "tip": "",
-                        "value": ""
-                      }
+                      } 
                     ]
                   }
                 ]
@@ -7220,6 +7304,14 @@
                         "value": "0"
                       },
                       {
+                        "tip": "Sindhi-style",
+                        "value": "1"
+                      },
+                      {
+                        "tip": "Urdu-style",
+                        "value": "2"
+                      },
+                      {
                         "tip": "Kurdish-style",
                         "value": "3"
                       },
@@ -7228,12 +7320,8 @@
                         "value": "4"
                       },
                       {
-                        "tip": "Sindhi-style",
-                        "value": "1"
-                      },
-                      {
-                        "tip": "Urdu-style",
-                        "value": "2"
+                        "tip": "Default",
+                        "value": "5"
                       }
                     ]
                   }
@@ -7253,12 +7341,8 @@
                         "value": "0"
                       },
                       {
-                        "tip": "Downward",
+                        "tip": "Downward (Not recommended; Use ⹁ U+2E41 and ⁏ U+204F instead.)",
                         "value": "1"
-                      },
-                      {
-                        "tip": "Decimal separator",
-                        "value": ""
                       }
                     ]
                   }
