@@ -120,7 +120,7 @@ function Component(){
 
   // OpenType-enabled web fonts use a different css id from the actual font name to avoid conflict with locally installed fonts (which could be a different version). We will also remove a few fonts from dropdown selection in Firefox where Graphite is assumed.
   const openTypeEnabledWebFonts =
-    openTypeEnabledWebFontsArray.filter((name) => (isGraphiteAssumed ? (name.name != 'Annapurna SIL 2-100' && name.name != 'Abyssinica SIL 2-201' && name.name != 'Padauk 5-001') : name.name != '')).map((font, index) => (
+    openTypeEnabledWebFontsArray.filter((name) => (isGraphiteAssumed ? (name.name != 'Annapurna SIL 2-100' && name.name != 'Abyssinica SIL 2-201' && name.name != 'Padauk 5-100') : name.name != '')).map((font, index) => (
       <option key={index} value={font.name} style={{ fontFamily: font.name }}>{font.name}</option>
     ));
   
