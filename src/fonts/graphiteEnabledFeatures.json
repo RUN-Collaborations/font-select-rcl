@@ -1582,7 +1582,7 @@
                 "set": [
                   {
                     "title": "Variant tta",
-                    "name": "(U+100B)",
+                    "name": "vtta",
                     "id": "variant-tta-label",
                     "default": "0",
                     "label": "ဋ ဋဌ ဏဋ",
