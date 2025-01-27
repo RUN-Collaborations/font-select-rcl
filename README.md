@@ -74,7 +74,7 @@ The following fonts are both Graphite enabled and OpenType enabled. They are inc
 | Links to Smart Font Settings source | Font Version | # of Feature Settings | Brief Font Description |
 | :---  | :---: | :---: | :---  |
 | [Abyssinica SIL](https://software.sil.org/abyssinica/features/) | 2.201 | 29 | many of the languages of Ethiopia and Eritrea |
-| [Padauk](https://software.sil.org/downloads/r/padauk/Padauk-features.pdf) | 5.001 | 15 | writing systems that use the Myanmar script. |
+| [Padauk](https://software.sil.org/downloads/r/padauk/Padauk-features.pdf) | 5.100 | 15 | writing systems that use the Myanmar script. |
 
 The following font currently utilize *some different* font feature settings when rendered in Graphite vs. when rendered in OpenType enabled. It is included in both [graphiteEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=graphiteenabledfeatures) and [openTypeEnabledFeatures](https://font-detect-rhl.netlify.app/#/Example?id=opentypeenabledfeatures) with differing font feature settings.
 
