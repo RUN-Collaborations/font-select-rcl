@@ -6564,7 +6564,28 @@
                     "name": "cv09",
                     "id": "tai-laing-variant-label",
                     "default": "0",
-                    "label": " ꩬ ",
+                    "label": "ꩬ",
+                    "options": [
+                      {
+                        "tip": "No",
+                        "value": "0"
+                      },
+                      {
+                        "tip": "Yes",
+                        "value": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "set": [
+                  {
+                    "title": "Tai Laing variants",
+                    "name": "cv10",
+                    "id": "tai-laing-variants-label",
+                    "default": "0",
+                    "label": "ꧤ ꧨ",
                     "options": [
                       {
                         "tip": "No",
@@ -6687,7 +6708,7 @@
                 "set": [
                   {
                     "title": "Variant tta",
-                    "name": "(U+100B)",
+                    "name": "vtta",
                     "id": "variant-tta-label",
                     "default": "0",
                     "label": "ဋ ဋဌ ဏဋ",
